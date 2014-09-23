@@ -6,7 +6,21 @@
     
     <% if logged_in? %>
       <ul class="nav navbar-nav">
-        <li><%= link_to 'My Blogs', '/' %></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)"
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             id="my-blogs-dropdown">My Blogs
+             <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <% current_user.blogs.each do |blog| %>
+              <li><%= link_to blog.title, blog_url(blog) %></li>
+            <% end %>
+            <li class="divider"></li>
+            <li><%= link_to 'New Blog', new_blog_url %></li>
+          </ul>
+        </li>
       </ul>
     <% end %>
     
