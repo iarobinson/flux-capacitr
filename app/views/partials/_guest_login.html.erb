@@ -1,0 +1,12 @@
+<form action="<%= session_url %>" method="POST" role="form">
+  <%= csrf_token %>
+  <input type="hidden"
+         name="user[email]"
+         value="nine@gallifrey.net">
+
+  <input type="hidden"
+         name="user[password]"
+         value="fantastic">
+
+  <button type="submit" class="btn btn-success">Sign In As Guest</button>
+</form>
