@@ -5,6 +5,20 @@ class User < ActiveRecord::Base
   
   after_initialize :ensure_session_token
   
+  has_many(
+    :blogs,
+    class_name: 'Blog',
+    foreign_key: :owner_id,
+    primary_key: :id
+  )
+  
+  has_many(
+    :posts,
+    class_name: 'Post',
+    foreign_key: :author_id,
+    primary_key: :id
+  )
+  
   def self.find_by_credentials(email, password)
     user = self.find_by_email(email)
     return nil unless user

@@ -1,5 +1,5 @@
 <% if flash[:errors] %>
-  <ul id="errors">
+  <ul class="bg-danger" id="errors">
     <% flash[:errors].each do |error| %>
       <li><%= error %></li>
     <% end %>
