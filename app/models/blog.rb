@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  validates :owner_id, :title, :url, presence: true
+  validates :owner, :title, :url, presence: true
   validates :title, :url, uniqueness: true
   
   belongs_to(

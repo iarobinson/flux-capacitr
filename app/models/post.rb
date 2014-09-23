@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  validates :author_id, :blog_id, :title, presence: true
+  validates :author, :blog, :title, presence: true
   
   belongs_to(
     :blog,

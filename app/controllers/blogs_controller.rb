@@ -1,4 +1,7 @@
 class BlogsController < ApplicationController
+  before_action :ensure_logged_in
+  before_action :ensure_blog_owner, except: [:create, :new, :show]
+  
   def create
     @blog = current_user.blogs.new(blog_params)
     if @blog.save
@@ -11,12 +14,12 @@ class BlogsController < ApplicationController
   
   def destroy
     @blog = Blog.find(params[:id])
-    blog.destroy!
+    @blog.destroy!
     redirect_to :root
   end
   
   def edit
-    @blog = Blog.find(:id)
+    @blog = Blog.find(params[:id])
     render :edit
   end
   
@@ -26,12 +29,12 @@ class BlogsController < ApplicationController
   end
   
   def show
-    @blog = Blog.find(:id)
+    @blog = Blog.find(params[:id])
     render :show
   end
   
   def update
-    @blog = Blog.find(:id)
+    @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
       redirect_to blog_url(@blog)
     else
@@ -41,7 +44,16 @@ class BlogsController < ApplicationController
   end
   
   private
+  
   def blog_params
     params.require(:blog).permit(:title, :url)
+  end
+  
+  def current_blog
+    Blog.find(params[:id])
+  end
+  
+  def ensure_blog_owner
+    redirect_to :root unless current_blog.owner == current_user
   end
 end

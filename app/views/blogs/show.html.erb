@@ -1,0 +1,13 @@
+<h1><%= @blog.title %></h1>
+<hr>
+
+<% if current_user == @blog.owner %>
+  <%= link_to "Post to #{@blog.title}", new_blog_post_url(@blog), class: 'btn btn-primary' %>
+  <%= link_to "Edit #{@blog.title}", edit_blog_url(@blog), class: 'btn btn-success' %>
+<% end %>
+
+<ul>
+  <% @blog.posts.each do |post| %>
+    <li><%= post.title %></li>
+  <% end %>
+</ul>

@@ -20,13 +20,17 @@
 
 .navbar {
   background-color: #003d67 !important;
-  width: 100%;
 }
 
-.navbar .btn {
+.navbar-right .btn {
+  margin-right: 8px;
   margin-top: 8px;
 }
 
 .navbar-brand {
+  color: white !important;
+}
+
+.navbar a {
   color: white !important;
 }

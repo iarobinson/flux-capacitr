@@ -1,15 +1,28 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="javascript:void(0)">Allons-y</a>
+      <a class="navbar-brand" href="/">Allons-y</a>
     </div>
-    <div class="pull-right">
+    
+    <% if logged_in? %>
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'My Blogs', '/' %></li>
+      </ul>
+    <% end %>
+    
+    <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
-        <%= link_to 'Sign Out', session_url, method: :delete, class: 'btn btn-danger' %>
+        <li>
+          <%= button_to 'Sign Out', session_url, method: :delete, class: 'btn btn-danger' %>
+        </li>
       <% else %>
-        <%= link_to 'Sign In', new_session_url, class: 'btn btn-success' %>
-        <%= link_to 'Register', new_user_url, class: 'btn btn-info' %>
+        <li>
+          <%= button_to 'Sign In', new_session_url, class: 'btn btn-success' %>
+        </li>
+        <li>
+          <%= button_to 'Register', new_user_url, class: 'btn btn-info' %>
+        </li>
       <% end %>
-    </div>
+    </ul>
   </div>
 </nav>

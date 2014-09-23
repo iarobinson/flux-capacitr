@@ -1,1 +1,9 @@
-<h1>Welcome to Allons-y!</h1>
+<h1>Welcome, <%= current_user.email %>!</h1>
+<h3>My Blogs</h3>
+<hr>
+<ul>
+  <% current_user.blogs.each do |blog| %>
+    <li><%= link_to blog.title, blog_url(blog) %></li>
+  <% end %>
+</ul>
+<%= link_to "New Blog", new_blog_url, class: 'btn btn-default' %>

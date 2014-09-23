@@ -12,12 +12,12 @@ class PostController < ApplicationController
   
   def destroy
     @post = Blog.find(params[:id])
-    post.destroy!
+    @post.destroy!
     redirect_to :root
   end
   
   def edit
-    @post = Blog.find(:id)
+    @post = Blog.find(params[:id])
     render :edit
   end
   
@@ -27,12 +27,12 @@ class PostController < ApplicationController
   end
   
   def show
-    @post = Blog.find(:id)
+    @post = Blog.find(params[:id])
     render :show
   end
   
   def update
-    @post = Blog.find(:id)
+    @post = Blog.find(params[:id])
     if @post.update(post_params)
       redirect_to post_url(@post)
     else
