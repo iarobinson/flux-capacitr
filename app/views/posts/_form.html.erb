@@ -1,0 +1,29 @@
+<% action = (post.persisted? ? post_url(post) : posts_url) %>
+<% method = (post.persisted? ? 'PATCH' : 'POST') %>
+<% formname = (post.persisted? ? 'Update Post' : 'New Post') %>
+
+<h1><%= formname %></h1>
+<form action="<%= action %>" method="POST" role="form">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <%= csrf_token %>
+  
+  <input type="hidden" name="post[blog_id]" value="<%= post.blog_id %>">
+  
+  <div class="form-group">
+    <label for="post-title">Title</label>
+    <input type="text"
+           class="form-control"
+           id="post-title"
+           name="post[title]"
+           value="<%= post.title %>">
+  </div>
+
+  <div class="form-group">
+    <label for="post-body">Body</label>
+    <textarea class="form-control"
+              id="post-body"
+              name="post[body]"><%= post.body %></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

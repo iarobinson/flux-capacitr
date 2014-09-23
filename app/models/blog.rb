@@ -13,6 +13,7 @@ class Blog < ActiveRecord::Base
     :posts,
     class_name: 'Post',
     foreign_key: :blog_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 end

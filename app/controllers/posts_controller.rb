@@ -1,7 +1,9 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
+  
   def create
-    # fail # check params for blog id
     @post = current_user.posts.new(post_params)
+    ensure_blog_owner(@post.blog)
+    
     if @post.save
       redirect_to post_url(@post)
     else
@@ -11,28 +13,30 @@ class PostController < ApplicationController
   end
   
   def destroy
-    @post = Blog.find(params[:id])
+    @post = Post.find(params[:id])
     @post.destroy!
     redirect_to :root
   end
   
   def edit
-    @post = Blog.find(params[:id])
+    @post = Post.find(params[:id])
     render :edit
   end
   
   def new
-    @post = Blog.new
+    @post = current_blog.posts.new
     render :new
   end
   
   def show
-    @post = Blog.find(params[:id])
+    @post = Post.find(params[:id])
     render :show
   end
   
   def update
-    @post = Blog.find(params[:id])
+    @post = Post.find(params[:id])
+    ensure_blog_owner(@post.blog)
+    
     if @post.update(post_params)
       redirect_to post_url(@post)
     else
@@ -42,7 +46,18 @@ class PostController < ApplicationController
   end
   
   private
+  def current_blog
+    Blog.find(params[:blog_id])
+  end
+  
+  def ensure_blog_owner(blog)
+    if blog.owner != current_user
+      flash[:errors] = ["You must be the blog's owner to perform that action!"]
+      redirect_to :root
+    end
+  end
+  
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :blog_id)
   end
 end

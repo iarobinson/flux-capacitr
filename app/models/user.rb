@@ -9,14 +9,16 @@ class User < ActiveRecord::Base
     :blogs,
     class_name: 'Blog',
     foreign_key: :owner_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
   
   has_many(
     :posts,
     class_name: 'Post',
     foreign_key: :author_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
   
   def self.find_by_credentials(email, password)
