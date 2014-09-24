@@ -4,13 +4,7 @@ window.Allonsy = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
-    new Allonsy.Router();
+    new Allonsy.Router({ $rootEl: $('#main') });
     Backbone.history.start();
   }
 };
-
-// ADD THIS WHERE IT NEEDS TO BE LOADED (blog show page?)
-// $(document).ready(function(){
-//   Allonsy.initialize();
-// });

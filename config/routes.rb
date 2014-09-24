@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#welcome'
+  root to: 'static_pages#root'
   
   namespace :api do
-    resources :posts
-    resources :tags, only: [:create, :destroy]
-    resources :taggings, only: [:create, :destroy]
+    resources :blogs, only: [:show]
   end
   
   resource :session, only: [:create, :destroy, :new]
