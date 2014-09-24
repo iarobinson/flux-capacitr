@@ -29,7 +29,11 @@ class BlogsController < ApplicationController
   end
   
   def show
-    @blog = Blog.find(params[:id])
+    if params[:id]
+      @blog = Blog.find(params[:id])
+    else
+      @blog = Blog.find_by_url(params[:blog_url])
+    end
     render :show
   end
   

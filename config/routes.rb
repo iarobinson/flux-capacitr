@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:new]
   end
   
+  get ':blog_url', to: 'blogs#show'
+  
   resources :posts, except: [:new]
 end
