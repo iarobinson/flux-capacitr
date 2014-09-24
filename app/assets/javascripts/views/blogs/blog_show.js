@@ -7,7 +7,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.posts(), "add", this.addPost);
     this.listenTo(this.model.posts(), "remove", this.removePost);
-    
+
     this.model.posts().each(this.addPost.bind(this));
   },
   
@@ -28,7 +28,6 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   },
   
   render: function () {
-    var view = this;
     var renderedContent = this.template({ blog: this.model });
     this.$el.html(renderedContent);
     this.attachSubviews();

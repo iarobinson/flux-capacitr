@@ -10,6 +10,7 @@ Allonsy.Router = Backbone.Router.extend({
   blogShow: function (id) {
     var blog = new Allonsy.Models.Blog({ id: id });
     blog.fetch();
+    // var blog = Allonsy.Collections.blogs.getOrFetch(id);
     var view = new Allonsy.Views.BlogShow({ model: blog });
     this._swapView(view);
   },
