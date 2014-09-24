@@ -12,17 +12,6 @@ class BlogsController < ApplicationController
     end
   end
   
-  # def create
-  #   @blog = Blog.new(blog_params)
-  #   @blog.owner_id = current_user.id
-  #   if @blog.save
-  #     redirect_to blog_url(@blog)
-  #   else
-  #     flash.now[:errors] = @blog.errors.full_messages
-  #     render :new
-  #   end
-  # end
-  
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy!
