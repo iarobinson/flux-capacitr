@@ -8,7 +8,7 @@ class CreateBlogs < ActiveRecord::Migration
       t.timestamps
     end
     add_index :blogs, :owner_id
-    add_index :blogs, :title, unique: true
+    add_index :blogs, :title
     add_index :blogs, :url, unique: true
   end
 end

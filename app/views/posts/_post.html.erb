@@ -7,8 +7,8 @@
     <%= post.body %>
   </div>
   
-  <div class="panel-footer">
-    <div class="post-info">
+  <div class="panel-footer clearfix">
+    <div class="pull-left">
       <%= link_to post_url(post), class: "btn btn-default" do %>
         <span class="glyphicon glyphicon-time"></span>
         <%= time_ago_in_words(post.created_at) %> ago
@@ -19,7 +19,7 @@
       <% end %>
     </div>
     
-    <div class="post-controls">
+    <div class="pull-right">
       <% if current_user == post.author %>
         <%= link_to edit_post_url(post), class: "btn btn-default" do %>
             <span class="glyphicon glyphicon-cog"></span>
@@ -30,6 +30,6 @@
             <span class="glyphicon glyphicon-trash"></span>
         <% end %>
       <% end %>
-    </div> <!-- post-controls -->
+    </div>
   </div> <!-- panel-heading -->
 </div> <!-- panel-default -->

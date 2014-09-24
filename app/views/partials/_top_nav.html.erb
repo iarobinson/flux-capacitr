@@ -15,7 +15,9 @@
           </a>
           <ul class="dropdown-menu" role="menu">
             <% current_user.blogs.each do |blog| %>
-              <li><%= link_to blog.title, blog_url(blog) %></li>
+              <% if blog.persisted? %>
+                <li><%= link_to blog.title, blog_url(blog) %></li>
+              <% end %>
             <% end %>
             <li class="divider"></li>
             <li><%= link_to 'New Blog', new_blog_url %></li>
