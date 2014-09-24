@@ -15,4 +15,7 @@ json.posts @blog.posts do |post|
         :body,
         :created_at,
         :updated_at)
+  if current_user == post.author
+    json.is_author true
+  end
 end
