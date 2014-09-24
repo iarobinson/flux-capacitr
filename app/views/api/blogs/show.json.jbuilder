@@ -18,4 +18,8 @@ json.posts @blog.posts do |post|
   if current_user == post.author
     json.is_author true
   end
+  
+  json.time_ago "#{time_ago_in_words(post.created_at)} ago"
+  
+  json.url post_url(post)
 end

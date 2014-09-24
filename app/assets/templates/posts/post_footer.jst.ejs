@@ -1,0 +1,20 @@
+<div class="post-info pull-left">
+  <a href="<%= post.get('url') %>">
+    <span class="glyphicon glyphicon-time"></span>
+    <%= post.get('time_ago') %>
+  </a>
+  <a href="<%= post.get('url') %>">
+    <span class="glyphicon glyphicon-link"></span>
+  </a>
+</div>
+
+<div class="post-control pull-right">
+  <% if (post.get('is_author')) { %>
+    <a href="javascript:void(0)" class="btn btn-default" id="edit-post">
+        <span class="glyphicon glyphicon-cog"></span>
+    </a>
+    <a href="javascript:void(0)" class="btn btn-default" id="delete-post">
+        <span class="glyphicon glyphicon-trash"></span>    
+    </a>
+  <% } %>
+</div>

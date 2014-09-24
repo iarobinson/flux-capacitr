@@ -6,8 +6,8 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     
-    var postControlView = new Allonsy.Views.PostControl({ model: this.model });
-    this.addSubview(".post-footer", postControlView.render());
+    var postFooterView = new Allonsy.Views.PostFooter({ model: this.model });
+    this.addSubview(".post-footer", postFooterView.render());
   },
   
   render: function () {

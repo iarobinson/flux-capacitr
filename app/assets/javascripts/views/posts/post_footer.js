@@ -1,7 +1,5 @@
-Allonsy.Views.PostControl = Backbone.View.extend({
-  template: JST['posts/post_control'],
-  
-  className: "post-control pull-right",
+Allonsy.Views.PostFooter = Backbone.View.extend({
+  template: JST['posts/post_footer'],
   
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
