@@ -1,0 +1,11 @@
+<div class="blog-controls btn-group">
+  <% if current_user == @blog.owner %>
+    <%= link_to edit_blog_url(@blog), class: "btn btn-default" do %>
+        <span class="glyphicon glyphicon-cog"></span>
+    <% end %>
+    <%= link_to new_blog_post_url(@blog),
+      class: "btn btn-default" do %>
+        <span class="glyphicon glyphicon-pencil"></span>
+    <% end %>
+  <% end %>
+</div>

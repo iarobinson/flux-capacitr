@@ -12,53 +12,20 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap
  */
 
 * {
   box-sizing: border-box;
 }
 
-.blog-controls {
-  margin-top: 20px;
-}
-
 .blog-header {
   position: relative;
-}
-
-.blog-header h1 {
-  display: inline-block;
-}
-
-.navbar {
-  background-color: #003d67 !important;
-}
-
-.navbar-nav>.open>a:focus {
-  background-color: #4D7795 !important;
-}
-
-.navbar .dropdown-menu {
-  background-color: #003d67 !important;
-}
-
-.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
-  background-color: #4D7795 !important;
-  background-image: none;
+  text-align: center;
 }
 
 .navbar-right .btn {
   margin-right: 8px;
   margin-top: 8px;
-}
-
-.navbar-brand {
-  color: white !important;
-}
-
-.navbar a {
-  color: white !important;
 }
 
 .post-container {
@@ -68,7 +35,7 @@
 .post-container .btn {
   background-color: transparent;
   border: none;
-  font-size: 16px;
+  font-size: 12px;
   padding: 0 5px;
   opacity: 0.5;
 }
