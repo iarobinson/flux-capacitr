@@ -1,8 +1,9 @@
 module Api
   class PostsController < ApiController
-    def show
+    def destroy
       @post = Post.find(params[:id])
-      render json: @post
+      @post.destroy!
+      render json: {}
     end
   end
 end

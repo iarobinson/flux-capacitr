@@ -1,0 +1,13 @@
+<h1><%= blog.get('title') %></h1>
+<h5>(<%= blog.get('full_url') %>)</h5>
+
+<% if (blog.get('is_owner')) { %>
+  <div class="blog-controls btn-group">
+    <a href="javascript:void(0)" class="btn btn-default" id="edit-blog">
+      <span class="glyphicon glyphicon-cog"></span>
+    </a>
+    <a href="javascript:void(0)" class="btn btn-default" id="post-to-blog">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </a>
+  </div>
+<% } %>

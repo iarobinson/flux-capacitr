@@ -3,6 +3,21 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
   
   className: "post-show",
   
+  events: {
+    "click #delete-post": "deletePost",
+    "click #edit-post": "editPost"
+  },
+  
+  deletePost: function (event) {
+    if (confirm("Are you sure you want to delete this post?")) {
+      this.model.destroy();
+    }
+  },
+  
+  editPost: function (event) {
+    
+  },
+  
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     

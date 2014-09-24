@@ -21,5 +21,5 @@ json.posts @blog.posts do |post|
   
   json.time_ago "#{time_ago_in_words(post.created_at)} ago"
   
-  json.url post_url(post)
+  json.url "#posts/#{post.id}"
 end
