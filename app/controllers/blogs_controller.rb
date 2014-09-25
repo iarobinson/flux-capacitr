@@ -13,13 +13,13 @@ class BlogsController < ApplicationController
   end
   
   def destroy
-    @blog = Blog.find(params[:id])
+    @blog = Blog.friendly.find(params[:id])
     @blog.destroy!
     redirect_to :root
   end
   
   def edit
-    @blog = Blog.find(params[:id])
+    @blog = Blog.friendly.find(params[:id])
     render :edit
   end
   
@@ -30,15 +30,15 @@ class BlogsController < ApplicationController
   
   def show
     if params[:id]
-      @blog = Blog.includes(:posts).find(params[:id])
+      @blog = Blog.includes(:posts).friendly.find(params[:id])
     else
-      @blog = Blog.includes(:posts).find_by_url(params[:blog_url])
+      @blog = Blog.includes(:posts).friendly.find_by_url(params[:blog_url])
     end
     render :show
   end
   
   def update
-    @blog = Blog.find(params[:id])
+    @blog = Blog.friendly.find(params[:id])
     if @blog.update(blog_params)
       redirect_to blog_url(@blog)
     else
@@ -54,7 +54,7 @@ class BlogsController < ApplicationController
   end
   
   def current_blog
-    Blog.find(params[:id])
+    Blog.friendly.find(params[:id])
   end
   
   def ensure_blog_owner

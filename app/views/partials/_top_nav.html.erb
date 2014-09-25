@@ -1,33 +1,8 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Allons-y</a>
+      <a class="navbar-brand" href="/#">Allons-y</a>
     </div>
-    
-    <% if logged_in? %>
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="/#">Dashboard</a>
-        </li>
-        <li class="dropdown">
-          <a href="javascript:void(0)"
-             class="dropdown-toggle"
-             data-toggle="dropdown"
-             id="my-blogs-dropdown">My Blogs
-             <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <% current_user.blogs.each do |blog| %>
-              <% if blog.persisted? %>
-                <li><%= link_to blog.title, blog_url(blog) %></li>
-              <% end %>
-            <% end %>
-            <li class="divider"></li>
-            <li><%= link_to 'New Blog', new_blog_url %></li>
-          </ul>
-        </li>
-      </ul>
-    <% end %>
     
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>

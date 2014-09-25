@@ -3,11 +3,5 @@ Allonsy.Collections.Posts = Backbone.Collection.extend({
   
   comparator: function (post) {
     return +new Date(post.get('created_at'));
-  },
-  
-  initialize: function (options) {
-    if (options) {
-      this.blog = options.blog;      
-    }
   }
 });

@@ -20,12 +20,14 @@ ActiveRecord::Schema.define(version: 20140925184514) do
     t.integer  "owner_id",   null: false
     t.string   "title",      null: false
     t.string   "url",        null: false
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "blogs", ["owner_id"], name: "index_blogs_on_owner_id", using: :btree
-  add_index "blogs", ["title"], name: "index_blogs_on_title", unique: true, using: :btree
+  add_index "blogs", ["slug"], name: "index_blogs_on_slug", unique: true, using: :btree
+  add_index "blogs", ["title"], name: "index_blogs_on_title", using: :btree
   add_index "blogs", ["url"], name: "index_blogs_on_url", unique: true, using: :btree
 
   create_table "followings", force: true do |t|

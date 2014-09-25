@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     resources :posts, only: [:create, :destroy, :update]
     
     post 'blogs/:id/togglefollow', to: 'followings#toggle'
+    # post 'blogs/:id/follow', to: 'followings#create'
+    # post 'blogs/:id/unfollow', to: 'followings#destroy'
     get 'feed', to: 'feeds#show'
+    # resource :feed, only: [:show]
   end
   
   resource :session, only: [:create, :destroy, :new]
@@ -16,8 +19,6 @@ Rails.application.routes.draw do
   resources :blogs, except: [:index] do
     resources :posts, only: [:new]
   end
-  
-  get ':blog_url', to: 'blogs#show'
   
   resources :posts, except: [:new]
 end

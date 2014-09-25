@@ -1,12 +1,11 @@
 <ul class="nav nav-pills nav-stacked">
-  <li class="active"><a href="javascript:void(0)">My Feed</a></li>
+  <li class="active"><a href="/#">My Feed</a></li>
   <hr>
   <% current_user.blogs.each do |blog| %>
     <% if blog.persisted? %>
       <li style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%">
-        <a href="/#blogs/<%= blog.id %>">
-          <p><strong><%= blog.url %></strong></p>
-          <p><%= blog.title %></p>
+        <a href="/#blogs/<%= blog.url %>">
+          <strong><%= blog.url %></strong>
         </a>
       </li>
     <% end %>

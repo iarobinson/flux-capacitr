@@ -1,4 +1,7 @@
 class Blog < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :url, :use => :slugged
+  
   validates :owner, :title, :url, presence: true
   validates :title, :url, uniqueness: true
   
