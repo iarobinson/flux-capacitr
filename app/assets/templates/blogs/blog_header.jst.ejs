@@ -13,9 +13,11 @@
     </a>
   <% } else { %>
     <a href="javascript:void(0)" class="btn btn-default" id="follow-toggle">
-      <span class="glyphicon glyphicon-minus"></span>
-      <span class="glyphicon glyphicon-plus"></span>
-      Follow/Unfollow
+      <% if (blog.get('is_followed')) { %>
+        <span class="glyphicon glyphicon-minus"></span> Unfollow
+      <% } else { %>
+        <span class="glyphicon glyphicon-plus"></span> Follow
+      <% } %>
     </a>
   <% } %>
 </div>

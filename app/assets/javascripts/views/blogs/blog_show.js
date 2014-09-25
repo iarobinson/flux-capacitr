@@ -6,8 +6,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   className: "blog-show",
   
   events: {
-    "click #post-to-blog": "newPostForm",
-    "click #follow-toggle": "toggleFollowing"
+    "click #post-to-blog": "newPostForm"
   },
   
   initialize: function () {
@@ -80,9 +79,5 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.attachSubviews();
     return this;
-  },
-  
-  toggleFollowing: function (event) {
-    debugger;
   }
 });
