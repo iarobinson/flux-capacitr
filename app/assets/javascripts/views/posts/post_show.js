@@ -28,7 +28,9 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
     var view = this;
     var formData = this.$('form').serializeJSON()['post'];
     this.model.save(formData, {
-      success: this.cancelEdit.bind(this)
+      success: function (response) {
+        debugger;
+      }
     });
   },
   

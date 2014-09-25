@@ -30,9 +30,9 @@ class BlogsController < ApplicationController
   
   def show
     if params[:id]
-      @blog = Blog.find(params[:id])
+      @blog = Blog.includes(:posts).find(params[:id])
     else
-      @blog = Blog.find_by_url(params[:blog_url])
+      @blog = Blog.includes(:posts).find_by_url(params[:blog_url])
     end
     render :show
   end
