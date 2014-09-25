@@ -2,7 +2,6 @@ Allonsy.Models.Post = Backbone.Model.extend({
   urlRoot: 'api/posts',
   
   parse: function (response) {
-    // debugger;
     if (response.is_author) {
       this.set('is_author', response.is_author);
       delete response.is_author;

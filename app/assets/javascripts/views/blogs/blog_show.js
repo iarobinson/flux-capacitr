@@ -1,7 +1,13 @@
 Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   template: JST['blogs/show'],
   
+  newPostTemplate: JST['posts/edit'],
+  
   className: "blog-show",
+  
+  events: {
+    "click #post-to-blog": "newPostForm",
+  },
   
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
@@ -16,7 +22,32 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   
   addPost: function (post) {
     var postShow = new Allonsy.Views.PostShow({ model: post });
+    if (!post.has('id')) {
+      postShow.open = true;
+      postShow.parentView = this;
+    }
     this.addSubview(".posts", postShow.render());
+  },
+  
+  closePostForm: function (event) {
+    debugger;
+    this.authoring = false;
+    this.removeSubview('.new-post', this.postForm);
+    delete this.postForm;
+  },
+  
+  newPostForm: function (event) {
+    if (!this.authoring) {
+      this.authoring = true;
+      var view = this;
+      
+      var newPost = new Allonsy.Models.Post({
+        blog_id: this.model.get('id'),
+        blog_url: this.model.get('url')
+      });
+      
+      this.addPost(newPost);
+    }
   },
   
   removePost: function (post) {
