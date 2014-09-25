@@ -11,10 +11,16 @@
         </li>
       <% else %>
         <li>
-          <%= button_to 'Sign In', new_session_url, class: 'btn btn-success' %>
+          <%= button_to 'Sign In',
+                        new_session_url,
+                        class: 'btn btn-success',
+                        method: :get %>
         </li>
         <li>
-          <%= button_to 'Register', new_user_url, class: 'btn btn-info' %>
+          <%= button_to 'Register',
+                        new_user_url,
+                        class: 'btn btn-info',
+                        method: :get %>
         </li>
       <% end %>
     </ul>
