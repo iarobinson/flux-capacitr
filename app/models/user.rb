@@ -58,6 +58,7 @@ class User < ActiveRecord::Base
     posts = Post.where(blog_id: self.followed_blogs.ids)
                 .where('created_at <= ?', max_created_at)
                 .limit(limit)
+                .order(created_at: :desc)
   end
   
   def is_following?(blog)

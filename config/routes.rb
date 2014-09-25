@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:create, :destroy, :update]
     
     post 'blogs/:id/togglefollow', to: 'followings#toggle'
+    get 'feed', to: 'feeds#show'
   end
   
   resource :session, only: [:create, :destroy, :new]

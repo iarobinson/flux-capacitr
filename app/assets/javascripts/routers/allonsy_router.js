@@ -16,7 +16,9 @@ Allonsy.Router = Backbone.Router.extend({
   },
   
   feedShow: function () {
-    
+    var feed = new Allonsy.Models.Feed();
+    var view = new Allonsy.Views.FeedShow({ model: feed });
+    this._swapView(view);
   },
   
   postShow: function (id) {
