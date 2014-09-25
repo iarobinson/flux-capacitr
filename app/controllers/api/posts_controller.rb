@@ -5,7 +5,7 @@ module Api
       ensure_blog_owner(@post.blog)
     
       if @post.save
-        render json: @post
+        render partial: 'post', locals: {post: @post}
       else
         render json: @post.errors.full_messages, status: :unprocessable_entity
       end
@@ -17,11 +17,12 @@ module Api
       render json: {}
     end
     
-    def update # need to exclude blog id when editing!
+    def update
       @post = Post.find(params[:id])
+      ensure_blog_owner(@post.blog)
       
       if @post.update_attributes(post_params)
-        render json: @post
+        render partial: 'post', locals: {post: @post}
       else
         render json: @post.errors.full_messages, status: :unprocessable_entity
       end
