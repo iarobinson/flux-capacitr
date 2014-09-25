@@ -21,6 +21,20 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
   
+  has_many(
+    :followings,
+    class_name: 'Following',
+    foreign_key: :follower_id,
+    primary_key: :id,
+    dependent: :destroy
+  )
+  
+  has_many(
+    :followed_blogs,
+    through: :followings,
+    source: :blog
+  )
+  
   def self.find_by_credentials(email, password)
     user = self.find_by_email(email)
     return nil unless user

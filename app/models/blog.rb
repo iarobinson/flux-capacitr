@@ -16,4 +16,18 @@ class Blog < ActiveRecord::Base
     primary_key: :id,
     dependent: :destroy
   )
+  
+  has_many(
+    :followings,
+    class_name: 'Following',
+    foreign_key: :blog_id,
+    primary_key: :id,
+    dependent: :destroy
+  )
+  
+  has_many(
+    :followers,
+    through: :followings,
+    source: :follower
+  )
 end
