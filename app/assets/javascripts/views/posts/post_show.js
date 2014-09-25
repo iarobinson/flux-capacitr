@@ -14,6 +14,9 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
   
   deletePost: function (event) {
     if (confirm("Are you sure you want to delete this post?")) {
+      if (this.parentView) {
+        this.parentView.removePost(this.model);
+      }
       this.model.destroy();
     }
   },
@@ -33,6 +36,9 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
     var formData = this.$('form').serializeJSON()['post'];
     this.model.save(formData, {
       success: function (response) {
+        if (view.parentView) {
+          view.parentView.authoring = false;
+        }
         view.open = false;
         view.render();
       }
