@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   namespace :api do
     resources :blogs, only: [:show]
-    resources :posts, only: [:destroy]
+    resources :posts, only: [:destroy, :update]
   end
   
   resource :session, only: [:create, :destroy, :new]

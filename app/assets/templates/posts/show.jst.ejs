@@ -1,9 +1,12 @@
 <div class="panel panel-primary post-container">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= post.get('title') %></h3>
+    <a href="#blogs/<%= post.get('blog_id') %>" class="panel-title">
+      <%= post.get('blog_url') %>
+    </a>
   </div>
   
   <div class="panel-body">
+    <h3 style="margin-top: 0"><%= post.get('title') %></h3>
     <%= post.get('body') %>
   </div>
   

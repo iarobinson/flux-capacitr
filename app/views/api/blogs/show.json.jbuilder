@@ -19,6 +19,8 @@ json.posts @blog.posts do |post|
     json.is_author true
   end
   
+  json.blog_url @blog.url
+  
   json.time_ago "#{time_ago_in_words(post.created_at)} ago"
   
   json.url "#posts/#{post.id}"

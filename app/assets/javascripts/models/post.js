@@ -7,6 +7,9 @@ Allonsy.Models.Post = Backbone.Model.extend({
       delete response.is_author;
     }
     
+    this.set('blog_url', response.blog_url);
+    delete response.blog_url;
+    
     this.set('time_ago', response.time_ago);
     delete response.time_ago;
     
