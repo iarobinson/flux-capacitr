@@ -29,22 +29,37 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.addSubview(".posts", postShow.render());
   },
   
+  attachPostForm: function (post) {
+    var subview = new Allonsy.Views.PostShow({ model: post });
+    subview.open = true;
+    subview.parentView = this;
+    
+    // addSubview
+    this.subviews('.posts').push(subview);
+    
+    // attachSubview
+    this.$('.posts').prepend(subview.render().$el);
+    subview.delegateEvents();
+  },
+  
   closePostForm: function (view) {
     this.authoring = false;
-    this.model.posts().remove(view.model);
+    // this.model.posts().remove(view.model);
+    this.removeSubview('.posts', view);
   },
   
   newPostForm: function (event) {
     if (!this.authoring) {
       this.authoring = true;
-      var view = this;
       
       var newPost = new Allonsy.Models.Post({
         blog_id: this.model.get('id'),
         blog_url: this.model.get('url')
       });
       
-      this.model.posts().add(newPost);
+      // this.model.posts().add(newPost);
+      
+      this.attachPostForm(newPost)
     }
   },
   
