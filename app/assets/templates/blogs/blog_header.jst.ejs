@@ -3,7 +3,9 @@
 
 <% if (blog.get('is_owner')) { %>
   <div class="blog-controls btn-group">
-    <a href="javascript:void(0)" class="btn btn-default" id="edit-blog">
+    <a href="/blogs/<%= blog.get('id') %>/edit"
+      class="btn btn-default"
+      id="edit-blog">
       <span class="glyphicon glyphicon-cog"></span>
     </a>
     <a href="javascript:void(0)" class="btn btn-default" id="post-to-blog">

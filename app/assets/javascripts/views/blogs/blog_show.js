@@ -29,11 +29,9 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.addSubview(".posts", postShow.render());
   },
   
-  closePostForm: function (event) {
-    debugger;
+  closePostForm: function (view) {
     this.authoring = false;
-    this.removeSubview('.new-post', this.postForm);
-    delete this.postForm;
+    this.model.posts().remove(view.model);
   },
   
   newPostForm: function (event) {
@@ -46,7 +44,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
         blog_url: this.model.get('url')
       });
       
-      this.addPost(newPost);
+      this.model.posts().add(newPost);
     }
   },
   

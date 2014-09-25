@@ -23,9 +23,7 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
       this.open = false;
       this.render();          
     } else {
-      this.parentView.removePost(this.model);
-      this.parentView.authoring = false;
-      this.remove();
+      this.parentView.closePostForm(this);
     }
   },
   
