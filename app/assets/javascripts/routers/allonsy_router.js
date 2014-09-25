@@ -4,6 +4,7 @@ Allonsy.Router = Backbone.Router.extend({
   },
   
   routes: {
+    '': 'feedShow',
     'blogs/:id': 'blogShow',
     'posts/:id': 'postShow'
   },
@@ -12,6 +13,10 @@ Allonsy.Router = Backbone.Router.extend({
     var blog = Allonsy.Collections.blogs.getOrFetch(id);
     var view = new Allonsy.Views.BlogShow({ model: blog });
     this._swapView(view);
+  },
+  
+  feedShow: function () {
+    
   },
   
   postShow: function (id) {

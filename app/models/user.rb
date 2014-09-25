@@ -54,6 +54,12 @@ class User < ActiveRecord::Base
     self.session_token ||= self.class.generate_session_token
   end
   
+  def feed_posts(limit, max_created_at)
+    posts = Post.where(blog_id: self.followed_blogs.ids)
+                .where('created_at <= ?', max_created_at)
+                .limit(limit)
+  end
+  
   def is_following?(blog)
     self.followed_blogs.include?(blog)
   end
