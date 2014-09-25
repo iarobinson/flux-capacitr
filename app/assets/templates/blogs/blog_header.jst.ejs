@@ -1,8 +1,8 @@
 <h1><%= blog.get('title') %></h1>
 <h5>(<%= blog.get('full_url') %>)</h5>
 
-<% if (blog.get('is_owner')) { %>
-  <div class="blog-controls btn-group">
+<div class="blog-controls btn-group">
+  <% if (blog.get('is_owner')) { %>
     <a href="/blogs/<%= blog.get('id') %>/edit"
       class="btn btn-default"
       id="edit-blog">
@@ -11,5 +11,11 @@
     <a href="javascript:void(0)" class="btn btn-default" id="post-to-blog">
       <span class="glyphicon glyphicon-pencil"></span>
     </a>
-  </div>
-<% } %>
+  <% } else { %>
+    <a href="javascript:void(0)" class="btn btn-default" id="follow-toggle">
+      <span class="glyphicon glyphicon-minus"></span>
+      <span class="glyphicon glyphicon-plus"></span>
+      Follow/Unfollow
+    </a>
+  <% } %>
+</div>

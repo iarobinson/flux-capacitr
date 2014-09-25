@@ -1,4 +1,4 @@
-class Followings < ActiveRecord::Base
+class Following < ActiveRecord::Base
   validates :follower_id, :blog_id, presence: true
   validates :follower_id, uniqueness: { scope: :blog_id }
   

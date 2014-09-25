@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     self.session_token ||= self.class.generate_session_token
   end
   
+  def is_following?(blog)
+    self.followed_blogs.include?(blog)
+  end
+  
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)
   end
