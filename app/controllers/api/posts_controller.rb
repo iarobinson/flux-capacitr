@@ -18,6 +18,11 @@ module Api
       render json: {}
     end
     
+    def index
+      @posts = current_user.feed_posts
+      render 'index.json.jbuilder'
+    end
+    
     def update
       @post = Post.find(params[:id])
       ensure_blog_owner(@post.blog)

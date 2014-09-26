@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   
   namespace :api do
     resources :blogs, only: [:show]
-    resources :posts, only: [:create, :destroy, :update]
+    resources :posts, only: [:create, :destroy, :index, :update]
     
     post 'blogs/:id/togglefollow', to: 'followings#toggle'
     # post 'blogs/:id/follow', to: 'followings#create'
     # post 'blogs/:id/unfollow', to: 'followings#destroy'
-    get 'feed', to: 'feeds#show'
     # resource :feed, only: [:show]
   end
   

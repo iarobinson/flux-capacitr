@@ -1,18 +1,14 @@
 Allonsy.Models.Feed = Backbone.Model.extend({
-  url: 'api/feed',
+  url: 'api/posts',
   
   posts: function () {
     if (!this._posts) {
-      this._posts = new Allonsy.Collections.Posts();
+      this._posts = new Allonsy.Collections.Posts({ url: 'api/posts' });
     }
     return this._posts;
   },
   
   initialize: function () {
-    $.ajax('/api/feed', {
-      success: function (response) {
-        this.posts().set(response.posts);
-      }.bind(this)
-    });
+    this.posts().fetch();
   }
 });
