@@ -7,7 +7,7 @@
   
   <div class="panel-body">
     <h3 style="margin-top: 0"><%= post.get('title') %></h3>
-    <%= post.get('body') %>
+    <%= markdown.toHTML(post.get('body')) %>
   </div>
   
   <div class="panel-footer post-footer clearfix">  </div>
