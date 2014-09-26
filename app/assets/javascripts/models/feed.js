@@ -7,6 +7,9 @@ Allonsy.Models.Feed = Backbone.Model.extend({
   },
   
   initialize: function () {
-    this.posts().fetch();
+    this.posts().fetch({
+      remove: false,
+      data: { page: 1 }
+    });
   }
 });

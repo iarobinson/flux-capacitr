@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   validates :author, :blog, :title, presence: true
   
+  paginates_per 10
+  
   belongs_to(
     :blog,
     class_name: 'Blog',
