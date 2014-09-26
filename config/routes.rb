@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     
     resources :posts, only: [:create, :destroy, :index, :update]
     
-    post 'blogs/:id/togglefollow', to: 'followings#toggle'
+    post 'blogs/:id/togglefollow', to: 'blogs#toggle_follow'
+    post 'posts/:id/togglelike', to: 'posts#toggle_like'
     # post 'blogs/:id/follow', to: 'followings#create'
     # post 'blogs/:id/unfollow', to: 'followings#destroy'
     # resource :feed, only: [:show]
