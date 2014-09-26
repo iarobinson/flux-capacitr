@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'autoprefixer-rails'
 gem 'backbone-on-rails'
 gem 'bcrypt'
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'friendly_id'
 gem 'jbuilder', '~> 2.0'

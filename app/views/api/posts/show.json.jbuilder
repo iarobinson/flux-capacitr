@@ -1,10 +1,12 @@
-json.(@post, :id, :title, :body, :author_id, :created_at, :updated_at)
+json.(post, :id, :title, :body, :author_id, :created_at, :updated_at)
 
-if current_user == @post.author
+if current_user == post.author
   json.is_author true
 end
 
-json.blog_url @post.blog.url
+json.blog_url post.blog.url
+
+json.tags post.tags
 
 json.time_ago "#{time_ago_in_words(post.created_at)} ago"
 
