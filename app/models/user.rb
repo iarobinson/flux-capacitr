@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     source: :blog
   )
   
+  has_many :likes, dependent: :destroy
+  
+  has_many :liked_posts, through: :likes, source: :post
+  
   def self.find_by_credentials(email, password)
     user = self.find_by_email(email)
     return nil unless user

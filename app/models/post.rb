@@ -31,6 +31,10 @@ class Post < ActiveRecord::Base
     source: :tag
   )
   
+  has_many :likes, dependent: :destroy
+  
+  has_many :users_liked_by, through: :likes, source: :user
+  
   def self.parse_tags(tag_string)
     tag_array = tag_string.split(/[#,]/)
     tag_array.map! { |el| el.strip }
