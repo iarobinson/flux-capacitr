@@ -1,11 +1,23 @@
 Allonsy.Collections.Posts = Backbone.Collection.extend({
-  model: Allonsy.Models.Post,
+  initialize: function (array, options) {
+    if (options && options.blog) {
+      this.blog = options.blog;
+    }
+  },
   
-  url: 'api/posts',
+  model: Allonsy.Models.Post,
   
   parse: function (response) {
     this.page = response.page;
     this.total_pages = response.total_pages;
     return response.posts;
+  },
+  
+  url: function () {
+    if (this.blog) {
+      return 'api/blogs/' + this.blog.get('id') + '/posts'
+    } else {
+      return 'api/posts'
+    }
   }
 });

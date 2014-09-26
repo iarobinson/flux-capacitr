@@ -3,6 +3,10 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
   
   className: "feed-show",
   
+  events: {
+    "click #fetch-posts": "fetchPosts"
+  },
+  
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.posts(), "add", this.addPost);
@@ -20,6 +24,25 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
     this.addSubview(".posts", postShow.render());
   },
   
+  listenForScroll: function () {
+    $(window).off('scroll');
+    var throttledCallback = _.throttle(this.nextPage.bind(this), 200);
+    $(window).on('scroll', throttledCallback);
+  },
+  
+  nextPage: function () {
+    var self = this;
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+      if (self.model.posts().page < self.model.posts().total_pages) {
+        self.model.posts().fetch({
+          data: { page: parseInt(this.model.posts().page) + 1 },
+          remove: false,
+          wait: true
+        });
+      }
+    }
+  },
+  
   removePost: function (post) {
     var subview = _.find(
       this.subviews(".posts"),
@@ -35,6 +58,7 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent);
     this.attachSubviews();
+    this.listenForScroll();
     return this;
   }
 });

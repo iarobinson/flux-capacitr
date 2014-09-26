@@ -19,7 +19,11 @@ module Api
     end
     
     def index
-      @posts = current_user.feed_posts.page(params[:page])
+      if params[:blog_id]
+        @posts = Blog.find(params[:blog_id]).posts.page(params[:page])
+      else
+        @posts = current_user.feed_posts.page(params[:page])
+      end
       render 'index.json.jbuilder'
     end
     

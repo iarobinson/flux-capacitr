@@ -6,6 +6,9 @@ json.is_owner current_user == @blog.owner
 
 json.is_followed current_user.followed_blogs.include?(@blog)
 
-json.posts @blog.posts do |post|
+json.posts @posts do |post|
   json.partial! 'api/posts/post', post: post
 end
+
+json.page params[:page] || 1
+json.total_pages @posts.total_pages
