@@ -7,15 +7,17 @@
     
     <div class="post-header-info pull-right">
       Liked <%= post.get('num_likes') %> times.
-      <a href="javascript:void(0)"
-         class="btn btn-default btn-xs"
-         id="like-toggle">
-        <% if (post.get('is_liked')) { %>
-          <span class="glyphicon glyphicon-thumbs-down"></span> Unlike
-        <% } else { %>
-          <span class="glyphicon glyphicon-thumbs-up"></span> Like
-        <% } %>
-      </a>
+      <% if (!post.get('is_author')) { %>
+        <a href="javascript:void(0)"
+           class="btn btn-default btn-xs"
+           id="like-toggle">
+          <% if (post.get('is_liked')) { %>
+            <span class="glyphicon glyphicon-thumbs-down"></span> Unlike
+          <% } else { %>
+            <span class="glyphicon glyphicon-thumbs-up"></span> Like
+          <% } %>
+        </a>
+      <% } %>
     </div>
   </div>
   
