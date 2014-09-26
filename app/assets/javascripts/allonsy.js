@@ -4,7 +4,7 @@ window.Allonsy = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new Allonsy.Router({ $rootEl: $('#main') });
+    new Allonsy.Router({ $rootEl: $('#content-panel') });
     Backbone.history.start();
   }
 };

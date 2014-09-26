@@ -3,7 +3,7 @@ Allonsy.Models.Blog = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.posts) {
-      this.posts().set(response.posts, {parse: true});
+      this.posts().set(response, {parse: true});
       delete response.posts;
       
       this.set('is_followed', response.is_followed);

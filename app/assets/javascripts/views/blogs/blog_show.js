@@ -17,7 +17,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     var blogHeaderView = new Allonsy.Views.BlogHeader({ model: this.model });
     this.addSubview(".blog-header", blogHeaderView.render());
     
-    // this.model.posts().each(this.addPost.bind(this));
+    this.model.posts().each(this.addPost.bind(this));
   },
   
   addPost: function (post) {
