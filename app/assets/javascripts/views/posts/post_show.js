@@ -9,7 +9,8 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
     "click #cancel-edit": "cancelEdit",
     "click #commit-edit": "commitEdit",
     "click #delete-post": "deletePost",
-    "click #edit-post": "openEdit"
+    "click #edit-post": "openEdit",
+    "click #like-toggle": "toggleLike"
   },
   
   deletePost: function (event) {
@@ -59,14 +60,31 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
   },
   
   render: function () {
+    var renderedContent;
+    
     if(this.open) {
       renderedContent = this.formTemplate({ post: this.model });
     } else {
       renderedContent = this.template({ post: this.model });
     }
+    
     this.$el.html(renderedContent);
     this.attachSubviews();
     this.$("#post-body").markdown({ fullscreen: { enable: false }, resize: 'vertical' });
     return this;
+  },
+  
+  toggleLike: function (event) {
+    $.ajax('/api/posts/' + this.model.id + '/togglelike', {
+      type: 'POST',
+      success: function (response) {
+        this.model.set('is_liked', response.is_liked);
+        this.model.set('num_likes', response.num_likes);
+        this.render();
+      }.bind(this),
+      error: function () {
+        console.log('Something went wrong!');
+      }
+    });
   }
 });

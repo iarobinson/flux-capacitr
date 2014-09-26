@@ -1,8 +1,22 @@
 <div class="panel panel-primary post-container">
-  <div class="panel-heading">
-    <a href="#blogs/<%= post.get('blog_id') %>" class="panel-title">
+  <div class="panel-heading clearfix">
+    <a href="#blogs/<%= post.get('blog_id') %>"
+       class="panel-title pull-left">
       <%= post.get('blog_url') %>
     </a>
+    
+    <div class="post-header-info pull-right">
+      Liked <%= post.get('num_likes') %> times.
+      <a href="javascript:void(0)"
+         class="btn btn-default btn-xs"
+         id="like-toggle">
+        <% if (post.get('is_liked')) { %>
+          <span class="glyphicon glyphicon-thumbs-down"></span> Unlike
+        <% } else { %>
+          <span class="glyphicon glyphicon-thumbs-up"></span> Like
+        <% } %>
+      </a>
+    </div>
   </div>
   
   <div class="panel-body">

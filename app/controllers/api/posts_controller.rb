@@ -1,6 +1,6 @@
 module Api
   class PostsController < ApiController
-    before_action :ensure_logged_in!, except: [:index]
+    before_action :ensure_logged_in, except: [:index]
     
     def create
       @post = current_user.posts.new(post_params)
@@ -28,6 +28,16 @@ module Api
         @posts = current_user.feed_posts.page(params[:page])
       end
       render 'index.json.jbuilder'
+    end
+    
+    def toggle_like
+      @post = Post.find(params[:id])
+      if @post.is_liked_by?(current_user)
+        current_user.liked_posts.delete(@post)
+      else
+        current_user.liked_posts << @post
+      end
+      render partial: 'post', locals: {post: @post}
     end
     
     def update

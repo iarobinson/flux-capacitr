@@ -47,4 +47,8 @@ class Post < ActiveRecord::Base
   def assign_tags(tag_string)
     self.tags = self.class.parse_tags(tag_string)
   end
+  
+  def is_liked_by?(user)
+    self.users_liked_by.include?(user)
+  end
 end

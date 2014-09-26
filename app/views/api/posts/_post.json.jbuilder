@@ -7,9 +7,13 @@ json.(post,
       :created_at,
       :updated_at)
 
+json.blog_url post.blog.url
+
 json.is_author (current_user == post.author)
 
-json.blog_url post.blog.url
+json.is_liked post.is_liked_by?(current_user)
+
+json.num_likes post.likes.count
 
 json.tags post.tags.map { |tag| "##{tag.label}" }
 
