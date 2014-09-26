@@ -1,5 +1,7 @@
 module Api
   class PostsController < ApiController
+    before_action :ensure_logged_in!, except: [:index]
+    
     def create
       @post = current_user.posts.new(post_params)
       ensure_blog_owner(@post.blog)
@@ -14,6 +16,7 @@ module Api
     
     def destroy
       @post = Post.find(params[:id])
+      ensure_blog_owner(@post.blog)
       @post.destroy!
       render json: {}
     end

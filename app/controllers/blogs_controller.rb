@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :ensure_logged_in
+  before_action :ensure_logged_in, except: [:show]
   before_action :ensure_blog_owner, except: [:create, :new, :show]
   
   def create
@@ -29,12 +29,7 @@ class BlogsController < ApplicationController
   end
   
   def show
-    if params[:id]
-      @blog = Blog.includes(:posts).friendly.find(params[:id])
-    else
-      @blog = Blog.includes(:posts).friendly.find_by_url(params[:blog_url])
-    end
-    render :show
+    redirect_to "/#blogs/#{params[:id]}"
   end
   
   def update

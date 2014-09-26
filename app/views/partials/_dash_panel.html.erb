@@ -1,19 +1,45 @@
 <ul class="nav nav-pills nav-stacked">
   <li class="active"><a href="/#">My Feed</a></li>
   <hr>
-  <% current_user.blogs.each do |blog| %>
-    <% if blog.persisted? %>
-      <li style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%">
-        <a href="/#blogs/<%= blog.url %>">
-          <strong><%= blog.url %></strong>
-        </a>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      My Blogs <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <% if current_user.blogs.length > 0 %>
+        <% current_user.blogs.each do |blog| %>
+          <% if blog.persisted? %>
+            <li style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%">
+              <a href="/#blogs/<%= blog.url %>">
+                <strong><%= blog.url %></strong>
+              </a>
+            </li>
+          <% end %>
+        <% end %>
+        <li class="divider"></li>
+      <% end %>
+      <li>
+        <%= link_to new_blog_url do %>
+          <span class="glyphicon glyphicon-plus"></span> New Blog
+        <% end %>
       </li>
-    <% end %>
-  <% end %>
-  <li class="divider"></li>
-  <li>
-    <%= link_to new_blog_url do %>
-      <span class="glyphicon glyphicon-plus"></span> New Blog
-    <% end %>
+    </ul>
+  </li>
+  
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Following <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <% current_user.followed_blogs.each do |blog| %>
+        <% if blog.persisted? %>
+          <li style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%">
+            <a href="/#blogs/<%= blog.url %>">
+              <strong><%= blog.url %></strong>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
   </li>
 </ul>
