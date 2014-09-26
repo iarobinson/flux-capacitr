@@ -13,14 +13,17 @@ class Blog < ActiveRecord::Base
     foreign_key: :owner_id,
     primary_key: :id
   )
+
+  has_many :posts, -> { order 'created_at DESC' }, dependent: :destroy
   
-  has_many(
-    :posts,
-    class_name: 'Post',
-    foreign_key: :blog_id,
-    primary_key: :id,
-    dependent: :destroy
-  )
+  # has_many(
+  #   :posts,
+  #   class_name: 'Post',
+  #   foreign_key: :blog_id,
+  #   primary_key: :id,
+  #   order: 'created_at DESC',
+  #   dependent: :destroy
+  # )
   
   has_many(
     :followings,
