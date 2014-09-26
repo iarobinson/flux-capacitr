@@ -32,7 +32,10 @@
                id="post-tags"
                class="form-control"
                placeholder="#wibbly, #wobbly, #timey wimey"
-               name="post[tags]"><%= post.get('tags') %></input>
+               <% if (post.has('tags')) { %>
+                 value="<%= post.get('tags').join(', ') %>"
+               <% } %>
+               name="post[tags]">
       </div>
       
       <button type="submit"

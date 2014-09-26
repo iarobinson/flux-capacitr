@@ -60,6 +60,16 @@
   right: 0;
 }
 
+.post-tags ul {
+  display: inline;
+  list-style: none;
+  padding: 0;
+}
+
+.post-tags ul li {
+  display: inline;
+}
+
 textarea.form-control {
   resize: vertical;
 }
