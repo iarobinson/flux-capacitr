@@ -5,6 +5,8 @@ class Blog < ActiveRecord::Base
   validates :owner, :title, :url, presence: true
   validates :title, :url, uniqueness: true
   
+  before_save :update_slug
+  
   belongs_to(
     :owner,
     class_name: 'User',
@@ -33,4 +35,8 @@ class Blog < ActiveRecord::Base
     through: :followings,
     source: :follower
   )
+  
+  def update_slug
+    self.slug = self.url
+  end
 end
