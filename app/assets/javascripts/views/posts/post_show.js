@@ -66,7 +66,7 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
     }
     this.$el.html(renderedContent);
     this.attachSubviews();
-    this.$("#post-body").markdown();
+    this.$("#post-body").markdown({ fullscreen: { enable: false }, resize: 'vertical' });
     return this;
   }
 });
