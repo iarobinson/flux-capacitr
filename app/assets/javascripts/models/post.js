@@ -14,6 +14,9 @@ Allonsy.Models.Post = Backbone.Model.extend({
     
       this.set('url', response.url);
       delete response.url;
+      
+      this.set('tags', response.tags);
+      delete response.tags;
     }
     
     return response;

@@ -1,7 +1,6 @@
 TODO:
 * Add button to fetch posts on feed view (or use Kaminari for infinite scroll)
 * Fix blog posts not displaying on back navigation from blog edit view
-* Fix FriendlyId slugs not updating
 * Move follow toggle button into jQuery plugin?
 * Customize Markdown editor
 * Add tags to post edit view

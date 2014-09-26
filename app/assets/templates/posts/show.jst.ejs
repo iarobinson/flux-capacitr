@@ -10,5 +10,13 @@
     <%= markdown.toHTML(post.get('body')) %>
   </div>
   
+  <div class="post-tags">
+    <ul>
+      <% post.get('tags').forEach(function (tag) { %>
+        <li>#<%= tag %></li>
+      <% }) %>
+    </ul>
+  </div>
+  
   <div class="panel-footer post-footer clearfix">  </div>
 </div>

@@ -5,6 +5,7 @@ module Api
       ensure_blog_owner(@post.blog)
     
       if @post.save
+        @post.assign_tags(params[:tags])
         render partial: 'post', locals: {post: @post}
       else
         render json: @post.errors.full_messages, status: :unprocessable_entity
@@ -22,6 +23,7 @@ module Api
       ensure_blog_owner(@post.blog)
       
       if @post.update_attributes(post_params)
+        @post.assign_tags(params[:tags])
         render partial: 'post', locals: {post: @post}
       else
         render json: @post.errors.full_messages, status: :unprocessable_entity
