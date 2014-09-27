@@ -18,6 +18,11 @@ class SessionsController < ApplicationController
     redirect_to :root
   end
 
+  def guest_login
+    login_user!(User.find_by_email('nine@gallifrey.net'))
+    redirect_to :root
+  end
+
   def new
     @user = User.new
     render :new

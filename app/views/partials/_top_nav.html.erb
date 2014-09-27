@@ -2,29 +2,38 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <!-- <h1>Allons-y!</h1> -->
-      <%= image_tag("logo.png") %>
+      <%= link_to root_url do %>
+        <%= image_tag("logo.png") %>
+      <% end %>
     </div>
     
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li>
-          <%= button_to 'Sign Out', session_url, method: :delete, class: 'btn btn-danger' %>
+          <%= link_to session_url,
+                      method: :delete,
+                      class: 'btn btn-danger' do %>
+          <span class="glyphicon glyphicon-off"></span>
+          <% end %>
         </li>
       <% else %>
         <li>
-          <%= button_to 'Sign In',
+          <%= link_to 'Sign In',
                         new_session_url,
                         class: 'btn btn-success',
                         method: :get %>
         </li>
         <li>
-          <%= button_to 'Register',
+          <%= link_to 'Register',
                         new_user_url,
                         class: 'btn btn-info',
                         method: :get %>
         </li>
         <li>
-          <%= render 'partials/guest_login' %>
+          <%= link_to 'Sign In As Guest',
+                      session_guest_url,
+                      class: 'btn btn-info',
+                      method: :get %>
         </li>
       <% end %>
     </ul>

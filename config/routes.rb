@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
   
   resource :session, only: [:create, :destroy, :new]
+
+  get 'session/guest', to: 'sessions#guest_login'
   
   resources :users, except: [:index, :show]
   
