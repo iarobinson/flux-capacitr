@@ -26,12 +26,58 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #194775;
+}
+
 .blog-header {
   position: relative;
   text-align: center;
 }
 
+.center-wrapper {
+//  background: linear-gradient(to bottom,
+//                              rgba(44, 71, 98, 1) 250px,
+//                              rgba(0, 0, 0, 0) 500px);
+  background-color: #003366;
+  border-radius: 15px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 900px;
+}
+
+#content-panel {
+  float: left;
+  margin-left: 85px;
+  width: 540px;
+}
+
+.custom-nav {
+  margin: 0 auto;
+  width: 900px;
+}
+
+#dash-panel {
+  float: right;
+  width: 215px;
+}
+
+#dash-panel .dropdown-menu {
+  width: 100%;
+}
+
+h1 {
+  color: #FFF;
+}
+
+.navbar-right {
+  bottom: 8px;
+  position: absolute;
+  right: 8px;
+}
+
 .navbar-right .btn {
+  bottom: 0;
   margin-right: 8px;
   margin-top: 8px;
 }
