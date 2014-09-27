@@ -27,7 +27,7 @@
 }
 
 body {
-  background-color: #194775;
+  background-color: rgb(0, 68, 115);
 }
 
 .blog-header {
@@ -36,10 +36,10 @@ body {
 }
 
 .center-wrapper {
-//  background: linear-gradient(to bottom,
-//                              rgba(44, 71, 98, 1) 250px,
-//                              rgba(0, 0, 0, 0) 500px);
-  background-color: #003366;
+  background: linear-gradient(to bottom,
+                              rgba(0, 61, 103, 1) 250px,
+                              rgba(0, 0, 0, 0) 500px);
+//  background-color: rgb(0, 61, 103);
   border-radius: 15px;
   margin: 0 auto;
   padding: 20px;
