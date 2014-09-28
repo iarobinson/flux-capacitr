@@ -25,17 +25,17 @@
       </div>
       
       <div class="form-group">
-        <!-- <label for="post-tags">
-          <span class="glyphicon glyphicon-tag"></span>
-        </label> -->
-        <input type="text"
-               id="post-tags"
-               class="form-control"
-               placeholder="#wibbly, #wobbly, #timey wimey"
-               <% if (post.has('tags')) { %>
-                 value="<%= post.get('tags').join(', ') %>"
-               <% } %>
-               name="post[tags]">
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-tag"></span>
+          <input type="text"
+                 id="post-tags"
+                 class="form-control"
+                 placeholder="#wibbly, #wobbly, #timey wimey"
+                 <% if (post.has('tags')) { %>
+                   value="<%= post.get('tags').join(', ') %>"
+                 <% } %>
+                 name="post[tags]">
+        </div>
       </div>
       
       <button type="submit"

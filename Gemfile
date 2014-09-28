@@ -13,6 +13,7 @@ gem 'newrelic_rpm'
 gem 'pg'
 gem 'rails', '4.1.4'
 gem 'sass-rails', '~> 4.0.3'
+gem 'tzinfo-data'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do

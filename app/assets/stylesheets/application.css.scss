@@ -26,6 +26,10 @@
   box-sizing: border-box;
 }
 
+a {
+  color: #9BC2E3
+}
+
 body {
 //  background-color: rgb(0, 68, 115);
   background: linear-gradient(to bottom,
@@ -46,19 +50,18 @@ body {
   border-radius: 15px;
   margin: 0 auto;
   padding: 20px;
-  width: 900px;
+  width: 815px;
 }
 
 #content-panel {
   float: left;
-  margin-left: 85px;
   width: 540px;
 }
 
 .custom-nav {
   margin: 0 auto;
   height: 70px;
-  width: 900px;
+  width: 815px;
 }
 
 #dash-panel {
@@ -68,6 +71,10 @@ body {
 
 #dash-panel .dropdown-menu {
   width: 100%;
+}
+
+.input-group-addon.glyphicon {
+  top: 0;
 }
 
 h1 {
@@ -84,7 +91,7 @@ h1 {
   right: 8px;
 }
 
-.navbar-right li {
+.navbar-right > li {
   bottom: 0;
   font-size: 26px;
 }
@@ -92,6 +99,15 @@ h1 {
 .navbar-right li a:hover {
   background: none;
   color: #FFFFFF;
+}
+
+.nav-pills li a {
+  border-radius: 0;
+}
+
+.nav-pills li a:hover {
+  background-color: #004A7E;
+  color: #9BC2E3;
 }
 
 .post-container {
