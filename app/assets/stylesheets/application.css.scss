@@ -79,15 +79,19 @@ h1 {
 }
 
 .navbar-right {
-  bottom: 8px;
+  bottom: 0;
   position: absolute;
   right: 8px;
 }
 
-.navbar-right .btn {
+.navbar-right li {
   bottom: 0;
-  margin-right: 8px;
-  margin-top: 8px;
+  font-size: 26px;
+}
+
+.navbar-right li a:hover {
+  background: none;
+  color: #FFFFFF;
 }
 
 .post-container {

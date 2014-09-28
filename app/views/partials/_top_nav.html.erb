@@ -1,7 +1,6 @@
 <nav class="navbar custom-nav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <!-- <h1>Allons-y!</h1> -->
       <%= link_to root_url do %>
         <%= image_tag("logo.png") %>
       <% end %>
@@ -10,32 +9,46 @@
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li>
-          <%= link_to session_url,
-                      method: :delete,
-                      class: 'btn btn-danger' do %>
-          <span class="glyphicon glyphicon-off"></span>
+          <%= link_to root_url do %>
+            <span class="glyphicon glyphicon-home"></span>
           <% end %>
         </li>
-      <% else %>
         <li>
-          <%= link_to 'Sign In',
-                        new_session_url,
-                        class: 'btn btn-success',
-                        method: :get %>
-        </li>
-        <li>
-          <%= link_to 'Register',
-                        new_user_url,
-                        class: 'btn btn-info',
-                        method: :get %>
-        </li>
-        <li>
-          <%= link_to 'Sign In As Guest',
-                      session_guest_url,
-                      class: 'btn btn-info',
-                      method: :get %>
+          <%= link_to root_url do %>
+            <span class="glyphicon glyphicon-cog"></span>
+          <% end %>
         </li>
       <% end %>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <span class="glyphicon glyphicon-off"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <% if logged_in? %>
+          <li>
+            <%= link_to 'Sign Out',
+                        session_url,
+                        method: :delete %>
+          </li>
+          <% else %>
+            <li>
+              <%= link_to 'Sign In',
+                            new_session_url,
+                            method: :get %>
+            </li>
+            <li>
+              <%= link_to 'Register',
+                            new_user_url,
+                            method: :get %>
+            </li>
+            <li>
+              <%= link_to 'Sign In As Guest',
+                          session_guest_url,
+                          method: :get %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>
