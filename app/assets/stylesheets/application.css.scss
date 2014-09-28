@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require animate
  */
 
 @import "bootstrap-sprockets";
@@ -135,6 +136,23 @@ h1 {
   right: 0;
 }
 
+.new-post {
+  max-height: 0;
+  opacity: 0;
+  animation: growHeight 0.5s ease forwards;
+}
+
+.outgoing-post {
+  max-height: 400px;
+  opacity: 1;
+  animation: shrinkHeight 0.5s ease forwards;
+}
+
+.post-show .panel-body {
+  max-height: 400px;
+  overflow: auto;
+}
+
 .post-tags ul {
   display: inline;
   list-style: none;
@@ -147,4 +165,18 @@ h1 {
 
 textarea.form-control {
   resize: vertical;
+}
+
+@keyframes growHeight {
+  to { 
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+@keyframes shrinkHeight {
+  to { 
+    max-height: 0px;
+    opacity: 0;
+  }
 }

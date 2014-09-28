@@ -33,6 +33,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     var subview = new Allonsy.Views.PostShow({ model: post });
     subview.open = true;
     subview.parentView = this;
+    subview.$el.addClass('new-post');
     
     this.subviews('.posts').push(subview);
     this.$('.posts').prepend(subview.render().$el);

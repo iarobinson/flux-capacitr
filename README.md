@@ -1,4 +1,5 @@
 # TODO:
+* Add animations to new post form on removal.
 * Customize Markdown editor
 * Turn login and register into modals
 * Make cool cover page
