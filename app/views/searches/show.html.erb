@@ -7,6 +7,6 @@
 <script>
   $(function () {
     var router = new Allonsy.SearchRouter({ $rootEl: '.results-container' });
-    router.searchShow('<%= params[:query] %>');
+    router.searchShow('<%= @query %>');
   });
 </script>

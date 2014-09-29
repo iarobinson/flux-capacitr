@@ -35,9 +35,29 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend({
     $(window).on('scroll', throttledCallback);
   },
   
-  nextPage: function () {
+  nextBlogs: function () {
     var self = this;
-    if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+    if ($('.blogs-pane .spinner').visible()) {
+      if (self.model.blogs().page < self.model.blogs().total_pages) {
+        self.model.blogs().fetch({
+          data: { page: parseInt(this.model.blogs().page) + 1 },
+          remove: false,
+          wait: true
+        });
+      } else {
+        self.$('.blogs-pane .spinner').remove();
+      }
+    }
+  },
+  
+  nextPage: function () {
+    this.nextBlogs();
+    this.nextPosts();
+  },
+  
+  nextPosts: function () {
+    var self = this;
+    if ($('.posts-pane .spinner').visible()) {
       if (self.model.posts().page < self.model.posts().total_pages) {
         self.model.posts().fetch({
           data: { page: parseInt(this.model.posts().page) + 1 },
@@ -45,7 +65,7 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend({
           wait: true
         });
       } else {
-        self.$('.spinner').remove();
+        self.$('.posts-pane .spinner').remove();
       }
     }
   },

@@ -20,11 +20,11 @@ Allonsy.Collections.Posts = Backbone.Collection.extend({
   
   url: function () {
     if (this.blog) {
-      return 'api/blogs/' + this.blog.get('id') + '/posts'
+      return '/api/blogs/' + this.blog.get('id') + '/posts'
     } else if (this.searchString) {
       return '/api/posts/search/' + this.searchString;
     } else {
-      return 'api/posts'
+      return '/api/posts'
     }
   }
 });
