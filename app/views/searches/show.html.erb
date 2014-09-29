@@ -2,17 +2,11 @@
 <%= render "partials/errors" %>
 
 <div class="results-container clearfix">
-  <div class="results-pane blogs-pane">
-    <h3>Blogs</h3>
-    <% @blogs.each do |blog| %>
-      <%= render 'blogs/nameplate', blog: blog %>
-    <% end %>
-  </div>
-
-  <div class="results-pane posts-pane">
-    <h3>Posts</h3>
-    <% @blogs.each do |blog| %>
-      <%= render 'blogs/nameplate', blog: blog %>
-    <% end %>
-  </div>
 </div>
+
+<script>
+  $(function () {
+    var router = new Allonsy.SearchRouter({ $rootEl: '.results-container' });
+    router.searchShow('<%= params[:query] %>');
+  });
+</script>
