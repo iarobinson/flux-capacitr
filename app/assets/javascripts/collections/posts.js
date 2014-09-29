@@ -1,7 +1,12 @@
 Allonsy.Collections.Posts = Backbone.Collection.extend({
   initialize: function (array, options) {
-    if (options && options.blog) {
-      this.blog = options.blog;
+    if (options) {
+      if (options.blog) {
+        this.blog = options.blog;
+      }
+      if (options.searchString) {
+        this.searchString = options.searchString;
+      }
     }
   },
   
@@ -16,6 +21,8 @@ Allonsy.Collections.Posts = Backbone.Collection.extend({
   url: function () {
     if (this.blog) {
       return 'api/blogs/' + this.blog.get('id') + '/posts'
+    } else if (this.searchString) {
+      return 'api/posts/search/' + this.searchString;
     } else {
       return 'api/posts'
     }

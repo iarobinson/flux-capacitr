@@ -30,6 +30,14 @@ module Api
       render 'index.json.jbuilder'
     end
     
+    def search
+      query = "%#{params[:query]}%"
+      @posts = Post.where(
+        "title LIKE ? OR body LIKE ?", query, query
+      ).page(params[:page])
+      render 'index.json.jbuilder'
+    end
+    
     def toggle_like
       @post = Post.find(params[:id])
       if @post.is_liked_by?(current_user)

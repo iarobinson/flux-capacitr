@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:create, :destroy, :index, :update]
     
     post 'blogs/:id/togglefollow', to: 'blogs#toggle_follow'
+    get 'blogs/search/:query', to: 'blogs#search'
     post 'posts/:id/togglelike', to: 'posts#toggle_like'
+    get 'posts/search/:query', to: 'posts#search'
   end
   
   resource :session, only: [:create, :destroy, :new]

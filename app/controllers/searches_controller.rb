@@ -4,8 +4,12 @@ class SearchesController < ApplicationController
   end
   
   def show
+    query = "%#{params[:query]}%"
     @blogs = Blog.where(
-      "url LIKE ? OR title LIKE ?", params[:query], params[:query]
+      "url LIKE ? OR title LIKE ?", query, query
+    )
+    @posts = Post.where(
+      "title LIKE ? OR body LIKE ?", query, query
     )
     render :show
   end
