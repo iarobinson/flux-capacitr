@@ -47,7 +47,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   
   listenForScroll: function () {
     $(window).off('scroll');
-    var throttledCallback = _.throttle(this.nextPage.bind(this), 200);
+    var throttledCallback = _.throttle(this.nextPage.bind(this), 500);
     $(window).on('scroll', throttledCallback);
   },
   
@@ -60,6 +60,8 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
           remove: false,
           wait: true
         });
+      } else {
+        self.$('.spinner').remove();
       }
     }
   },

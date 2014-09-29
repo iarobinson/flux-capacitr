@@ -24,90 +24,11 @@
 }
 
 * {
-  box-sizing: border-box;
+//  box-sizing: border-box;
 }
 
 a {
   color: #9BC2E3
-}
-
-body {
-//  background-color: rgb(0, 68, 115);
-  background: linear-gradient(to bottom,
-                            rgba(0, 72, 122, 1) 250px,
-                            rgba(0, 68, 115, 1) 500px);
-  min-height: 100%;
-}
-
-.blog-header {
-  position: relative;
-  text-align: center;
-}
-
-.center-wrapper {
-  background: linear-gradient(to bottom,
-                              rgba(0, 61, 103, 1) 250px,
-                              rgba(0, 0, 0, 0) 500px);
-//  background-color: rgb(0, 61, 103);
-  border-radius: 15px;
-  margin: 0 auto;
-  padding: 20px;
-  width: 815px;
-}
-
-#content-panel {
-  float: left;
-  width: 540px;
-}
-
-.cover-page-backdrop {
-  background-color: rgb(0, 68, 115);
-  background-image: url(../images/cover2.jpg);
-  background-position: 50% 50%;
-  background-size: cover;
-  height: 100%;
-  position: fixed;
-  width: 100%;
-}
-
-.signup-form-container {
-  height: 309px;
-  left: 50%;
-  margin-left: -177px;
-  margin-top: -155px;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  width: 355px;
-}
-
-.signup-form-container .btn {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.signup-button-container {
-  bottom: 0px;
-  left: 0px;
-  margin: 15px;
-  position: absolute;
-}
-
-.signup-button-container .btn {
-  background-color: rgba(255, 255, 255, 0.278431);
-  border: none;
-  border-radius: 2px;
-  font-size: 16px;
-  font-weight: bold;
-  height: 45px;
-  padding-top: 12px;
-  width: 101px;
-  vertical-align: baseline;
-}
-
-.signup-form-container img {
-  margin: 10px auto;
-  text-align: center;
 }
 
 .custom-nav {
@@ -116,21 +37,8 @@ body {
   width: 815px;
 }
 
-#dash-panel {
-  float: right;
-  width: 215px;
-}
-
-#dash-panel .dropdown-menu {
-  width: 100%;
-}
-
 html {
   height: 100%;
-}
-
-.input-group-addon.glyphicon {
-  top: 0;
 }
 
 h1 {
@@ -138,7 +46,7 @@ h1 {
 }
 
 .navbar-header {
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .navbar-right {
@@ -155,95 +63,4 @@ h1 {
 .navbar-right li a:hover {
   background: none;
   color: #FFFFFF;
-}
-
-.nav-pills li a {
-  border-radius: 0;
-}
-
-.nav-pills li a:hover {
-  background-color: #004A7E;
-  color: #9BC2E3;
-}
-
-.post-container {
-  border-radius: 6px;
-  position: relative;
-}
-
-.post-footer .btn {
-  background-color: transparent;
-  border: none;
-  font-size: 12px;
-  padding: 0 5px;
-  opacity: 0.5;
-}
-
-.post-footer .btn:hover {
-  background-color: transparent;
-  opacity: 0.8;
-}
-
-.post-controls {
-  position: absolute;
-  bottom: 0;
-  padding: 5px;
-  right: 0;
-}
-
-.new-post {
-  max-height: 0;
-  opacity: 0;
-  animation: growHeight 0.5s ease forwards;
-}
-
-.outgoing-post {
-  max-height: 400px;
-  opacity: 1;
-  animation: shrinkHeight 0.5s ease forwards;
-}
-
-.post-show .panel-body {
-  max-height: 400px;
-  overflow: auto;
-}
-
-.post-tags ul {
-  display: inline;
-  list-style: none;
-  padding: 0;
-}
-
-.post-tags ul li {
-  display: inline;
-}
-
-textarea.form-control {
-  resize: vertical;
-}
-
-.unpadded-input-group {
-  border-radius: 4px;
-}
-
-.unpadded-input-group .form-group {
-  margin-bottom: 0;
-}
-
-.unpadded-input-group .form-control {
-  border-radius: 0;
-}
-
-@keyframes growHeight {
-  to { 
-    max-height: 500px;
-    opacity: 1;
-  }
-}
-
-@keyframes shrinkHeight {
-  to { 
-    max-height: 0px;
-    opacity: 0;
-  }
 }

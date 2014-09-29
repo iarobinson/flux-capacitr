@@ -1,0 +1,61 @@
+.cover-page-backdrop {
+  background-color: rgb(0, 68, 115);
+  background-image: url(../images/cover2.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+.signup-form-container {
+  height: 309px;
+  left: 50%;
+  margin-left: -177px;
+  margin-top: -155px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 355px;
+}
+
+.signup-form-container .btn {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.signup-button-container {
+  bottom: 0px;
+  left: 0px;
+  margin: 15px;
+  position: absolute;
+}
+
+.signup-button-container .btn {
+  background-color: rgba(255, 255, 255, 0.278431);
+  border: none;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 45px;
+  padding-top: 12px;
+  width: 101px;
+  vertical-align: baseline;
+}
+
+.signup-form-container img {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.unpadded-input-group {
+  border-radius: 4px;
+}
+
+.unpadded-input-group .form-group {
+  margin-bottom: 0;
+}
+
+.unpadded-input-group .form-control {
+  border-radius: 0;
+}
