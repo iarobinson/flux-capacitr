@@ -6,25 +6,34 @@
       <% end %>
     </div>
     
-    <ul class="nav navbar-nav navbar-right">
-      <% if logged_in? %>
-        <li>
-          <%= link_to root_url do %>
-            <span class="glyphicon glyphicon-home"></span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to root_url do %>
-            <span class="glyphicon glyphicon-cog"></span>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to session_url,
-                      method: :delete do %>
-            <span class="glyphicon glyphicon-off"></span>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+    <div class="tab-bar">
+      <div class="tab iconic" id="home-button">
+        <%= link_to root_url do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <% end %>
+      </div>
+      <div class="tab iconic" id="settings-button">
+        <%= link_to root_url do %>
+          <span class="glyphicon glyphicon-cog"></span>
+        <% end %>
+      </div>
+      <div class="tab iconic" id="logout-button">
+        <%= link_to session_url,
+                    method: :delete do %>
+          <span class="glyphicon glyphicon-off"></span>
+        <% end %>
+      </div>
+      <div class="tab iconic ui-search">
+        <form>
+          <div class="search-row">
+            <input type="text"
+                   id="search-query"
+                   name="search_query"
+                   placeholder="Search Flux-capacitr"
+                   autocomplete="off"></input>
+          </div>
+        </form>
+      </div> <!-- tab -->
+    </div> <!-- tab-bar -->
+  </div> <!-- container-fluid -->
 </nav>

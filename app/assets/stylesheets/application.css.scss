@@ -23,10 +23,6 @@
   src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-* {
-//  box-sizing: border-box;
-}
-
 a {
   color: #9BC2E3
 }
@@ -49,18 +45,51 @@ h1 {
   padding-top: 15px;
 }
 
-.navbar-right {
+.tab-bar {
   bottom: 0;
-  position: absolute;
-  right: 8px;
+  display: block;
+  float: right;
+  padding-top: 17px;
 }
 
-.navbar-right > li {
-  bottom: 0;
-  font-size: 26px;
+.tab {
+  display: inline-block;
 }
 
-.navbar-right li a:hover {
+.tab.iconic {
+  font-size: 22px;
+  padding: 5px 9px 0 9px;
+}
+
+.tab.iconic a:hover {
   background: none;
   color: #FFFFFF;
+}
+
+.tab.iconic.ui-search {
+  padding: 0 0 0 9px;
+}
+
+.search-row {
+  background-color: rgba(0, 61, 103, 1);
+  border-radius: 28px;
+  height: 32px;
+  position: relative;
+  top: -5px;
+  width: 215px;
+}
+
+.search-row input {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: #FFF;
+  display: block;
+  font-size: 13px;
+  height: 100%;
+  padding-left: 16px;
+  width: 100%;
+}
+
+.search-row input:focus{
+  outline: none;
 }

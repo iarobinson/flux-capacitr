@@ -12,3 +12,4 @@
 ## Styles
 * Add animations to new post form on removal.
 * Customize Markdown editor
+* Copy tumblr background style: #2c4762 url('/images/background.png') top repeat-x
