@@ -13,14 +13,11 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.posts(), "remove", this.removePost);
     
     this.model.posts().each(this.addPost.bind(this));
+    setInterval(this.nextPage.bind(this), 1000);
   },
   
   addPost: function (post) {
     var postShow = new Allonsy.Views.PostShow({ model: post });
-    if (!post.has('id')) {
-      postShow.open = true;
-      postShow.parentView = this;
-    }
     this.addSubview(".posts", postShow.render());
   },
   
@@ -32,7 +29,7 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
   
   nextPage: function () {
     var self = this;
-    if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+    if (this.$('.spinner').visible()) {
       if (self.model.posts().page < self.model.posts().total_pages) {
         self.model.posts().fetch({
           data: { page: parseInt(this.model.posts().page) + 1 },

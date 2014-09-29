@@ -13,6 +13,8 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.blogs(), "add", this.addBlog);
     this.listenTo(this.model.blogs(), "remove", this.removeBlog);
     this.model.blogs().each(this.addBlog.bind(this));
+    
+    setInterval(this.nextPage.bind(this), 1000);
   },
   
   addBlog: function (blog) {
@@ -22,22 +24,12 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend({
   
   addPost: function (post) {
     var postShow = new Allonsy.Views.PostShow({ model: post });
-    // if (!post.has('id')) {
-    //   postShow.open = true;
-    //   postShow.parentView = this;
-    // }
     this.addSubview("#posts", postShow.render());
-  },
-  
-  listenForScroll: function () {
-    $(window).off('scroll');
-    var throttledCallback = _.throttle(this.nextPage.bind(this), 200);
-    $(window).on('scroll', throttledCallback);
   },
   
   nextBlogs: function () {
     var self = this;
-    if ($('.blogs-pane .spinner').visible()) {
+    if (this.$('.blogs-pane .spinner').visible()) {
       if (self.model.blogs().page < self.model.blogs().total_pages) {
         self.model.blogs().fetch({
           data: { page: parseInt(this.model.blogs().page) + 1 },
@@ -57,7 +49,7 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend({
   
   nextPosts: function () {
     var self = this;
-    if ($('.posts-pane .spinner').visible()) {
+    if (this.$('.posts-pane .spinner').visible()) {
       if (self.model.posts().page < self.model.posts().total_pages) {
         self.model.posts().fetch({
           data: { page: parseInt(this.model.posts().page) + 1 },
@@ -96,7 +88,6 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent);
     this.attachSubviews();
-    this.listenForScroll();
     return this;
   }
 });
