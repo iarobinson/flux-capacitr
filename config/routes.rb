@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   end
   
   resource :session, only: [:create, :destroy, :new]
-
   get 'session/guest', to: 'sessions#guest_login'
+  
+  get 'search/:query', to: 'searches#show', as: 'search'
+  post 'search', to: 'searches#create', as: 'new_search'
   
   resources :users, except: [:index, :show]
   
@@ -23,4 +25,5 @@ Rails.application.routes.draw do
   end
   
   resources :posts, except: [:new]
+  
 end

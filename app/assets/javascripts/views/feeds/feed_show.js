@@ -39,6 +39,8 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
           remove: false,
           wait: true
         });
+      } else {
+        self.$('.spinner').remove();
       }
     }
   },
