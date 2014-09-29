@@ -18,37 +18,13 @@
             <span class="glyphicon glyphicon-cog"></span>
           <% end %>
         </li>
-      <% end %>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          <span class="glyphicon glyphicon-off"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          <% if logged_in? %>
-          <li>
-            <%= link_to 'Sign Out',
-                        session_url,
-                        method: :delete %>
-          </li>
-          <% else %>
-            <li>
-              <%= link_to 'Sign In',
-                            new_session_url,
-                            method: :get %>
-            </li>
-            <li>
-              <%= link_to 'Register',
-                            new_user_url,
-                            method: :get %>
-            </li>
-            <li>
-              <%= link_to 'Sign In As Guest',
-                          session_guest_url,
-                          method: :get %>
-            </li>
+        <li>
+          <%= link_to session_url,
+                      method: :delete do %>
+            <span class="glyphicon glyphicon-off"></span>
           <% end %>
-        </ul>
-      </li>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>
