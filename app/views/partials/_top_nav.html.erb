@@ -13,6 +13,11 @@
             <span class="glyphicon glyphicon-home"></span>
           <% end %>
         </div>
+        <div class="tab iconic" id="profile-button">
+          <%= link_to edit_user_url(current_user) do %>
+            <span class="glyphicon glyphicon-cog"></span>
+          <% end %>
+        </div>
         <div class="tab iconic" id="logout-button">
           <%= link_to session_url,
                       method: :delete do %>

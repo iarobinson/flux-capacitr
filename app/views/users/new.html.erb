@@ -1,40 +1,7 @@
 <div class="cover-page-backdrop">
   <div class="signup-form-container">
     <%= image_tag 'logo.png' %>
-    <form action="<%= users_url %>" method="POST" role="form">
-      <%= csrf_token %>
-
-      <div class="unpadded-input-group">
-        <div class="form-group">
-          <input type="email"
-                 class="form-control"
-                 id="user-email"
-                 name="user[email]"
-                 placeholder="Email"
-                 value="<%= @user.email %>">
-        </div>
-
-        <div class="form-group">
-          <input type="password"
-                 class="form-control"
-                 id="user-password"
-                 placeholder="Password"
-                 name="user[password]">
-        </div>
-        
-        <div class="form-group">
-          <input type="text"
-                 class="form-control"
-                 id="user-username"
-                 name="user[username]"
-                 placeholder="Username"
-                 value="<%= @user.username %>">
-        </div>
-      </div>
-
-      <button type="submit"
-              class="btn btn-primary form-control">Sign up</button>
-    </form>
+    <%= render partial: 'form' %>
   </div>
   
   <div class="cover-search-container">

@@ -1,0 +1,31 @@
+<%= form_for @user do |f| %>
+  <div class="unpadded-input-group">
+    <div class="form-group">
+      <%= email_field 'user',
+                      'email',
+                      class: 'form-control',
+                      placeholder: 'Email' %>
+    </div>
+
+    <div class="form-group">
+      <%= password_field 'user',
+                         'password',
+                         class: 'form-control',
+                         placeholder: 'Password' %>
+    </div>
+    
+    <div class="form-group">
+      <%= text_field 'user',
+                     'username',
+                     class: 'form-control',
+                     placeholder: 'Username' %>
+    </div>
+    
+    <!-- <div class="form-group">
+
+    </div> -->
+  </div>
+  
+  <%= f.submit 'Register', class: 'btn btn-primary form-control' %>
+  
+<% end %>

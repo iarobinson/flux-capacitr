@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :ensure_logged_out, only: [:create, :new]
+  before_action :ensure_can_edit, only: [:update]
   
   def create
     @user = User.new(user_params)
@@ -10,6 +11,11 @@ class UsersController < ApplicationController
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+    render :new
   end
 
   def new
@@ -23,12 +29,20 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       redirect_to :root
     else
       flash.now[:errors] = @user.errors.full_messages
       render :edit
+    end
+  end
+  
+  private
+  def ensure_can_edit
+    if User.find(params[:id]) != current_user
+      flash[:errors] = "You are not authorized to perform that action."
+      redirect_to :root
     end
   end
 end
