@@ -1,8 +1,4 @@
-Allonsy.SearchRouter = Backbone.Router.extend({
-  initialize: function (options) {
-    this.$rootEl = $(options.$rootEl);
-  },
-  
+Allonsy.SearchRouter = Allonsy.BaseRouter.extend({
   routes: {
     'search/:searchString': 'searchShow'
   },
@@ -11,11 +7,5 @@ Allonsy.SearchRouter = Backbone.Router.extend({
     var search = new Allonsy.Models.Search({ searchString: searchString });
     var view = new Allonsy.Views.SearchShow({ model: search });
     this._swapView(view);
-  },
-  
-  _swapView: function (newView) {
-    this.currentView && this.currentView.remove();
-    this.currentView = newView;
-    this.$rootEl.html(newView.render().$el);
   }
 });

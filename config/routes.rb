@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#root'
+  root to: 'static_pages#dash'
   
   namespace :api do
     resources :blogs, only: [:show] do
