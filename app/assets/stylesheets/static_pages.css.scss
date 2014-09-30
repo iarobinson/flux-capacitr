@@ -25,6 +25,23 @@ body {
   width: 540px;
 }
 
+.dash-nav {
+  h3 {
+    color: #fff;
+    margin-bottom: 9px;
+    margin-top: 8px;
+  }
+  
+  hr {
+    margin-top: 0;
+  }
+  
+  > li > a:hover, > li > a:focus {
+    background-color: rgba(0, 72, 122, 1) !important;
+    color: #fff;
+  }
+}
+
 #dash-panel {
   float: right;
   width: 215px;
@@ -32,6 +49,11 @@ body {
 
 #dash-panel .dropdown-menu {
   width: 100%;
+}
+
+.dropdown.open > a {
+  background-color: rgba(0, 72, 122, 1) !important;
+  color: #fff;
 }
 
 .input-group-addon.glyphicon {
@@ -47,6 +69,18 @@ body {
   color: #9BC2E3;
 }
 
+.panel-heading a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.post-controls {
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
+  right: 0;
+}
+
 .post-footer .btn {
   background-color: transparent;
   border: none;
@@ -60,11 +94,11 @@ body {
   opacity: 0.8;
 }
 
-.post-controls {
-  position: absolute;
-  bottom: 0;
-  padding: 5px;
-  right: 0;
+.post-info a {
+  color: #2a6496;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .new-post {
