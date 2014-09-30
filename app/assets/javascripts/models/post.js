@@ -1,5 +1,5 @@
 Allonsy.Models.Post = Backbone.Model.extend({
-  urlRoot: 'api/posts',
+  urlRoot: '/api/posts',
   
   parse: function (response) {
     if (response.is_author) {

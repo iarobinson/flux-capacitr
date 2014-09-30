@@ -23,6 +23,8 @@ json.num_likes post.likes.count
 
 json.tags post.tags.map { |tag| "##{tag.label}" }
 
-json.time_ago "#{time_ago_in_words(post.created_at)} ago"
+if post.persisted?
+  json.time_ago "#{time_ago_in_words(post.created_at)} ago"
+  json.url "#posts/#{post.id}"
+end
 
-json.url "#posts/#{post.id}"

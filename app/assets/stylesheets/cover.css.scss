@@ -24,6 +24,10 @@
   text-align: center;
   top: 50%;
   width: 355px;
+  .form-control {
+    font-size: 16px;
+    height: 44px;
+  }
 }
 
 .signup-form-container .input-group {
@@ -33,11 +37,6 @@
 .signup-form-container .input-group-addon {
   border: none;
   width: 52px;
-}
-
-.signup-form-container input {
-  font-size: 16px;
-  height: 44px;
 }
 
 .signup-form-container .btn {
@@ -75,15 +74,13 @@
 .unpadded-input-group {
   background-color: #fff;
   border-radius: 2px;
-}
-
-.unpadded-input-group .form-group {
-  margin-bottom: 0px;
-}
-
-.unpadded-input-group input {
-  background-color: transparent;
-  border: none;
+  .form-group {
+    margin-bottom: 0px;    
+  }
+  input, button {
+    border: none;
+    background-color: transparent;
+  }
 }
 
 .unpadded-input-group input:not(:last-child) {

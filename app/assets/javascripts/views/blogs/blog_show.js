@@ -6,7 +6,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   className: "blog-show",
   
   events: {
-    "click #post-to-blog": "newPostForm",
+    "click #post-to-blog": "newPostForm"
   },
   
   initialize: function () {
@@ -70,13 +70,14 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   newPostForm: function (event) {
     if (!this.authoring) {
       this.authoring = true;
+      var view = this;
       
-      var newPost = new Allonsy.Models.Post({
-        blog_id: this.model.get('id'),
-        blog_url: this.model.get('url')
+      $.ajax('/api/blogs/' + this.model.get('id') + '/posts/new', {
+        success: function (response) {
+          var newPost = new Allonsy.Models.Post(response);
+          view.attachPostForm(newPost);
+        }
       });
-      
-      this.attachPostForm(newPost)
     }
   },
   

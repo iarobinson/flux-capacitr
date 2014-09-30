@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   namespace :api do
     resources :blogs, only: [:show] do
-      resources :posts, only: [:index]
+      resources :posts, only: [:index, :new]
     end
     
     resources :posts, only: [:create, :destroy, :index, :update]

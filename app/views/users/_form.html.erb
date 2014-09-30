@@ -1,31 +1,37 @@
+<% button_text = @user.persisted? ? 'Update Profile' : 'Register' %>
+
 <%= form_for @user do |f| %>
   <div class="unpadded-input-group">
     <div class="form-group">
-      <%= email_field 'user',
-                      'email',
-                      class: 'form-control',
-                      placeholder: 'Email' %>
+      <%= f.email_field 'email',
+                        class: 'form-control',
+                        placeholder: 'Email' %>
     </div>
 
     <div class="form-group">
-      <%= password_field 'user',
-                         'password',
-                         class: 'form-control',
-                         placeholder: 'Password' %>
+      <%= f.password_field 'password',
+                           class: 'form-control',
+                           placeholder: 'Password' %>
     </div>
     
     <div class="form-group">
-      <%= text_field 'user',
-                     'username',
-                     class: 'form-control',
-                     placeholder: 'Username' %>
+      <%= f.text_field 'username',
+                       class: 'form-control',
+                       placeholder: 'Username' %>
     </div>
     
-    <!-- <div class="form-group">
-
-    </div> -->
+    <div class="form-group">
+      <%= f.filepicker_field :avatar_url,
+                           button_text: 'Upload Avatar (optional)',
+                           button_class: 'form-control', 
+                           placeholder: 'Avatar URL' %>
+    </div>
   </div>
   
-  <%= f.submit 'Register', class: 'btn btn-primary form-control' %>
-  
+  <%= f.submit button_text, class: 'btn btn-primary form-control' %>
 <% end %>
+
+<%= button_to 'Cancel',
+              root_url,
+              class: 'btn btn-info form-control',
+              method: 'get' %>

@@ -1,4 +1,13 @@
 <div class="panel panel-primary post-container">
+  <% if (displayAvatar) { %>
+    <div class="post-avatar">
+      <a href="<%= post.get('author').url %>"
+         class="post-avatar-link"
+         style="background-image: url(<%= post.get('author').avatar_url %>)">
+      </a>
+    </div>
+  <% } %>
+    
   <div class="panel-heading">
     <a href="#blogs/<%= post.get('blog_id') %>" class="panel-title">
       <%= post.get('blog_url') %>

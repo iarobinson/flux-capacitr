@@ -1,8 +1,9 @@
 # TODO:
 
 ## Features
+* Add audio easter egg to "I'm feeling lucky" button or logo period.
 * Add "followers" view for individual blogs (link in dash)
-* Add image upload
+* Add image upload to markdown editor
 * Add tag filters on blog show view
 
 ## Refactors

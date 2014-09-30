@@ -2,7 +2,7 @@ User.create!([
   {email: "nine@gallifrey.net", username: 'doctor-fantastic', password_digest: "$2a$10$YhBrqJF9HzJjxP//hnGqY.QKIeEG1ORiqYsaHc4MTmAeFFoPk9OIm", session_token: "xT949RJSsFzDX6-3nQ7psg"},
   {email: "ten@gallifrey.net", username: 'clever-doctor', password_digest: "$2a$10$3qR7ha6Q9NbjOsBssT/wguSenSDTx4SiAGswUIYTPF1sa6QMESCf6", session_token: "H_pZgyqVa6SvlViXHni-VA"},
   {email: "eleven@gallifrey.net", username: 'im-the-doctor', password_digest: "$2a$10$wzIkm.6FKKAa/Ge1DF9oD.OFbZpBAKWsPrWkN6Zdu7IakkbvO5y.u", session_token: "iRMkc6WfTtjcM3qb_8jRIg"},
-  {email: "four@gallifrey.net", username: 'doctor-which?', password_digest: "$2a$10$J7r86LUF.3eYJqBFjq4QN.rsgeHQTOk/xduk2m1b7IXubkIwJVUNq", session_token: "hWH26MVwzrq-Y-l8oz5g5g"}
+  {email: "four@gallifrey.net", username: 'a-wild-doctor-appears', password_digest: "$2a$10$J7r86LUF.3eYJqBFjq4QN.rsgeHQTOk/xduk2m1b7IXubkIwJVUNq", session_token: "hWH26MVwzrq-Y-l8oz5g5g"}
 ])
 Blog.create!([
   {owner_id: 1, title: "My Other Car Is A Time Machine", url: "policebox", slug: "policebox"},
