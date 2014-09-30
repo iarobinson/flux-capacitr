@@ -1,5 +1,5 @@
 Allonsy.Models.Blog = Backbone.Model.extend({
-  urlRoot: 'api/blogs',
+  urlRoot: '/api/blogs',
 
   parse: function (response) {
     if (response.posts) {

@@ -1,20 +1,21 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="blog-header clearfix">
-      <h1><%= @blog.title %></h1>
-      <h5>(<%= "#{request.domain}/#{@blog.url}" %>)</h5>
-      <%= render 'blog_controls' if @blog.owner == current_user %>
-    </div>
-    <hr style="margin-top: 10px">
+<%= render "partials/top_nav" %>
+<%= render "partials/errors" %>
 
-    <div class="blog-posts">
-      <% if @blog.posts.length > 0 %>
-        <% @blog.posts.each do |post| %>
-          <%= render 'posts/post', post: post %>
-        <% end %>
-      <% else %>
-        <h4>There don't seem to be any posts here yet!</h4>
-      <% end %>
+<div class="backdrop container-fluid">
+  <div class="center-wrapper clearfix">
+    <div id="content-panel" style="width: 100%">
+      <h1><%= @blog.title %></h1>
+      
+      <hr style="margin-top: 10px">
+      
+      <div class="posts"></div>
     </div>
   </div>
 </div>
+
+<script>
+  $(function () {
+    var router = new Allonsy.BlogRouter({ $rootEl: $('#content-panel') });
+    router.blogShow(<%= @blog.id %>);
+  });
+</script>

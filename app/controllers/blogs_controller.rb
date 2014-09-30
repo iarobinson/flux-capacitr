@@ -29,7 +29,8 @@ class BlogsController < ApplicationController
   end
   
   def show
-    redirect_to "/#blogs/#{params[:id]}"
+    @blog = Blog.friendly.find(params[:id])
+    render :show
   end
   
   def update

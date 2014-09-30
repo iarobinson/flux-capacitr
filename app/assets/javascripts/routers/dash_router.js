@@ -1,9 +1,8 @@
 Allonsy.DashRouter = Allonsy.BaseRouter.extend({
   routes: {
-    'feed': 'feedShow',
+    '': 'feedShow',
     'blogs/:id': 'blogShow',
     'posts/:id': 'postShow',
-    'search/:searchString': 'searchShow'
   },
   
   blogShow: function (id) {
@@ -21,12 +20,6 @@ Allonsy.DashRouter = Allonsy.BaseRouter.extend({
   postShow: function (id) {
     var post = new Allonsy.Models.Post({ id: id });
     var view = new Allonsy.Views.PostShow({ model: post });
-    this._swapView(view);
-  },
-  
-  searchShow: function (searchString) {
-    var search = new Allonsy.Models.Search({ searchString: searchString });
-    var view = new Allonsy.Views.SearchShow({ model: search });
     this._swapView(view);
   }
 });

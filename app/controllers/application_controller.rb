@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
   
   def ensure_logged_out
-    redirect_to :root if logged_in?
+    redirect_to dashboard_url if logged_in?
   end
   
   def ensure_logged_in
