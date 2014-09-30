@@ -1,0 +1,10 @@
+<form action="<%= new_search_url %>" method="POST">
+  <%= csrf_token %>
+  <div class="search-row">
+    <input type="text"
+           id="search-query"
+           name="search_query"
+           placeholder="Search Flux-capacitr"
+           autocomplete="off"></input>
+  </div>
+</form>

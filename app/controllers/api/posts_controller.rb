@@ -1,6 +1,6 @@
 module Api
   class PostsController < ApiController
-    before_action :ensure_logged_in, except: [:index]
+    before_action :ensure_logged_in, except: [:index, :search]
     
     def create
       @post = current_user.posts.new(post_params)
@@ -32,9 +32,11 @@ module Api
     
     def search
       query = "%#{params[:query]}%"
-      @posts = Post.where(
-        "title LIKE ? OR body LIKE ?", query, query
-      ).page(params[:page])
+      @posts = Post
+        .includes(:tags)
+        .where(<<-SQL, query, query, query).references(:tags).page(params[:page])
+          tags.label LIKE ? OR posts.title LIKE ? OR posts.body LIKE ?
+        SQL
       render 'index.json.jbuilder'
     end
     

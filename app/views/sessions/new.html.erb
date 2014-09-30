@@ -25,11 +25,16 @@
 
       <button type="submit"
               class="btn btn-primary form-control">Sign in</button>
-      <%= link_to 'Sign in as guest',
-                  session_guest_url,
-                  method: :get,
-                  class: 'form-control btn btn-success' %>
     </form>
+    
+    <%= button_to 'Sign in as guest',
+                session_guest_url,
+                method: :get,
+                class: 'form-control btn btn-success' %>
+  </div>
+  
+  <div class="cover-search-container">
+    <%= render 'partials/search_field' %>
   </div>
 
   <div class="signup-button-container">

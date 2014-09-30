@@ -19,16 +19,7 @@
         <% end %>
       </div>
       <div class="tab iconic ui-search">
-        <form action="<%= new_search_url %>" method="POST">
-          <%= csrf_token %>
-          <div class="search-row">
-            <input type="text"
-                   id="search-query"
-                   name="search_query"
-                   placeholder="Search Flux-capacitr"
-                   autocomplete="off"></input>
-          </div>
-        </form>
+        <%= render 'partials/search_field' %>
       </div> <!-- tab -->
     </div> <!-- tab-bar -->
   </div> <!-- container-fluid -->

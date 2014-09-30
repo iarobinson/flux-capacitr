@@ -8,4 +8,10 @@ class Tag < ActiveRecord::Base
     primary_key: :id,
     dependent: :destroy
   )
+  
+  has_many(
+    :tagged_posts,
+    through: :taggings,
+    source: :post
+  )
 end
