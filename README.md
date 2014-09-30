@@ -6,8 +6,6 @@
 * Add tag filters on blog show view
 
 ## Refactors
-* Separate dash views for feed and blogs
-* Show blog view immediately if the user navigates directly (skip feed view)
 
 ## Styles
 * Add animations to new post form on removal.

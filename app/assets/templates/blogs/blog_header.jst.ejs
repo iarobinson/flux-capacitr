@@ -1,25 +1,26 @@
-<div class="blog-controls clearfix">
-  <div class="btn-group pull-right">
-    <% if (blog.get('is_owner')) { %>
-      <a href="/blogs/<%= blog.get('id') %>/edit"
-        class="btn btn-primary btn-xs"
-        id="edit-blog">
-        <span class="glyphicon glyphicon-cog"></span> Edit Blog
-      </a>
-      <a href="javascript:void(0)" class="btn btn-primary btn-xs" id="post-to-blog">
-        <span class="glyphicon glyphicon-pencil"></span> New Post
-      </a>
-    <% } else { %>
-      <a href="javascript:void(0)" class="btn btn-primary btn-xs" id="follow-toggle">
-        <% if (blog.get('is_followed')) { %>
-          <span class="glyphicon glyphicon-minus"></span> Unfollow
-        <% } else { %>
-          <span class="glyphicon glyphicon-plus"></span> Follow
-        <% } %>
-      </a>
-    <% } %>
+<% if (blog.get('show_controls')) { %>
+  <div class="blog-controls clearfix">
+    <div class="btn-group pull-right">
+      <% if (blog.get('is_owner')) { %>
+        <a href="/blogs/<%= blog.get('id') %>/edit"
+          class="btn btn-primary btn-xs"
+          id="edit-blog">
+          <span class="glyphicon glyphicon-cog"></span> Edit Blog
+        </a>
+        <a href="javascript:void(0)" class="btn btn-primary btn-xs" id="post-to-blog">
+          <span class="glyphicon glyphicon-pencil"></span> New Post
+        </a>
+      <% } else { %>
+        <a href="javascript:void(0)" class="btn btn-primary btn-xs" id="follow-toggle">
+          <% if (blog.get('is_followed')) { %>
+            <span class="glyphicon glyphicon-minus"></span> Unfollow
+          <% } else { %>
+            <span class="glyphicon glyphicon-plus"></span> Follow
+          <% } %>
+        </a>
+      <% } %>
+    </div>
   </div>
-</div>
-
+<% } %>
 
 <h1><%= blog.get('title') %></h1>

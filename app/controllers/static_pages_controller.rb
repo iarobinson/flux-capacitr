@@ -1,3 +1,3 @@
 class StaticPagesController < ApplicationController
-  before_action :ensure_logged_in
+  before_action :ensure_logged_in, except: [:about]
 end
