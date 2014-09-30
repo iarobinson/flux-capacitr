@@ -10,5 +10,8 @@
   </div>
 </div>
 <script>
-  $(new Allonsy.Router({ $rootEl: $('#content-panel') }));
+  $(function () {
+    var router = new Allonsy.Router({ $rootEl: $('#content-panel') });
+    router.feedShow();
+  });
 </script>

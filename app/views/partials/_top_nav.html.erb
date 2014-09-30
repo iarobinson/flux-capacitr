@@ -7,17 +7,19 @@
     </div>
     
     <div class="tab-bar">
-      <div class="tab iconic" id="home-button">
-        <%= link_to '/#' do %>
-          <span class="glyphicon glyphicon-home"></span>
-        <% end %>
-      </div>
-      <div class="tab iconic" id="logout-button">
-        <%= link_to session_url,
-                    method: :delete do %>
-          <span class="glyphicon glyphicon-off"></span>
-        <% end %>
-      </div>
+      <% if logged_in? %>
+        <div class="tab iconic" id="home-button">
+          <%= link_to '/#' do %>
+            <span class="glyphicon glyphicon-home"></span>
+          <% end %>
+        </div>
+        <div class="tab iconic" id="logout-button">
+          <%= link_to session_url,
+                      method: :delete do %>
+            <span class="glyphicon glyphicon-off"></span>
+          <% end %>
+        </div>
+      <% end %>
       <div class="tab iconic ui-search">
         <%= render 'partials/search_field' %>
       </div> <!-- tab -->

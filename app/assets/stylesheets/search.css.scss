@@ -1,14 +1,16 @@
 .blogs-pane {
   float: left;
+  width: 250px;
 }
 
 .posts-pane {
   float: right;
+  width: 500px;
 }
 
 .results-container {
   margin: 0 auto;
-  width: 1200px;
+  width: 815px;
 }
 
 .results-pane > h3 {
@@ -18,5 +20,4 @@
 .results-pane {
   display: inline-block;
   margin: 0 auto;
-  width: 540px;
 }

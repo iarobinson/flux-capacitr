@@ -21,12 +21,6 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
     this.addSubview(".posts", postShow.render());
   },
   
-  listenForScroll: function () {
-    $(window).off('scroll');
-    var throttledCallback = _.throttle(this.nextPage.bind(this), 200);
-    $(window).on('scroll', throttledCallback);
-  },
-  
   nextPage: function () {
     var self = this;
     if (this.$('.spinner').visible()) {
@@ -57,7 +51,6 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent);
     this.attachSubviews();
-    this.listenForScroll();
     return this;
   }
 });

@@ -1,7 +1,7 @@
 Allonsy.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = $(options.$rootEl);
-    this.feedShow();
+    // this.feedShow();
   },
   
   routes: {

@@ -2,29 +2,47 @@
 <% method = (blog.persisted? ? 'PATCH' : 'POST') %>
 <% formname = (blog.persisted? ? 'Update Blog' : 'New Blog') %>
 
-<h1><%= formname %></h1>
+<h1 style="text-align: center"><%= formname %></h1>
 <form action="<%= action %>" method="POST" role="form">
-  <input type="hidden" name="_method" value="<%= method %>">
-  <%= csrf_token %>
-  <div class="form-group">
-    <label for="blog-title">Title</label>
-    <input type="text"
-           class="form-control"
-           id="blog-title"
-           name="blog[title]"
-           value="<%= blog.title %>"
-           placeholder="Allons-y, Alonso!">
+  <div class="unpadded-input-group">
+    <input type="hidden" name="_method" value="<%= method %>">
+    <%= csrf_token %>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">Title</div>
+        <input type="text"
+               class="form-control"
+               id="blog-title"
+               name="blog[title]"
+               value="<%= blog.title %>"
+               placeholder="Allons-y, Alonso!">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">URL</div>
+        <input type="text"
+               class="form-control"
+               id="blog-url"
+               name="blog[url]"
+               placeholder="alonso (flux-capacitr.com/alonso)"
+               value="<%= blog.url %>">
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="blog-url">Blog URL</label>
-    <input type="text"
-           class="form-control"
-           id="blog-url"
-           name="blog[url]"
-           placeholder="alonso (http://allons-y.com/alonso)"
-           value="<%= blog.url %>">
-  </div>
-
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-primary form-control">Submit</button>
 </form>
+
+<%= button_to 'Cancel',
+              root_url,
+              method: :get,
+              class: 'btn btn-info form-control' %>
+                
+<% if blog.persisted? %>
+  <%= button_to 'Delete Blog',
+                blog_url(@blog),
+                method: :delete,
+                class: 'btn btn-danger form-control' %>
+<% end %>

@@ -18,6 +18,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.addSubview(".blog-header", blogHeaderView.render());
     
     this.model.posts().each(this.addPost.bind(this));
+    setInterval(this.nextPage.bind(this), 1000);
   },
   
   addPost: function (post) {
@@ -45,15 +46,9 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.removeSubview('.posts', view);
   },
   
-  listenForScroll: function () {
-    $(window).off('scroll');
-    var throttledCallback = _.throttle(this.nextPage.bind(this), 500);
-    $(window).on('scroll', throttledCallback);
-  },
-  
   nextPage: function () {
     var self = this;
-    if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+    if (this.$('.spinner').visible()) {
       if (self.model.posts().page < self.model.posts().total_pages) {
         self.model.posts().fetch({
           data: { page: parseInt(this.model.posts().page) + 1 },
@@ -94,7 +89,6 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     var renderedContent = this.template({ blog: this.model });
     this.$el.html(renderedContent);
     this.attachSubviews();
-    this.listenForScroll();
     return this;
   }
 });
