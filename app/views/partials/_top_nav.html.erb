@@ -19,6 +19,12 @@
             <span class="glyphicon glyphicon-off"></span>
           <% end %>
         </div>
+      <% else %>
+        <div class="tab iconic" id="login-button">
+          <%= link_to new_session_url do %>
+            <span class="glyphicon glyphicon-off"></span>
+          <% end %>
+        </div>
       <% end %>
       <div class="tab iconic ui-search">
         <%= render 'partials/search_field' %>

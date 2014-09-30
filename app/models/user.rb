@@ -54,6 +54,14 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64(16)
   end
   
+  def authored?(post)
+    post.author == self
+  end
+  
+  def can_like?(post)
+    post.author != self
+  end
+  
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
   end

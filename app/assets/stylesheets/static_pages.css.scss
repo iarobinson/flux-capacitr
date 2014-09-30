@@ -84,6 +84,10 @@ body {
   overflow: auto;
 }
 
+.post-show .panel-body img {
+  max-width: 100%;
+}
+
 .post-container {
   border: none;
 }

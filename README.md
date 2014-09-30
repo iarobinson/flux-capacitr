@@ -3,6 +3,8 @@
 ## Features
 * Add user display names and blog descriptions
 * Add "followers" view for individual blogs (link in dash)
+* Add image upload
+* Add tag filters on blog show view
 
 ## Refactors
 * Separate dash views for feed and blogs

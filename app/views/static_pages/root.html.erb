@@ -4,9 +4,11 @@
 <div class="backdrop container-fluid">
   <div class="center-wrapper clearfix">
     <div id="content-panel"></div>    
-    <div id="dash-panel">
-      <%= render 'partials/dash_panel' %>
-    </div>
+    <% if logged_in? %>
+      <div id="dash-panel">
+        <%= render 'partials/dash_panel' %>
+      </div>
+    <% end %>
   </div>
 </div>
 <script>

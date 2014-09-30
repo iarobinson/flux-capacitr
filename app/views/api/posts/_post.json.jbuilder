@@ -9,6 +9,8 @@ json.(post,
 
 json.blog_url post.blog.url
 
+json.has_like_button (logged_in? && current_user != post.author)
+
 json.is_author (current_user == post.author)
 
 json.is_liked post.is_liked_by?(current_user)

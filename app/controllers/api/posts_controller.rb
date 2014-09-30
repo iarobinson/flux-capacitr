@@ -42,10 +42,12 @@ module Api
     
     def toggle_like
       @post = Post.find(params[:id])
-      if @post.is_liked_by?(current_user)
-        current_user.liked_posts.delete(@post)
-      else
-        current_user.liked_posts << @post
+      if current_user.can_like?(@post)
+        if @post.is_liked_by?(current_user)
+          current_user.liked_posts.delete(@post)
+        else
+          current_user.liked_posts << @post
+        end
       end
       render partial: 'post', locals: {post: @post}
     end

@@ -21,10 +21,19 @@
                  placeholder="Password"
                  name="user[password]">
         </div>
+        
+        <div class="form-group">
+          <input type="text"
+                 class="form-control"
+                 id="user-username"
+                 name="user[username]"
+                 placeholder="Username"
+                 value="<%= @user.username %>">
+        </div>
       </div>
 
       <button type="submit"
-              class="btn btn-primary form-control">Register!</button>
+              class="btn btn-primary form-control">Sign up</button>
     </form>
   </div>
   

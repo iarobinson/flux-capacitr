@@ -1,11 +1,10 @@
 Allonsy.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = $(options.$rootEl);
-    // this.feedShow();
   },
   
   routes: {
-    '': 'feedShow',
+    'feed': 'feedShow',
     'blogs/:id': 'blogShow',
     'posts/:id': 'postShow',
     'search/:searchString': 'searchShow'

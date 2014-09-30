@@ -6,18 +6,11 @@
     </a>
     
     <div class="post-header-info pull-right">
-      Liked <%= post.get('num_likes') %> times.
-      <% if (!post.get('is_author')) { %>
-        <a href="javascript:void(0)"
-           class="btn btn-default btn-xs"
-           id="like-toggle">
-          <% if (post.get('is_liked')) { %>
-            <span class="glyphicon glyphicon-thumbs-down"></span> Unlike
-          <% } else { %>
-            <span class="glyphicon glyphicon-thumbs-up"></span> Like
-          <% } %>
-        </a>
-      <% } %>
+      <a href="javascript:void(0)"
+         id="like-toggle">
+        <span class="glyphicon glyphicon-heart"></span>
+        <%= post.get('num_likes') %>
+      </a>
     </div>
   </div>
   
