@@ -17,12 +17,17 @@ body {
   border-radius: 15px;
   margin: 0 auto;
   padding: 20px;
-  width: 815px;
+  width: 900px;
 }
 
 #content-panel {
   float: left;
-  width: 540px;
+  width: 625px;
+}
+
+.feed-show {
+  float: right;
+  width: 550px;
 }
 
 .dash-nav {
@@ -72,6 +77,23 @@ body {
 .panel-heading a:hover {
   color: #fff;
   text-decoration: none;
+}
+
+.post-avatar {
+  border-radius: 3px;
+  height: 64px;
+  left: -80px;
+  position: absolute;
+  top: -1px;
+  width: 64px;
+  .post-avatar-link {
+    background-size: cover;
+    border-radius: 3px;
+    display: block;
+    height: 100%;
+    overflow: visible;
+    width: 100%;
+  }
 }
 
 .post-controls {
@@ -124,6 +146,7 @@ body {
 
 .post-container {
   border: none;
+  position: relative;
 }
 
 .post-tags ul {

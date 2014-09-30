@@ -25,7 +25,7 @@ module Api
       if params[:blog_id]
         @posts = Blog.find(params[:blog_id]).posts.page(params[:page])
       else
-        @posts = current_user.feed_posts.page(params[:page])
+        @posts = current_user.feed_posts.includes(:author).page(params[:page])
       end
       render 'index.json.jbuilder'
     end
@@ -34,6 +34,7 @@ module Api
       query = "%#{params[:query]}%"
       @posts = Post
         .includes(:tags)
+        .includes(:author)
         .where(<<-SQL, query, query, query).references(:tags).page(params[:page])
           tags.label LIKE ? OR posts.title LIKE ? OR posts.body LIKE ?
         SQL

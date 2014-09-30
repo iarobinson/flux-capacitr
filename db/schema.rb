@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930170946) do
+ActiveRecord::Schema.define(version: 20140930211118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,12 +84,13 @@ ActiveRecord::Schema.define(version: 20140930170946) do
   add_index "tags", ["label"], name: "index_tags_on_label", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
+    t.string   "email",                                                                                              null: false
+    t.string   "password_digest",                                                                                    null: false
+    t.string   "session_token",                                                                                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username",        null: false
+    t.string   "username",                                                                                           null: false
+    t.string   "avatar_url",      default: "http://www.seilchat.co.uk/download/file.php?avatar=1081_1390414737.gif", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

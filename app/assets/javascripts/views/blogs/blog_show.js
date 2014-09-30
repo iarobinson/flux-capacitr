@@ -22,7 +22,10 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   },
   
   addPost: function (post) {
-    var postShow = new Allonsy.Views.PostShow({ model: post });
+    var postShow = new Allonsy.Views.PostShow({
+      model: post,
+      displayAvatar: true
+    });
     if (!post.has('id')) {
       postShow.open = true;
       postShow.parentView = this;
@@ -31,7 +34,10 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   },
   
   attachPostForm: function (post) {
-    var subview = new Allonsy.Views.PostShow({ model: post });
+    var subview = new Allonsy.Views.PostShow({
+      model: post,
+      displayAvatar: true
+    });
     subview.open = true;
     subview.parentView = this;
     subview.$el.addClass('new-post');

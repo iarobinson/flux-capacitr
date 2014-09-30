@@ -3,6 +3,9 @@ Allonsy.Models.Post = Backbone.Model.extend({
   
   parse: function (response) {
     if (response.is_author) {
+      this.set('author', response.author);
+      delete response.author;
+      
       this.set('has_like_button', response.has_like_button);
       delete response.has_like_button;
       

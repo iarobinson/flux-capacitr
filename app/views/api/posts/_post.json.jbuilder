@@ -7,6 +7,10 @@ json.(post,
       :created_at,
       :updated_at)
 
+json.author do
+  json.(post.author, :id, :username, :avatar_url)
+end
+
 json.blog_url post.blog.url
 
 json.has_like_button (logged_in? && current_user != post.author)

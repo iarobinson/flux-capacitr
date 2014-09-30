@@ -51,7 +51,11 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
     this.render();
   },
   
-  initialize: function () {
+  initialize: function (options) {
+    if (options.displayAvatar) {
+      this.displayAvatar = options.displayAvatar;
+    }
+    
     this.open = false;
     
     this.listenTo(this.model, 'sync', this.render);
@@ -63,9 +67,15 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
     var renderedContent;
     
     if(this.open) {
-      renderedContent = this.formTemplate({ post: this.model });
+      renderedContent = this.formTemplate({
+        post: this.model,
+        displayAvatar: this.displayAvatar
+      });
     } else {
-      renderedContent = this.template({ post: this.model });
+      renderedContent = this.template({
+        post: this.model,
+        displayAvatar: this.displayAvatar
+      });
     }
     
     this.$el.html(renderedContent);

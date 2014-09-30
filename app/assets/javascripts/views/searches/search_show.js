@@ -23,7 +23,10 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend({
   },
   
   addPost: function (post) {
-    var postShow = new Allonsy.Views.PostShow({ model: post });
+    var postShow = new Allonsy.Views.PostShow({
+      model: post,
+      displayAvatar: false
+    });
     this.addSubview("#posts", postShow.render());
   },
   

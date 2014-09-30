@@ -12,7 +12,10 @@ Allonsy.BlogRouter = Allonsy.BaseRouter.extend({
   
   postShow: function (id) {
     var post = new Allonsy.Models.Post({ id: id });
-    var view = new Allonsy.Views.PostShow({ model: post });
+    var view = new Allonsy.Views.PostShow({
+      model: post,
+      displayAvatar: true
+    });
     this._swapView(view);
   }
 });

@@ -17,7 +17,10 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
   },
   
   addPost: function (post) {
-    var postShow = new Allonsy.Views.PostShow({ model: post });
+    var postShow = new Allonsy.Views.PostShow({
+      model: post,
+      displayAvatar: true
+    });
     this.addSubview(".posts", postShow.render());
   },
   

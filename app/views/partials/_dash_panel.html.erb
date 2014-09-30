@@ -36,8 +36,9 @@
       <% current_user.followed_blogs.each do |blog| %>
         <% if blog.persisted? %>
           <li style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%">
-            <a href="/#blogs/<%= blog.url %>">
+            <%= link_to blog_url(blog) do %>
               <strong><%= blog.url %></strong>
+            <% end %>
             </a>
           </li>
         <% end %>

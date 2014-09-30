@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#dash'
   
   get 'about', to: 'static_pages#about', as: 'about'
+  get 'test', to: 'static_pages#test'
   
   namespace :api do
     resources :blogs, only: [:show] do
