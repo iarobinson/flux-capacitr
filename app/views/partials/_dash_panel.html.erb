@@ -37,7 +37,7 @@
     <ul class="dropdown-menu" role="menu">
       <% current_user.followed_blogs.each do |blog| %>
         <% if blog.persisted? %>
-          <li style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width: 100%">
+          <li>
             <%= link_to blog_url(blog) do %>
               <strong><%= blog.url %></strong>
             <% end %>

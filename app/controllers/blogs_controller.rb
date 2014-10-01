@@ -2,6 +2,21 @@ class BlogsController < ApplicationController
   before_action :ensure_logged_in, except: [:show]
   before_action :ensure_blog_owner, except: [:create, :followers, :new, :show]
   
+  def add_members
+    @blog = Blog.friendly.find(params[:blog_id])
+    
+    new_members = params['blog']['members'].map do |name|
+      User.find_by_username(name)
+    end
+    
+    new_members = new_members.compact.uniq
+    new_members.each do |member|
+      @blog.members << member
+    end
+    
+    redirect_to blog_url(@blog)
+  end
+  
   def create
     @blog = current_user.blogs.new(blog_params)
     if @blog.save
@@ -28,9 +43,19 @@ class BlogsController < ApplicationController
     render :followers
   end
   
+  def members
+    @blog = Blog.friendly.find(params[:blog_id])
+    render :members
+  end
+  
   def new
     @blog = Blog.new
     render :new
+  end
+  
+  def remove_member
+    @blog = Blog.friendly.find(params[:blog_id])
+    @blog.members.delete(@user)
   end
   
   def show
@@ -55,7 +80,7 @@ class BlogsController < ApplicationController
   end
   
   def current_blog
-    Blog.friendly.find(params[:id])
+    Blog.friendly.find(params[:id] || params[:blog_id])
   end
   
   def ensure_blog_owner

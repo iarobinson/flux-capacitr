@@ -14,10 +14,10 @@ class Blog < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many :posts, -> { order 'created_at DESC' }, dependent: :destroy
-  
+  has_many :blog_memberships, dependent: :destroy
+  has_many :members, through: :blog_memberships, source: :user
+  has_many :posts, -> { order 'created_at DESC' }, dependent: :destroy  
   has_many :followings, dependent: :destroy
-  
   has_many :followers, through: :followings, source: :follower
   
   private

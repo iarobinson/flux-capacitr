@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001155032) do
+ActiveRecord::Schema.define(version: 20141001184148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blog_memberships", force: true do |t|
+    t.integer  "blog_id",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blog_memberships", ["blog_id", "user_id"], name: "index_blog_memberships_on_blog_id_and_user_id", unique: true, using: :btree
+  add_index "blog_memberships", ["blog_id"], name: "index_blog_memberships_on_blog_id", using: :btree
+  add_index "blog_memberships", ["user_id"], name: "index_blog_memberships_on_user_id", using: :btree
 
   create_table "blogs", force: true do |t|
     t.integer  "owner_id",   null: false

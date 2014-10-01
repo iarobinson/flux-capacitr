@@ -65,9 +65,17 @@ body {
   width: 100%;
   li {
     overflow: hidden;
+    position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
+    
+    .remove-member-button {
+      margin-right: 10px;
+      padding: 3px;
+      position: absolute;
+      right: 0px;
+    }
   }
 }
 
@@ -76,13 +84,12 @@ body {
   color: #fff;
 }
 
-.input-group-addon.glyphicon {
-  top: 0;
+.open > ul > li.hz{
+    display: inline-flex !important;
 }
 
-.nav-pills li a:hover {
-  background-color: #004A7E;
-  color: #9BC2E3;
+.input-group-addon.glyphicon {
+  top: 0;
 }
 
 .outgoing-post {

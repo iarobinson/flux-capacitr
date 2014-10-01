@@ -1,18 +1,7 @@
 class Tagging < ActiveRecord::Base
-  validates :post_id, :tag_id, presence: true
-  validates :post_id, uniqueness: { scope: :tag_id }
+  validates :post, :tag, presence: true
+  validates :post, uniqueness: { scope: :tag }
   
-  belongs_to(
-    :post,
-    class_name: 'Post',
-    foreign_key: :post_id,
-    primary_key: :id
-  )
-  
-  belongs_to(
-    :tag,
-    class_name: 'Tag',
-    foreign_key: :tag_id,
-    primary_key: :id
-  )
+  belongs_to :post
+  belongs_to :tag
 end

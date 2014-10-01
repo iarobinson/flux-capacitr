@@ -3,25 +3,54 @@
     <h3>About</h3>
   </li>
   <hr>
+  
   <li <%= 'class=active' if action == 'posts' %>>
     <%= link_to blog_url(blog) do %>
       <span class="glyphicon glyphicon-list-alt"></span>
       <strong>Posts (<%= blog.posts.count %>)</strong>
     <% end %>
   </li>
+  
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
       <span class="glyphicon glyphicon-th-list"></span>
-      Members <span class="caret"></span>
+      Members (<%= blog.members.count + 1 %>)<span class="caret"></span>
     </a>
+    
     <ul class="dropdown-menu" role="menu">
       <li>
           <%= link_to user_url(blog.owner) do %>
             <strong><%= blog.owner.username %> (owner)</strong>
           <% end %>
       </li>
+      
+      <% blog.members.each do |member| %>
+        <li <%= 'class=hz' if current_user.owns?(blog) %>>
+            <%= link_to user_url(member) do %>
+              <strong><%= member.username %></strong>
+            <% end %>
+            <% if current_user.owns?(blog) %>
+              <%= link_to blog_members_url(blog),
+                          class: 'remove-member-button',
+                          data: {member_id: member.id} do %>
+              <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            <% end %>
+        </li>
+      <% end %>
+      
+      <% if current_user.owns?(blog) %>
+        <li class="divider"></li>
+        <li>
+          <%= link_to 'javascript:void(0)',
+                      data: {toggle: 'modal', target: '#addMemberModal'} do %>
+            <span class="glyphicon glyphicon-plus"></span> Add Members
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </li>
+  
   <li <%= 'class=active' if action == 'followers' %>>
     <%= link_to blog_followers_url(blog) do %>
       <span class="glyphicon glyphicon-user"></span>
@@ -29,3 +58,5 @@
     <% end %>
   </li>
 </ul>
+
+<%= render 'add_member_modal', blog: @blog %>

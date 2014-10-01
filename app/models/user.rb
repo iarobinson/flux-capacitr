@@ -10,39 +10,14 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   before_save :update_slug
   
-  has_many(
-    :blogs,
-    class_name: 'Blog',
-    foreign_key: :owner_id,
-    primary_key: :id,
-    dependent: :destroy
-  )
-  
-  has_many(
-    :posts,
-    class_name: 'Post',
-    foreign_key: :author_id,
-    primary_key: :id,
-    dependent: :destroy
-  )
-  
-  has_many(
-    :followings,
-    class_name: 'Following',
-    foreign_key: :follower_id,
-    primary_key: :id,
-    dependent: :destroy
-  )
-  
-  has_many(
-    :followed_blogs,
-    through: :followings,
-    source: :blog
-  )
-  
-  has_many :likes, dependent: :destroy
-  
+  has_many :blogs, foreign_key: :owner_id, dependent: :destroy
+  has_many :blog_memberships, dependent: :destroy
+  has_many :followings, foreign_key: :follower_id, dependent: :destroy  
+  has_many :followed_blogs, through: :followings, source: :blog  
+  has_many :likes, dependent: :destroy  
   has_many :liked_posts, through: :likes, source: :post
+  has_many :member_blogs, through: :blog_memberships, source: :blog
+  has_many :posts, foreign_key: :author_id, dependent: :destroy
   
   def self.find_by_credentials(email, password)
     user = self.find_by_email(email)
@@ -80,8 +55,16 @@ class User < ActiveRecord::Base
     self.followed_blogs.include?(blog)
   end
   
+  def is_member?(blog)
+    blog.members.include?(self)
+  end
+  
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)
+  end
+  
+  def owns?(blog)
+    blog.owner == self
   end
   
   def password=(password)
