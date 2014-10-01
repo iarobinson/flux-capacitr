@@ -2,7 +2,8 @@ json.(@blog, :id, :title, :url, :owner_id, :created_at, :updated_at)
 
 json.full_url "#{request.domain}/#{@blog.url}"
 
-json.is_member current_user && current_user.is_member?(@blog)
+json.is_member current_user &&
+  (current_user.is_member?(@blog) || current_user.owns?(@blog))
 
 json.is_owner current_user && current_user.owns?(@blog)
 
