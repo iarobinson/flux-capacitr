@@ -1032,22 +1032,38 @@
             } else {
               chunk = selected.text
             }
-
-            link = prompt(e.__localize('Insert Image Hyperlink'),'http://')
-
-            if (link != null && link != '' && link != 'http://' && link.substr(0,4) == 'http') {
-              var sanitizedLink = $('<div>'+link+'</div>').text()
+            
+            filepicker.setKey("A6ihAfREPRVyLX2xLPh9rz");
+            
+            var link;
+            
+            filepicker.pickAndStore(
+              {
+                multiple: false,
+                maxFiles: 1,
+                maxSize: "10485760",
+                folders: false
+              },
+              {},
+              function (Blobs) {
+                link = Blobs[0].url;
+                
+                if (link != null && link != '' && link != 'http://' && link.substr(0,4) == 'http') {
+                  var sanitizedLink = $('<div>'+link+'</div>').text()
               
-              // transform selection and set the cursor into chunked text
-              e.replaceSelection('!['+chunk+']('+sanitizedLink+' "'+e.__localize('enter image title here')+'")')
-              cursor = selected.start+2
+                  // transform selection and set the cursor into chunked text
+                  e.replaceSelection('!['+chunk+']('+sanitizedLink+' "'+e.__localize('enter image title here')+'")')
+                  cursor = selected.start+2
 
-              // Set the next tab
-              e.setNextTab(e.__localize('enter image title here'))
+                  // Set the next tab
+                  e.setNextTab(e.__localize('enter image title here'))
 
-              // Set the cursor
-              e.setSelection(cursor,cursor+chunk.length)
-            }
+                  // Set the cursor
+                  e.setSelection(cursor,cursor+chunk.length)
+                }
+              }
+            );
+            // link = prompt(e.__localize('Insert Image Hyperlink'),'http://')
           }
         }]
       },{
