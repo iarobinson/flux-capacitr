@@ -1,9 +1,14 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :username, :use => :slugged
+  
   validates :email, :password_digest, :session_token, :username, presence: true
-  validates :email, :session_token, :username, uniqueness: true
+  validates :email, :session_token, :slug, :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
+  validate :username_is_correctly_formatted
   
   after_initialize :ensure_session_token
+  before_save :update_slug
   
   has_many(
     :blogs,
@@ -91,4 +96,14 @@ class User < ActiveRecord::Base
   
   private
   attr_reader :password
+  
+  def update_slug
+    self.slug = self.username
+  end
+  
+  def username_is_correctly_formatted
+    if self.username.match(/ /)
+      errors.add("Username cannot contain spaces.")
+    end
+  end
 end

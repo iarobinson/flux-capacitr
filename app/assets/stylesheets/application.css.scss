@@ -40,17 +40,21 @@ a {
   width: 900px;
 }
 
-.custom-nav {
+.centered-content {
   margin: 0 auto;
-  height: 70px;
   width: 900px;
+}
+
+.custom-nav {
+  margin: 0;
+  height: 70px;
 }
 
 html {
   height: 100%;
 }
 
-h1 {
+h1, h3 {
   color: #FFF;
 }
 

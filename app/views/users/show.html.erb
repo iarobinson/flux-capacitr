@@ -1,0 +1,29 @@
+<%= render 'partials/top_nav' %>
+<%= render 'partials/errors' %>
+
+<div class="container">
+  <h1><%= @user.username %></h1>
+
+  <div class="row clearfix">
+      <h3>Blogs</h3>
+      <% @user.blogs.each do |blog| %>
+        <%= render 'blogs/nameplate', blog: blog %>
+      <% end %>
+  </div>
+
+  <div class="row clearfix">
+    <h3>Following</h3>
+    <% @user.followed_blogs.each do |blog| %>
+      <%= render 'blogs/nameplate', blog: blog %>
+    <% end %>
+  </div>
+
+  <div class="row clearfix">
+    <div class="posts-pane">
+      <h3>Recent Posts</h3>
+        <% @user.posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+    </div>
+  </div>
+</div>

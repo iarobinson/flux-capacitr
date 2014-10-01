@@ -33,7 +33,6 @@ module Api
     def new
       @post = current_user.posts.new
       @post.blog_id = params[:blog_id]
-      # fail
       render partial: 'post', locals: {post: @post}
     end
     

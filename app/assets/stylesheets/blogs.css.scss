@@ -1,3 +1,7 @@
+.blog-controls {
+  display: block;
+}
+
 .blog-header {
   display: block;
   position: relative;
@@ -7,8 +11,10 @@
   margin-top: 5px;
 }
 
-.blog-controls {
-  display: block;
+.blog-nameplate {
+  display: inline-block;
+  height: 80px;
+  width: 250px;
 }
 
 .blog-show .posts {

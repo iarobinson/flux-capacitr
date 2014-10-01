@@ -3,7 +3,7 @@ class Blog < ActiveRecord::Base
   friendly_id :url, :use => :slugged
   
   validates :owner, :title, :url, presence: true
-  validates :title, :url, uniqueness: true
+  validates :title, :url, :slug, uniqueness: true
   
   before_save :update_slug
   
@@ -16,28 +16,11 @@ class Blog < ActiveRecord::Base
 
   has_many :posts, -> { order 'created_at DESC' }, dependent: :destroy
   
-  # has_many(
-  #   :posts,
-  #   class_name: 'Post',
-  #   foreign_key: :blog_id,
-  #   primary_key: :id,
-  #   order: 'created_at DESC',
-  #   dependent: :destroy
-  # )
+  has_many :followings, dependent: :destroy
   
-  has_many(
-    :followings,
-    class_name: 'Following',
-    foreign_key: :blog_id,
-    primary_key: :id,
-    dependent: :destroy
-  )
+  has_many :followers, through: :followings, source: :follower
   
-  has_many(
-    :followers,
-    through: :followings,
-    source: :follower
-  )
+  private
   
   def update_slug
     self.slug = self.url

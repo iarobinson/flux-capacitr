@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :ensure_logged_out, only: [:create, :new]
-  before_action :ensure_can_edit, only: [:update]
+  before_action :ensure_can_edit, only: [:edit, :update]
   
   def create
     @user = User.new(user_params)
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     render :edit
   end
 
@@ -24,12 +24,15 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:blogs)
+                .includes(:followed_blogs)
+                .includes(:posts)
+                .friendly.find(params[:id])
     render :show
   end
   
   def update
-    @user = current_user
+    @user = User.friendly.find(params[:id])
     if @user.update(user_params)
       redirect_to :root
     else
@@ -40,7 +43,7 @@ class UsersController < ApplicationController
   
   private
   def ensure_can_edit
-    if User.find(params[:id]) != current_user
+    if User.friendly.find(params[:id]) != current_user
       flash[:errors] = "You are not authorized to perform that action."
       redirect_to :root
     end

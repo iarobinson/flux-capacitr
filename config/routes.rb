@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get 'search/:query', to: 'searches#show', as: 'search'
   post 'search', to: 'searches#create', as: 'new_search'
   
-  resources :users, except: [:index, :show]
+  resources :users, except: [:index]
   
   resources :blogs, except: [:index] do
     resources :posts, only: [:new]
