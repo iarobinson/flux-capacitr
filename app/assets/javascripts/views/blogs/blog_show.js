@@ -3,7 +3,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   
   newPostTemplate: JST['posts/edit'],
   
-  className: "blog-show",
+  className: "blog-show clearfix",
   
   events: {
     "click #post-to-blog": "newPostForm"

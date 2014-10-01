@@ -1,9 +1,9 @@
 <ul class="nav nav-stacked dash-nav">
   <li>
-    <h3>About This Blog</h3>
+    <h3>About</h3>
   </li>
   <hr>
-  <li>
+  <li <%= 'class=active' if action == 'posts' %>>
     <%= link_to blog_url(blog) do %>
       <span class="glyphicon glyphicon-list-alt"></span>
       <strong>Posts (<%= blog.posts.count %>)</strong>
@@ -22,7 +22,7 @@
       </li>
     </ul>
   </li>
-  <li>
+  <li <%= 'class=active' if action == 'followers' %>>
     <%= link_to blog_followers_url(blog) do %>
       <span class="glyphicon glyphicon-user"></span>
       Followers (<%= blog.followers.count %>)

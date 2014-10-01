@@ -46,6 +46,10 @@ body {
     font-weight: bold;
   }
   
+  > li.active > a {
+    background-color: #00487a
+  }
+  
   > li > a:hover, > li > a:focus {
     background-color: rgba(0, 72, 122, 1) !important;
     color: #fff;

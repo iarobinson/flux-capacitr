@@ -6,7 +6,7 @@
 <div class="backdrop container-fluid">
   <div class="center-wrapper clearfix">
     <div id="content-panel">
-      <h1>Followers of <%= @blog.title %></h1>
+      <h1><%= @blog.title %></h1>
       
       <hr style="margin-top: 10px">
       
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="side-panel">
-      <%= render 'info_panel', blog: @blog %>
+      <%= render 'info_panel', blog: @blog, action: 'followers' %>
     </div>
   </div>
 </div>
