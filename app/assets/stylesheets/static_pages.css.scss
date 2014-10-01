@@ -52,13 +52,19 @@ body {
   }
 }
 
-#dash-panel {
+.side-panel {
   float: right;
   width: 215px;
 }
 
-#dash-panel .dropdown-menu {
+.dropdown-menu {
   width: 100%;
+  li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
 }
 
 .dropdown.open > a {

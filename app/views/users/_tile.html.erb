@@ -1,0 +1,6 @@
+<div class="user-tile">
+  <%= render 'users/avatar', user: user %>
+  <%= link_to user_url(user) do %>
+    <strong><%= user.username %></strong>
+  <% end %>
+</div>

@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :ensure_logged_in, except: [:show]
-  before_action :ensure_blog_owner, except: [:create, :new, :show]
+  before_action :ensure_blog_owner, except: [:create, :followers, :new, :show]
   
   def create
     @blog = current_user.blogs.new(blog_params)
@@ -21,6 +21,11 @@ class BlogsController < ApplicationController
   def edit
     @blog = Blog.friendly.find(params[:id])
     render :edit
+  end
+  
+  def followers
+    @blog = Blog.friendly.find(params[:blog_id])
+    render :followers
   end
   
   def new

@@ -1,10 +1,10 @@
 # TODO:
 
 ## Features
-1. User profile pages
-2. Blog info panel
 3. Adding members to blogs
 
+* Fix janky columns on user profiles
+* Add followers view to blogs
 * Add audio easter egg to "I'm feeling lucky" button or logo period.
 * Add "followers" view for individual blogs (link in dash)
 * Add tag filters on blog show view

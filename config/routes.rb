@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     
     post 'blogs/:id/togglefollow', to: 'blogs#toggle_follow'
     get 'blogs/search/:query', to: 'blogs#search'
+    
     post 'posts/:id/togglelike', to: 'posts#toggle_like'
     get 'posts/search/:query', to: 'posts#search'
   end
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
   
   resources :blogs, except: [:index] do
+    get 'followers', to: 'blogs#followers'
     resources :posts, only: [:new]
   end
   

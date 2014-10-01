@@ -1,6 +1,6 @@
 <div class="avatar avatar-128">
-  <a href="javascript:void(0)"
-     class="avatar-link"
-     style="background-image: url(<%= user.avatar_url %>)">
-  </a>
+  <%= link_to '',
+              user_url(user),
+              class: 'avatar-link',
+              style: "background-image: url(#{user.avatar_url})" %>
 </div>
