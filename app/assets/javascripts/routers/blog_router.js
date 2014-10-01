@@ -1,7 +1,7 @@
 Allonsy.BlogRouter = Allonsy.BaseRouter.extend({
   routes: {
     'blogs/:id': 'blogShow',
-    'posts/:id': 'postShow',
+    'posts/:id': 'postShow'
   },
   
   blogShow: function (id) {
@@ -12,10 +12,17 @@ Allonsy.BlogRouter = Allonsy.BaseRouter.extend({
   
   postShow: function (id) {
     var post = new Allonsy.Models.Post({ id: id });
-    var view = new Allonsy.Views.PostShow({
-      model: post,
-      displayAvatar: true
+    var router = this;
+    
+    post.fetch({
+      success: function (response) {
+        var view = new Allonsy.Views.PostShow({
+          model: post,
+          displayAvatar: true
+        });
+      
+        router._swapView(view);
+      }
     });
-    this._swapView(view);
   }
 });

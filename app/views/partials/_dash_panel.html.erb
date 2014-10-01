@@ -9,18 +9,24 @@
       My Blogs <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <% if current_user.blogs.length > 0 %>
-        <% current_user.blogs.each do |blog| %>
-          <% if blog.persisted? %>
-            <li>
-              <%= link_to blog_url(blog) do %>
-                <strong><%= blog.url %></strong>
-              <% end %>
-            </li>
+      <% current_user.blogs.each do |blog| %>
+        <li>
+          <%= link_to blog_url(blog) do %>
+            <strong><%= blog.url %> (owner)</strong>
           <% end %>
-        <% end %>
-        <li class="divider"></li>
+        </li>
       <% end %>
+      
+      <% current_user.member_blogs.each do |blog| %>
+        <li>
+          <%= link_to blog_url(blog) do %>
+            <strong><%= blog.url %></strong>
+          <% end %>
+        </li>
+      <% end %>
+      
+      <li class="divider"></li>
+      
       <li>
         <%= link_to new_blog_url do %>
           <span class="glyphicon glyphicon-plus"></span> New Blog

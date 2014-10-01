@@ -10,4 +10,4 @@ json.tags post.tags
 
 json.time_ago "#{time_ago_in_words(post.created_at)} ago"
 
-json.url "#posts/#{post.id}"
+json.url "posts/#{post.id}"

@@ -57,7 +57,7 @@ class BlogsController < ApplicationController
     @user = User.friendly.find(params[:user_id])
     @blog = Blog.friendly.find(params[:blog_id])
     @blog.members.delete(@user)
-    render :show
+    redirect_to blog_url(@blog)
   end
   
   def show

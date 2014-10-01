@@ -1,8 +1,6 @@
 # TODO:
 
 ## Features
-3. Adding members to blogs
-
 * Add audio easter egg to "I'm feeling lucky" button or logo period.
 * Add tag filters on blog show view
 * Add tag search on feed view (?)

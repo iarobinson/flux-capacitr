@@ -59,4 +59,6 @@
   </li>
 </ul>
 
-<%= render 'add_member_modal', blog: @blog %>
+<% if current_user.owns?(blog) %>
+  <%= render 'blogs/add_member_modal', blog: @blog %>
+<% end %>

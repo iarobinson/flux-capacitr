@@ -47,7 +47,9 @@ class User < ActiveRecord::Base
   end
   
   def feed_posts
-    Post.where(blog_id: self.followed_blogs.ids)
+    feed_blogs = self.blogs + self.member_blogs + self.followed_blogs
+    blog_ids = feed_blogs.map { |blog| blog.id }
+    Post.where(blog_id: blog_ids)
         .order(created_at: :desc)
   end
   

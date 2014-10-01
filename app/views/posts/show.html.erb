@@ -5,37 +5,28 @@
 
 <div class="backdrop container-fluid">
   <div class="center-wrapper clearfix">
+    
     <div id="content-panel">
-      <h1><%= @blog.title %></h1>
+      <h1><%= @post.blog.title %></h1>
       
       <hr style="margin-top: 10px">
       
-      <div class="pull-right" style="width: 550px">
-        <div class="posts"></div>
+      <div class="blog-show">
+        <div class="pull-right" style="width: 550px">
+          <div class="posts"></div>
+        </div>
       </div>
     </div>
+    
     <div class="side-panel">
-      <%= render 'info_panel', blog: @blog, action: 'posts' %>
+      <%= render 'blogs/info_panel', blog: @post.blog, action: 'posts' %>
     </div>
   </div>
 </div>
 
 <script>
   $(function () {
-    var router = new Allonsy.BlogRouter({ $rootEl: $('#content-panel') });
-    router.blogShow(<%= @blog.id %>);
+    var router = new Allonsy.BlogRouter({ $rootEl: $('.posts') });
+    router.postShow(<%= @post.id %>);
   });
 </script>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h1 style="text-align: center">
-      <%= link_to @post.blog.title, blog_url(@post.blog) %>
-    </h1>
-    <h5 style="text-align: center">
-      (<%= "#{request.domain}/#{@post.blog.url}" %>)
-    </h5>
-    <hr>
-    <%= render 'post', post: @post %>
-  </div>
-</div>

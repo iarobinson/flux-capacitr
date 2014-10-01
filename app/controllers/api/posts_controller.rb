@@ -47,6 +47,11 @@ module Api
       render 'index.json.jbuilder'
     end
     
+    def show
+      @post = Post.find(params[:id])
+      render partial: 'post', locals: {post: @post}
+    end
+    
     def toggle_like
       @post = Post.find(params[:id])
       if current_user.can_like?(@post)
