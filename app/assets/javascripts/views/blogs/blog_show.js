@@ -6,13 +6,16 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   className: "blog-show clearfix",
   
   events: {
-    "click #post-to-blog": "newPostForm"
+    "click #post-to-blog": "newPostForm",
+    "click .post-tag": "toggleFilter"
   },
   
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.posts(), "add", this.addPost);
     this.listenTo(this.model.posts(), "remove", this.removePost);
+    
+    this.filterTags = [];
     
     var blogHeaderView = new Allonsy.Views.BlogHeader({ model: this.model });
     this.addSubview(".blog-header", blogHeaderView.render());
@@ -97,5 +100,18 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.attachSubviews();
     return this;
+  },
+  
+  toggleFilter: function (event) {
+    var tagName = $(event.currentTarget).find('a').text();
+    if (_.contains(this.filterTags, tagName)) {
+      var tagIndex = this.filterTags.indexOf(tagName);
+      this.filterTags.splice(tagIndex, 1);
+    } else {
+      this.filterTags.push(tagName);      
+    }
+    this.model.posts().filterBy({
+      tags: this.filterTags
+    });
   }
 });

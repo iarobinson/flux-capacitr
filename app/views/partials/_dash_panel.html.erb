@@ -9,20 +9,32 @@
       My Blogs <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <% current_user.blogs.each do |blog| %>
+      <% if (current_user.blogs + current_user.member_blogs).count == 0 %>
         <li>
-          <%= link_to blog_url(blog) do %>
-            <strong><%= blog.url %> (owner)</strong>
-          <% end %>
+          <a href="javascript:void(0)">
+            <strong>
+              No blogs yet.
+            </strong>
+          </a>
         </li>
-      <% end %>
+      <% else %>
       
-      <% current_user.member_blogs.each do |blog| %>
-        <li>
-          <%= link_to blog_url(blog) do %>
-            <strong><%= blog.url %></strong>
-          <% end %>
-        </li>
+        <% current_user.blogs.each do |blog| %>
+          <li>
+            <%= link_to blog_url(blog) do %>
+              <strong><%= blog.url %> (owner)</strong>
+            <% end %>
+          </li>
+        <% end %>
+      
+        <% current_user.member_blogs.each do |blog| %>
+          <li>
+            <%= link_to blog_url(blog) do %>
+              <strong><%= blog.url %></strong>
+            <% end %>
+          </li>
+        <% end %>
+        
       <% end %>
       
       <li class="divider"></li>
@@ -41,14 +53,24 @@
       Following <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <% current_user.followed_blogs.each do |blog| %>
-        <% if blog.persisted? %>
-          <li>
-            <%= link_to blog_url(blog) do %>
-              <strong><%= blog.url %></strong>
-            <% end %>
-            </a>
-          </li>
+      <% if current_user.followed_blogs.count == 0 %>
+        <li>
+          <a href="javascript:void(0)">
+            <strong>
+              Not following any blogs.
+            </strong>
+          </a>
+        </li>
+      <% else %>
+        <% current_user.followed_blogs.each do |blog| %>
+          <% if blog.persisted? %>
+            <li>
+              <%= link_to blog_url(blog) do %>
+                <strong><%= blog.url %></strong>
+              <% end %>
+              </a>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
     </ul>

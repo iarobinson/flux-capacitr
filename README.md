@@ -1,14 +1,18 @@
 # TODO:
 
 ## Features
-* Add audio easter egg to "I'm feeling lucky" button or logo period.
-* Add tag filters on blog show view
-* Add tag search on feed view (?)
-* Add recent posts to user show view
-* Add post show view
+* Cover page has a button with an audio easter egg
+* Blogs#show view supports filtering by tags
+* Feed view supports filtering by tags
+* Users#show view displays recent posts
+* Users can reblog posts
+* Users can embed video in posts
+* Posts have types (text, quote, image, etc)
+* Blog owners can upload custom stylesheets
+* User registration and edit pages show preview of uploaded avatar
 
 ## Refactors
 
 ## Styles
-* Add animations to new post form on removal.
-* Copy tumblr background style: #2c4762 url('/images/background.png') top repeat-x
+* New post form plays animation before removing itself from the DOM.
+* Background is "tumblr style", with a background color and gradient image: #2c4762 url('/images/background.png') top repeat-x
