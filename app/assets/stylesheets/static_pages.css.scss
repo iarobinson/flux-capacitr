@@ -41,6 +41,11 @@ body {
     margin-top: 0;
   }
   
+  > li {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
   > li > a:hover, > li > a:focus {
     background-color: rgba(0, 72, 122, 1) !important;
     color: #fff;
@@ -63,10 +68,6 @@ body {
 
 .input-group-addon.glyphicon {
   top: 0;
-}
-
-.nav-pills li a {
-  border-radius: 0;
 }
 
 .nav-pills li a:hover {

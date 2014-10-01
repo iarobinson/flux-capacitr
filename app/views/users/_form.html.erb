@@ -23,10 +23,13 @@
     </div>
     
     <div class="form-group">
-      <%= f.filepicker_field :avatar_url,
-                           button_text: 'Upload Avatar (optional)',
-                           button_class: 'form-control', 
-                           placeholder: 'Avatar URL' %>
+      <div class="input-group">
+        <span class="input-group-addon glyphicon glyphicon-picture"></span>
+        <%= f.filepicker_field :avatar_url,
+                             button_text: 'Upload Avatar (optional)',
+                             button_class: 'form-control', 
+                             placeholder: 'Avatar URL' %>
+      </div>
     </div>
   </div>
   

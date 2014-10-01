@@ -4,6 +4,7 @@
 * Add audio easter egg to "I'm feeling lucky" button or logo period.
 * Add "followers" view for individual blogs (link in dash)
 * Add tag filters on blog show view
+* Add tag search on feed view (?)
 
 ## Refactors
 
