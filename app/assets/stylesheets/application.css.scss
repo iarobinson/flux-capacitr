@@ -54,12 +54,16 @@ html {
   height: 100%;
 }
 
-h1, h3 {
+h1, h3, p {
   color: #FFF;
 }
 
 .navbar-header {
   padding-top: 15px;
+}
+
+.panel p {
+  color: rgb(51, 51, 51);
 }
 
 .tab-bar {

@@ -2,23 +2,38 @@
 <%= render 'partials/errors' %>
 
 <div class="container">
-  <h1><%= @user.username %></h1>
-
-  <div class="row clearfix">
-      <h3>Blogs</h3>
-      <% @user.blogs.each do |blog| %>
-        <%= render 'blogs/nameplate', blog: blog %>
-      <% end %>
+  <div class="row">
+    <div class="pull-left">
+      <%= render 'avatar', user: @user %>
+    </div>
+    <div class="pull-left">
+      <h1 style="margin-left: 10px; margin-top: 44px"><%= @user.username %></h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <h3>Blogs</h3>
+    <% if @user.blogs.count == 0 %>
+      <p>User does not yet have any blogs.</p>
+    <% end %>
+    
+    <% @user.blogs.each do |blog| %>
+      <%= render 'blogs/nameplate', blog: blog %>
+    <% end %>
   </div>
 
-  <div class="row clearfix">
+  <div class="row">
     <h3>Following</h3>
+    <% if @user.followed_blogs.count == 0 %>
+      <p>User is not yet following any blogs.</p>
+    <% end %>
+    
     <% @user.followed_blogs.each do |blog| %>
       <%= render 'blogs/nameplate', blog: blog %>
     <% end %>
   </div>
 
-  <div class="row clearfix">
+  <div class="row">
     <div class="posts-pane">
       <h3>Recent Posts</h3>
         <% @user.posts.each do |post| %>

@@ -1,11 +1,9 @@
-.profile-avatar {
+.avatar-128 {
   border-radius: 3px;
   height: 128px;
-  left: -138px;
-  position: absolute;
-  top: 69px;
+  position: relative;
   width: 128px;
-  .profile-avatar-link {
+  .avatar-link {
     background-size: cover;
     border-radius: 3px;
     display: block;
@@ -15,4 +13,10 @@
     top: 0;
     width: 100%;
   }
+}
+
+.signup-form-container .avatar {
+  left: -138px;
+  position: absolute;
+  top: 69px;
 }

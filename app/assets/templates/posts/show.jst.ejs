@@ -1,7 +1,7 @@
 <div class="panel panel-primary post-container">
   <% if (displayAvatar) { %>
     <div class="post-avatar">
-      <a href="<%= post.get('author').url %>"
+      <a href="/users/<%= post.get('author').username %>"
          class="post-avatar-link"
          style="background-image: url(<%= post.get('author').avatar_url %>)">
       </a>
