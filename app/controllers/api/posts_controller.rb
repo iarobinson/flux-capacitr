@@ -4,7 +4,7 @@ module Api
     
     def create
       @post = current_user.posts.new(post_params)
-      ensure_blog_owner(@post.blog)
+      ensure_blog_member(@post.blog)
     
       if @post.save
         @post.assign_tags(params[:tags])
@@ -16,7 +16,7 @@ module Api
     
     def destroy
       @post = Post.find(params[:id])
-      ensure_blog_owner(@post.blog)
+      ensure_post_authorization(@post.blog)
       @post.destroy!
       render json: {}
     end
@@ -73,10 +73,24 @@ module Api
     
     private
     
+    def ensure_blog_member(blog)
+      unless current_user.is_member?(blog)
+        flash[:errors] = ["You must be a member of the blog to perform that action!"]
+        redirect_to blog_url(post.blog)
+      end
+    end
+    
     def ensure_blog_owner(blog)
       if blog.owner != current_user
         flash[:errors] = ["You must be the blog's owner to perform that action!"]
-        redirect_to :root
+        redirect_to blog_url(post.blog)
+      end
+    end
+    
+    def ensure_post_authorization(post)
+      unless current_user.authored?(post) || current_user.owns?(post.blog)
+        flash[:errors] = ["You are not authorized to perform that action."]
+        redirect_to blog_url(post.blog)
       end
     end
     
