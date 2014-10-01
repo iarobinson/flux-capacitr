@@ -7,6 +7,7 @@
 * Add tag filters on blog show view
 * Add tag search on feed view (?)
 * Add recent posts to user show view
+* Add post show view
 
 ## Refactors
 

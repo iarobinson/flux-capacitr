@@ -30,9 +30,9 @@
               <strong><%= member.username %></strong>
             <% end %>
             <% if current_user.owns?(blog) %>
-              <%= link_to blog_members_url(blog),
+              <%= link_to blog_remove_member_url(blog, member),
                           class: 'remove-member-button',
-                          data: {member_id: member.id} do %>
+                          method: :delete do %>
               <span class="glyphicon glyphicon-remove"></span>
               <% end %>
             <% end %>

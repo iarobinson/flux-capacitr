@@ -54,8 +54,10 @@ class BlogsController < ApplicationController
   end
   
   def remove_member
+    @user = User.friendly.find(params[:user_id])
     @blog = Blog.friendly.find(params[:blog_id])
     @blog.members.delete(@user)
+    render :show
   end
   
   def show

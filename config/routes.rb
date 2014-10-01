@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :blogs, except: [:index] do
     get 'followers', to: 'blogs#followers'
     post 'members', to: 'blogs#add_members', as: 'members'
-    get 'members', to: 'blogs#remove_member'
+    delete 'members/:user_id', to: 'blogs#remove_member', as: 'remove_member'
     resources :posts, only: [:new]
   end
   
