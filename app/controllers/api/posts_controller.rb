@@ -28,9 +28,15 @@ module Api
     
     def index
       if params[:blog_id]
-        @posts = Blog.find(params[:blog_id]).posts.page(params[:page])
+        @blog = Blog.find(params[:blog_id])
+        @posts = @blog.posts
+                      .includes([:blog, :users_liked_by])
+                      .page(params[:page])
       else
-        @posts = current_user.feed_posts.includes(:author).page(params[:page])
+        @posts = current_user
+                 .feed_posts
+                 .includes(:author, :blog, :tags, :users_liked_by)
+                 .page(params[:page])
       end
       render 'index.json.jbuilder'
     end

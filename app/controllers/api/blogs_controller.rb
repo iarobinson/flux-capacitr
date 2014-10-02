@@ -1,11 +1,13 @@
 module Api
   class BlogsController < ApiController
     def show
-      @blog = Blog.includes(:followers)
-                  .friendly
+      @blog = Blog.friendly
                   .find(params[:id])
                   
-      @posts = @blog.posts.page(params[:page])
+      @posts = @blog.posts
+                    .includes([:author, :blog, :users_liked_by, :tags])
+                    .page(params[:page])
+                
       render 'show.json.jbuilder'
     end
     

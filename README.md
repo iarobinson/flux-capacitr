@@ -10,7 +10,6 @@
 * Blog owners can upload custom stylesheets
 
 ## Refactors
-* DRY up code for filterable views and paginated views
 
 ## Styles
 * Fix errors taking up almost whole page on registration

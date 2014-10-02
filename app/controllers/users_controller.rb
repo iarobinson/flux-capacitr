@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   def show
     @user = User.includes(:blogs)
                 .includes(:followed_blogs)
-                .includes(:posts)
                 .friendly.find(params[:id])
     render :show
   end
