@@ -28,6 +28,13 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
     this.addSubview(".posts", postShow.render());
   },
   
+  highlightTags: function () {
+    this.filterTags.forEach(function (tagName) {
+      var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
+      tagItems.addClass("active");
+    });
+  },
+  
   nextPage: function () {
     var self = this;
     if (this.$('.spinner').visible()) {
@@ -59,6 +66,7 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.sortPosts();
     this.attachSubviews();
+    this.highlightTags();
     return this;
   },
   
@@ -78,7 +86,6 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
       tagItems.removeClass("active");
     } else {
       this.filterTags.push(tagName);
-      tagItems.addClass("active");
     }
     this.model.posts().filterBy({
       tags: this.filterTags
