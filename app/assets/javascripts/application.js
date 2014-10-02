@@ -21,6 +21,9 @@
 //= require allonsy
 //= require jquery.serializejson
 //= require_tree ../templates
+//= require ./utils/composite_view
+//= require ./utils/paginated_view
+//= require ./utils/filterable_view
 //= require_tree ./utils
 //= require_tree ./models
 //= require_tree ./collections

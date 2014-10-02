@@ -1,4 +1,4 @@
-Allonsy.Views.BlogShow = Backbone.PaginatedView.extend({
+Allonsy.Views.BlogShow = Backbone.FilterableView.extend({
   template: JST['blogs/show'],
   
   newPostTemplate: JST['posts/edit'],
@@ -12,17 +12,11 @@ Allonsy.Views.BlogShow = Backbone.PaginatedView.extend({
   
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model.posts().filtered, "add", this.addPost);
-    this.listenTo(this.model.posts().filtered, "remove", this.removePost);
-    this.listenTo(this.model.posts().filtered, "sort", this.render);
-    
-    this.filterTags = [];
-    
+    Backbone.FilterableView.prototype.initialize.apply(this);
+    setInterval(this.nextPosts.bind(this), 1000);
+
     var blogHeaderView = new Allonsy.Views.BlogHeader({ model: this.model });
     this.addSubview(".blog-header", blogHeaderView.render());
-    
-    this.model.posts().filtered.each(this.addPost.bind(this));
-    setInterval(this.nextPosts.bind(this), 1000);
   },
   
   addPost: function (post) {
@@ -56,13 +50,6 @@ Allonsy.Views.BlogShow = Backbone.PaginatedView.extend({
     this.removeSubview('.posts', view);
   },
   
-  highlightTags: function () {
-    this.filterTags.forEach(function (tagName) {
-      var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
-      tagItems.addClass("active");
-    });
-  },
-  
   nextPosts: function () {
     this.nextPage(this.model.posts());
   },
@@ -92,34 +79,7 @@ Allonsy.Views.BlogShow = Backbone.PaginatedView.extend({
     this.removeSubview(".posts", subview);
   },
   
-  render: function () {
-    var renderedContent = this.template({ blog: this.model });
-    this.$el.html(renderedContent);
-    this.sortPosts();
-    this.attachSubviews();
-    this.highlightTags();
-    return this;
-  },
-  
-  sortPosts: function () {
-    this.subviews('.posts').sort(function (a, b) {
-      return b.model.get('id') - a.model.get('id');
-    });
-  },
-  
-  toggleFilter: function (event) {
-    var tagName = $(event.currentTarget).data("tag");
-    var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
-    
-    if (_.contains(this.filterTags, tagName)) {
-      var tagIndex = this.filterTags.indexOf(tagName);
-      this.filterTags.splice(tagIndex, 1);
-      tagItems.removeClass("active");
-    } else {
-      this.filterTags.push(tagName);
-    }
-    this.model.posts().filterBy({
-      tags: this.filterTags
-    });
+  renderTemplate: function () {
+    return this.template({ blog: this.model });
   }
 });

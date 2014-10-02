@@ -1,8 +1,5 @@
 Backbone.PaginatedView = Backbone.CompositeView.extend({
-  initialize: function () {
-    // set callback to load next page.
-    setInterval(this.nextPage.bind(this), 1000);
-  },
+  // I set an interval-based callback to nextPage in my child views.
   
   nextPage: function (collection) {
     var self = this;

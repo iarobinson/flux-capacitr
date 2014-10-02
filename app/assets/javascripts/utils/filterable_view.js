@@ -1,20 +1,36 @@
-Allonsy.Views.FilterableView = Backbone.CompositeView.extend({
-  events: {
-    "click .post-tag": "toggleFilter"
-  },
+Backbone.FilterableView = Backbone.PaginatedView.extend({
+  // Set "click .post-tag": "toggleFilter" in the child view's events.
   
+  // Call this in the child view's initialize.
   initialize: function () {
     this.collection = this.model.posts();
-    this.listenTo(this.collection.filtered, "add", this.addModel);
-    this.listenTo(this.collection.filtered, "remove", this.removeModel);
-    
-    this.filterParams = {};
-    
-    var blogHeaderView = new Allonsy.Views.BlogHeader({ model: this.model });
-    this.addSubview(".blog-header", blogHeaderView.render());
+    this.listenTo(this.collection.filtered, "add", this.addPost);
+    this.listenTo(this.collection.filtered, "remove", this.removePost);
+    this.listenTo(this.collection.filtered, "sort", this.render);
+    this.filterTags = [];
     
     this.collection.filtered.each(this.addPost.bind(this));
-    setInterval(this.nextPage.bind(this), 1000);
+  },
+  
+  highlightTags: function () {
+    this.filterTags.forEach(function (tagName) {
+      var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
+      tagItems.addClass("active");
+    });
+  },
+  
+  render: function () {
+    this.$el.html(this.renderTemplate());
+    this.sortPosts();
+    this.attachSubviews();
+    this.highlightTags();
+    return this;
+  },
+  
+  sortPosts: function () {
+    this.subviews('.posts').sort(function (a, b) {
+      return b.model.get('id') - a.model.get('id');
+    });
   },
 
   toggleFilter: function (event) {
@@ -27,7 +43,6 @@ Allonsy.Views.FilterableView = Backbone.CompositeView.extend({
       tagItems.removeClass("active");
     } else {
       this.filterTags.push(tagName);
-      tagItems.addClass("active");
     }
     this.collection.filterBy({
       tags: this.filterTags
