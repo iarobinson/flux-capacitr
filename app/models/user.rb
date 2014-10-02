@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
   
   def is_member?(blog)
-    blog.members.include?(self)
+    blog.members.include?(self) || self.owns?(blog)
   end
   
   def is_password?(password)

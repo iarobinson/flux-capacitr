@@ -4,21 +4,26 @@ module Api
     
     def create
       @post = current_user.posts.new(post_params)
-      ensure_blog_member(@post.blog)
-    
-      if @post.save
-        @post.assign_tags(params[:tags])
-        render partial: 'post', locals: {post: @post}
+      if current_user.is_member?(@post.blog)
+        if @post.save
+          @post.assign_tags(params[:tags])
+          render partial: 'post', locals: {post: @post}
+        else
+          render json: @post.errors.full_messages, status: :unprocessable_entity
+        end
       else
-        render json: @post.errors.full_messages, status: :unprocessable_entity
+        redirect_to blog_url(@post.blog)
       end
     end
     
     def destroy
       @post = Post.find(params[:id])
-      ensure_post_authorization(@post.blog)
-      @post.destroy!
-      render json: {}
+      if current_user.authored?(@post) || current_user.owns?(@post.blog)
+        @post.destroy!
+        render json: {}
+      else
+        redirect_to blog_url(@post.blog)
+      end
     end
     
     def index
@@ -66,13 +71,13 @@ module Api
     
     def update
       @post = Post.find(params[:id])
-      ensure_blog_owner(@post.blog)
-      
-      if @post.update_attributes(post_params)
-        @post.assign_tags(params[:tags])
-        render partial: 'post', locals: {post: @post}
-      else
-        render json: @post.errors.full_messages, status: :unprocessable_entity
+      if current_user.owns?(@post.blog)   
+        if @post.update_attributes(post_params)
+          @post.assign_tags(params[:tags])
+          render partial: 'post', locals: {post: @post}
+        else
+          render json: @post.errors.full_messages, status: :unprocessable_entity
+        end
       end
     end
     
@@ -81,14 +86,14 @@ module Api
     def ensure_blog_member(blog)
       unless current_user.is_member?(blog)
         flash[:errors] = ["You must be a member of the blog to perform that action!"]
-        redirect_to blog_url(post.blog)
+        redirect_to blog_url(blog)
       end
     end
     
     def ensure_blog_owner(blog)
       if blog.owner != current_user
         flash[:errors] = ["You must be the blog's owner to perform that action!"]
-        redirect_to blog_url(post.blog)
+        redirect_to blog_url(blog)
       end
     end
     

@@ -39,9 +39,12 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
       success: function (response) {
         if (view.parentView) {
           view.parentView.authoring = false;
+          view.parentView.removePost(view.model);
+          view.parentView.posts().add(view.model);
+        } else {
+          view.open = false;
+          view.render();
         }
-        view.open = false;
-        view.render();
       }
     });
   },

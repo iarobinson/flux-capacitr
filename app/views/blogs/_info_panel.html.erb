@@ -7,14 +7,14 @@
   <li <%= 'class=active' if action == 'posts' %>>
     <%= link_to blog_url(blog) do %>
       <span class="glyphicon glyphicon-list-alt"></span>
-      <strong>Posts (<%= blog.posts.count %>)</strong>
+      <strong>Posts</strong>
     <% end %>
   </li>
   
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
       <span class="glyphicon glyphicon-th-list"></span>
-      Members (<%= blog.members.count + 1 %>)<span class="caret"></span>
+      Members<span class="caret"></span>
     </a>
     
     <ul class="dropdown-menu" role="menu">
@@ -54,7 +54,7 @@
   <li <%= 'class=active' if action == 'followers' %>>
     <%= link_to blog_followers_url(blog) do %>
       <span class="glyphicon glyphicon-user"></span>
-      Followers (<%= blog.followers.count %>)
+      Followers
     <% end %>
   </li>
 </ul>

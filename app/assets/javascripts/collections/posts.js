@@ -10,7 +10,7 @@ Allonsy.Collections.Posts = Backbone.Collection.extend({
     });
 
     this.filtered.params = params;
-    this.filtered.reset(filteredColl);
+    this.filtered.set(filteredColl);
   },
   
   filterTags: function () {

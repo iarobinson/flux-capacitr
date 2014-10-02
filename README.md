@@ -2,7 +2,7 @@
 
 ## Features
 * Cover page has a button with an audio easter egg
-* Blogs#show view supports filtering by tags
+* Ensure that filtered tags are bolded after loading
 * Feed view supports filtering by tags
 * Users#show view displays recent posts
 * Users can reblog posts

@@ -32,7 +32,7 @@
         <strong>Tags:</strong>
         <ul class="inline-list">
           <% post.get('tags').forEach(function (tag) { %>
-            <li class="post-tag">
+            <li class="post-tag" data-tag="<%= tag %>">
               <a href="javascript:void(0)"><%= tag %></a>
             </li>
           <% }) %>

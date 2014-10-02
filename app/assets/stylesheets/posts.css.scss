@@ -74,6 +74,15 @@
   }
 }
 
+.post-tag.active < a {
+  color: #2a6496;
+  font-weight: bold;
+}
+
+.post-tag a:hover {
+  text-decoration: none;
+}
+
 .post-tags ul {
   display: inline;
   list-style: none;

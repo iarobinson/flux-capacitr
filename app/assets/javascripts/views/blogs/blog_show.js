@@ -12,15 +12,15 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model.posts(), "add", this.addPost);
-    this.listenTo(this.model.posts(), "remove", this.removePost);
+    this.listenTo(this.model.posts().filtered, "add", this.addPost);
+    this.listenTo(this.model.posts().filtered, "remove", this.removePost);
     
     this.filterTags = [];
     
     var blogHeaderView = new Allonsy.Views.BlogHeader({ model: this.model });
     this.addSubview(".blog-header", blogHeaderView.render());
     
-    this.model.posts().each(this.addPost.bind(this));
+    this.model.posts().filtered.each(this.addPost.bind(this));
     setInterval(this.nextPage.bind(this), 1000);
   },
   
@@ -103,12 +103,16 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   },
   
   toggleFilter: function (event) {
-    var tagName = $(event.currentTarget).find('a').text();
+    var tagName = $(event.currentTarget).data("tag");
+    var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
+    
     if (_.contains(this.filterTags, tagName)) {
       var tagIndex = this.filterTags.indexOf(tagName);
       this.filterTags.splice(tagIndex, 1);
+      tagItems.removeClass("active");
     } else {
-      this.filterTags.push(tagName);      
+      this.filterTags.push(tagName);
+      tagItems.addClass("active");
     }
     this.model.posts().filterBy({
       tags: this.filterTags
