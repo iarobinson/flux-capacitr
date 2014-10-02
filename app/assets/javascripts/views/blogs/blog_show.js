@@ -98,8 +98,15 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
   render: function () {
     var renderedContent = this.template({ blog: this.model });
     this.$el.html(renderedContent);
+    this.sortPosts();
     this.attachSubviews();
     return this;
+  },
+  
+  sortPosts: function () {
+    this.subviews('.posts').sort(function (a, b) {
+      return b.model.get('id') - a.model.get('id');
+    });
   },
   
   toggleFilter: function (event) {
