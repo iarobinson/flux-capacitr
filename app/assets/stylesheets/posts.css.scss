@@ -51,9 +51,12 @@
   opacity: 0.8;
 }
 
-.post-info a {
+.post-footer a {
   color: #2a6496;
-  &:hover {
+  &:hover, &:active, &:focus {
+    background-color: none;
+    box-shadow: none;
+    outline: none;
     text-decoration: none;
   }
 }

@@ -1,6 +1,8 @@
 class BlogsController < ApplicationController
-  before_action :ensure_logged_in, except: [:show]
-  before_action :ensure_blog_owner, except: [:create, :followers, :new, :show]
+  before_action :ensure_logged_in, except: [:followers, :lucky, :show]
+  before_action :ensure_blog_owner, only: [
+    :add_members, :destroy, :edit, :remove_member, :update
+  ]
   
   def add_members
     @blog = Blog.friendly.find(params[:blog_id])
@@ -43,9 +45,9 @@ class BlogsController < ApplicationController
     render :followers
   end
   
-  def members
-    @blog = Blog.friendly.find(params[:blog_id])
-    render :members
+  def lucky
+    @blog = Blog.all.sample
+    redirect_to blog_url(@blog)
   end
   
   def new

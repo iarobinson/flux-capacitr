@@ -29,7 +29,7 @@
             <%= link_to user_url(member) do %>
               <strong><%= member.username %></strong>
             <% end %>
-            <% if current_user.owns?(blog) %>
+            <% if current_user && current_user.owns?(blog) %>
               <%= link_to blog_remove_member_url(blog, member),
                           class: 'remove-member-button',
                           method: :delete do %>
@@ -39,7 +39,7 @@
         </li>
       <% end %>
       
-      <% if current_user.owns?(blog) %>
+      <% if current_user && current_user.owns?(blog) %>
         <li class="divider"></li>
         <li>
           <%= link_to 'javascript:void(0)',
@@ -59,6 +59,6 @@
   </li>
 </ul>
 
-<% if current_user.owns?(blog) %>
+<% if current_user && current_user.owns?(blog) %>
   <%= render 'blogs/add_member_modal', blog: @blog %>
 <% end %>

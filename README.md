@@ -1,5 +1,8 @@
 # TODO:
 
+## Polishing up
+* Figure out if Rack::Deflater is working
+
 ## Features
 * User registration and edit pages show preview of uploaded avatar
 * Cover page has a button with an audio easter egg
@@ -12,6 +15,5 @@
 ## Refactors
 
 ## Styles
-* Fix errors taking up almost whole page on registration
 * New post form plays animation before removing itself from the DOM.
 * Background is "tumblr style", with a background color and gradient image: #2c4762 url('/images/background.png') top repeat-x
