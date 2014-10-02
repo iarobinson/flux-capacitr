@@ -14,6 +14,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.posts().filtered, "add", this.addPost);
     this.listenTo(this.model.posts().filtered, "remove", this.removePost);
+    this.listenTo(this.model.posts().filtered, "sort", this.render);
     
     this.filterTags = [];
     

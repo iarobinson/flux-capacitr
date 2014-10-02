@@ -4,15 +4,19 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
   className: "feed-show",
   
   events: {
-    "click #fetch-posts": "fetchPosts"
+    "click #fetch-posts": "fetchPosts",
+    "click .post-tag": "toggleFilter"
   },
   
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model.posts(), "add", this.addPost);
-    this.listenTo(this.model.posts(), "remove", this.removePost);
+    this.listenTo(this.model.posts().filtered, "add", this.addPost);
+    this.listenTo(this.model.posts().filtered, "remove", this.removePost);
+    this.listenTo(this.model.posts().filtered, "sort", this.render);
     
-    this.model.posts().each(this.addPost.bind(this));
+    this.filterTags = [];
+    
+    this.model.posts().filtered.each(this.addPost.bind(this));
     setInterval(this.nextPage.bind(this), 1000);
   },
   
@@ -53,7 +57,31 @@ Allonsy.Views.FeedShow = Backbone.CompositeView.extend({
   render: function () {
     var renderedContent = this.template();
     this.$el.html(renderedContent);
+    this.sortPosts();
     this.attachSubviews();
     return this;
+  },
+  
+  sortPosts: function () {
+    this.subviews('.posts').sort(function (a, b) {
+      return b.model.get('id') - a.model.get('id');
+    });
+  },
+  
+  toggleFilter: function (event) {
+    var tagName = $(event.currentTarget).data("tag");
+    var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
+    
+    if (_.contains(this.filterTags, tagName)) {
+      var tagIndex = this.filterTags.indexOf(tagName);
+      this.filterTags.splice(tagIndex, 1);
+      tagItems.removeClass("active");
+    } else {
+      this.filterTags.push(tagName);
+      tagItems.addClass("active");
+    }
+    this.model.posts().filterBy({
+      tags: this.filterTags
+    });
   }
 });

@@ -1,15 +1,14 @@
 # TODO:
 
 ## Features
-* Cover page has a button with an audio easter egg
 * Ensure that filtered tags are bolded after loading
-* Feed view supports filtering by tags
+* User registration and edit pages show preview of uploaded avatar
+* Cover page has a button with an audio easter egg
 * Users#show view displays recent posts
 * Users can reblog posts
 * Users can embed video in posts
 * Posts have types (text, quote, image, etc)
 * Blog owners can upload custom stylesheets
-* User registration and edit pages show preview of uploaded avatar
 
 ## Refactors
 
