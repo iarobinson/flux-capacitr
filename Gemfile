@@ -14,6 +14,7 @@ gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'pg'
 gem 'rails', '4.1.4'
+gem 'rails_12factor'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 
@@ -29,8 +30,4 @@ end
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
-end
-
-group :production do
-  gem 'rails_12factor'
 end

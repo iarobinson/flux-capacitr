@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def guest_login
-    login_user!(User.find_by_email('nine@gallifrey.net'))
+    login_user!(User.find_by_email('guest@flux-capacitr.com'))
     redirect_to :root
   end
 

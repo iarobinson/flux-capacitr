@@ -14,5 +14,6 @@
 ## Refactors
 
 ## Styles
+* Fix errors taking up almost whole page on registration
 * New post form plays animation before removing itself from the DOM.
 * Background is "tumblr style", with a background color and gradient image: #2c4762 url('/images/background.png') top repeat-x
