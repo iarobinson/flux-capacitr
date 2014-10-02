@@ -1,4 +1,4 @@
-Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
+Allonsy.Views.BlogShow = Backbone.PaginatedView.extend({
   template: JST['blogs/show'],
   
   newPostTemplate: JST['posts/edit'],
@@ -22,7 +22,7 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     this.addSubview(".blog-header", blogHeaderView.render());
     
     this.model.posts().filtered.each(this.addPost.bind(this));
-    setInterval(this.nextPage.bind(this), 1000);
+    setInterval(this.nextPosts.bind(this), 1000);
   },
   
   addPost: function (post) {
@@ -63,19 +63,8 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend({
     });
   },
   
-  nextPage: function () {
-    var self = this;
-    if (this.$('.spinner').visible()) {
-      if (self.model.posts().page < self.model.posts().total_pages) {
-        self.model.posts().fetch({
-          data: { page: parseInt(this.model.posts().page) + 1 },
-          remove: false,
-          wait: true
-        });
-      } else {
-        self.$('.spinner').remove();
-      }
-    }
+  nextPosts: function () {
+    this.nextPage(this.model.posts());
   },
   
   newPostForm: function (event) {

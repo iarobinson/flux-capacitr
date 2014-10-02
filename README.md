@@ -1,7 +1,6 @@
 # TODO:
 
 ## Features
-* Ensure that filtered tags are bolded after loading
 * User registration and edit pages show preview of uploaded avatar
 * Cover page has a button with an audio easter egg
 * Users#show view displays recent posts
@@ -11,6 +10,7 @@
 * Blog owners can upload custom stylesheets
 
 ## Refactors
+* DRY up code for filterable views and paginated views
 
 ## Styles
 * Fix errors taking up almost whole page on registration
