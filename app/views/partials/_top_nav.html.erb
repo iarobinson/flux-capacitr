@@ -18,6 +18,13 @@
             <span class="glyphicon glyphicon-cog"></span>
           <% end %>
         </div>
+        
+        <div class="tab iconic" id="random-button">
+          <%= link_to lucky_url do %>
+            <span class="glyphicon glyphicon-random"></span>
+          <% end %>
+        </div>
+        
         <div class="tab iconic" id="logout-button">
           <%= link_to session_url,
                       method: :delete do %>
@@ -25,6 +32,12 @@
           <% end %>
         </div>
       <% else %>
+        <div class="tab iconic" id="random-button">
+          <%= link_to lucky_url do %>
+            <span class="glyphicon glyphicon-random"></span>
+          <% end %>
+        </div>
+      
         <div class="tab iconic" id="login-button">
           <%= link_to new_session_url do %>
             <span class="glyphicon glyphicon-off"></span>

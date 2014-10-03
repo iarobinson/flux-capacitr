@@ -77,7 +77,7 @@ module Api
     
     def update
       @post = Post.find(params[:id])
-      if current_user.owns?(@post.blog)   
+      if current_user.owns?(@post.blog) || current_user.authored?(@post)
         if @post.update_attributes(post_params)
           @post.assign_tags(params[:tags])
           render partial: 'post', locals: {post: @post}
