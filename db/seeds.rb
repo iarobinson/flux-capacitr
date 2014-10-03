@@ -1,3 +1,26 @@
+User.create!([
+  {email: "guest@flux-capacitr.com", password: "welcome", username: "timely-guest", avatar_url: "http://www.seilchat.co.uk/download/file.php?avatar=1081_1390414737.gif", slug: "a-timely-guest"},
+  {email: "calvin@watterson.com", password: "calvin", username: "spaceman-spiff", avatar_url: "https://www.filepicker.io/api/file/aX0jRYHnQGicFIBKLCkV", slug: "spaceman-spiff"},
+  {email: "rick@adultswim.com", password: "rickrick", username: "rickdiculous", avatar_url: "https://www.filepicker.io/api/file/oCxbqJtRJW80KEybnspj", slug: "rickdiculous"},
+  {email: "bill@stallyns.net", password: "billbill", username: "bill-esque", avatar_url: "https://www.filepicker.io/api/file/6hj7Fz0mS4uoeGT5ruKN", slug: "bill-esque"},
+  {email: "morty@adultswim.com", password: "mortymorty", username: "mortyfied", avatar_url: "https://www.filepicker.io/api/file/00JZiscISfOTLVAjRxEd", slug: "mortyfied"},
+  {email: "ted@stallyns.net", password: "tedted", username: "ted-like-whoa", avatar_url: "https://www.filepicker.io/api/file/qMCI8WliRMC2l643RJCD", slug: "ted-like-whoa"},
+  {email: "abe@whitehouse.gov", password: "lincoln", username: "honest-abe", avatar_url: "https://www.filepicker.io/api/file/u4THIK9uQxOPX9Ke4Qny", slug: "honest-abe"},
+  {email: "t2@skynet.gov", password: "arnold", username: "t-800", avatar_url: "https://www.filepicker.io/api/file/3LP299IWTTeMXnFEdYUh", slug: "t-800"},
+  {email: "eleven@gallifrey.net", password: "mattsmith", username: "geronimo", avatar_url: "https://www.filepicker.io/api/file/vsUCvKDlQM2imFNK5awt", slug: "geronimo"},
+  {email: "doc@future.com", password: "docdoc", username: "great-scott", avatar_url: "https://www.filepicker.io/api/file/U0wo1NzgRGWquG77k7KA", slug: "great-scott"},
+  {email: "amy@tardis.com", password: "amyamy", username: "amy-pond", avatar_url: "https://www.filepicker.io/api/file/FskFFwTYT9y7nVivsqRI", slug: "amy-pond"},
+  {email: "marty@future.com", password: "martymarty", username: "mcfly-guy", avatar_url: "https://www.filepicker.io/api/file/1dv52xgCR4Cdno2FkTsa", slug: "mcfly-guy"},
+  {email: "dalek@dalek.dalek", password: "dalekdalek", username: "x-terminate", avatar_url: "https://www.filepicker.io/api/file/gknDxKkeQlaIInuDTHkz", slug: "x-terminate"},
+  {email: "one@gallifrey.net", password: "hartnell", username: "the-good-doctor", avatar_url: "https://www.filepicker.io/api/file/O1xTdHAARCWcEIAmfXFA", slug: "the-good-doctor"},
+  {email: "rory@tardis.com", password: "roryrory", username: "rory-the-roman", avatar_url: "https://www.filepicker.io/api/file/1uRNIk1VS46ITKz1rOjJ", slug: "rory-the-roman"},
+  {email: "winston@downing.gov", password: "winston", username: "churchill-caesar", avatar_url: "https://www.filepicker.io/api/file/7kNoIGtwT3WxMZIpsSw4", slug: "churchill-caesar"},
+  {email: "nine@gallifrey.net", password: "eccleston", username: "fantastic", avatar_url: "https://www.filepicker.io/api/file/59k0JqU3Qmm3GQIyOKeG", slug: "fantastic"},
+  {email: "ten@gallifrey.net", password: "tennant", username: "allons-y", avatar_url: "https://www.filepicker.io/api/file/UcQuiLUTS7WFGo75rKUD", slug: "allons-y"},
+  {email: "looper@sonypictures.com", password: "brucebruce", username: "looper", avatar_url: "https://www.filepicker.io/api/file/VL3XKVzlSjGGiJ4NPyIq", slug: "looper"},
+  {email: "looper2@sonypictures.com", password: "joseph", username: "the-real-looper", avatar_url: "https://www.filepicker.io/api/file/HC5GG5YkR1OTjJ8PFOdo", slug: "the-real-looper"}
+])
+
 Blog.create!([
   {owner_id: 1, title: "My First Blog", url: "chrono-blogger", slug: "chrono-blogger"},
   {owner_id: 3, title: "Rick and Morty 100 Years", url: "rick-and-morty", slug: "rick-and-morty"},
@@ -5,6 +28,7 @@ Blog.create!([
   {owner_id: 14, title: "Hello, I'm the Doctor", url: "doctorwho", slug: "doctorwho"},
   {owner_id: 10, title: "My Other Car is a Time Machine", url: "eighty-eight-mph", slug: "eighty-eight-mph"}
 ])
+
 BlogMembership.create!([
   {blog_id: 2, user_id: 5},
   {blog_id: 3, user_id: 6},
@@ -16,20 +40,14 @@ BlogMembership.create!([
   {blog_id: 3, user_id: 7},
   {blog_id: 5, user_id: 12}
 ])
+
 Following.create!([
   {blog_id: 2, follower_id: 5},
   {blog_id: 2, follower_id: 1},
   {blog_id: 4, follower_id: 1},
   {blog_id: 3, follower_id: 1}
 ])
-Like.create!([
-  {user_id: 1, post_id: 11},
-  {user_id: 1, post_id: 12},
-  {user_id: 1, post_id: 6},
-  {user_id: 1, post_id: 2},
-  {user_id: 9, post_id: 11},
-  {user_id: 9, post_id: 9}
-])
+
 Post.create!([
   {author_id: 1, blog_id: 1, title: "I'm posting through time!", body: "Heck yes!"},
   {author_id: 3, blog_id: 2, title: "Rick and Morty Official Blog", body: "And together we're gonna run around, Morty, we're gonna... do all kinds of wonderful things, Morty. Just you and me, Morty. The outside world is our enemy, Morty... we're the only.... friends we've got, Morty! It's just Rick and Morty. Rick and Morty and their adventures, Morty.. RICK AND MORTY FOREVER AND FOREVER A HUNDRED YEARS Rick and Morty.. some...things.. Me and Rick and Morty runnin' around and... Rick and Morty time... a- all day long forever.. all a - a hundred days Rick and Morty! forever a hundred times.... OVER and over Rick and Morty... adventures dot com.. W W W dot at Rick and Morty dot com w..w..w... Rick and Morty adventures.. ah- hundred years..... every minute Rick and Morty dot com.... w w w a hundred times... Rick and Morty dot com.......\""},
@@ -49,6 +67,16 @@ Post.create!([
   {author_id: 10, blog_id: 5, title: "Blog site?", body: "What is this thing, Marty? And why do I have an account here? Don't bother me with this foolishness, I have important work to do on the DeLorean!"},
   {author_id: 9, blog_id: 4, title: "To All My Enemies", body: "Now, the question of the hour is: \"Who's got the Pandorica?\"_ Answer:_ I do.\r\n\r\n_Next question_: Who's coming to take it from me?\r\n\r\n...\r\n\r\nCome on! Look at me!\r\n\r\n- No plan\r\n- No back-up\r\n- No weapons worth a damn!\r\n\r\nOh, and something else I don't have: \r\n\r\n- Anything to lose!\r\n\r\nSo, if you're sitting up there in your silly little spaceship with all your silly little guns, and you've got any plans on taking the Pandorica tonight, just remember who's standing in your way! Remember every black day I ever stopped you, and then, and then, do the smart thing: Let somebody else try first.\r\n\r\n![enter image description here](https://www.filepicker.io/api/file/JlOL5bSSCqgNleJeARhV \"enter image title here\")"}
 ])
+
+Like.create!([
+  {user_id: 1, post_id: 11},
+  {user_id: 1, post_id: 12},
+  {user_id: 1, post_id: 6},
+  {user_id: 1, post_id: 2},
+  {user_id: 9, post_id: 11},
+  {user_id: 9, post_id: 9}
+])
+
 Tag.create!([
   {label: "time travel"},
   {label: "awesome"},
@@ -68,6 +96,7 @@ Tag.create!([
   {label: "geronimo"},
   {label: "not bluffing"}
 ])
+
 Tagging.create!([
   {post_id: 1, tag_id: 1},
   {post_id: 1, tag_id: 2},
@@ -94,26 +123,4 @@ Tagging.create!([
   {post_id: 17, tag_id: 15},
   {post_id: 17, tag_id: 16},
   {post_id: 17, tag_id: 17}
-])
-User.create!([
-  {email: "calvin@watterson.com", password_digest: "$2a$10$aCJ2SLnS7VCsFX8Huvs73O5gURmXvrEx97q3cUh1AA3JD0uaSCO5y", session_token: "TqAlnoZ6dTgH_dYUtn064g", username: "spaceman-spiff", avatar_url: "https://www.filepicker.io/api/file/aX0jRYHnQGicFIBKLCkV", slug: "spaceman-spiff"},
-  {email: "t2@skynet.gov", password_digest: "$2a$10$5/VcmCsiFrBKwM9OxwayBOb0XJz048OY57aVpWmMP0y3yM4zdaeZC", session_token: "vraPKUfhloN2SVLLx3Kc3w", username: "t-800", avatar_url: "https://www.filepicker.io/api/file/3LP299IWTTeMXnFEdYUh", slug: "t-800"},
-  {email: "amy@tardis.com", password_digest: "$2a$10$/3gcFUIk4zXTkSVRL.Jmou6N9VRt2qkbXALcLLfJOero6BqIiNAvS", session_token: "6qweko2ZaRlkTDVquFjEDg", username: "amy-pond", avatar_url: "https://www.filepicker.io/api/file/FskFFwTYT9y7nVivsqRI", slug: "amy-pond"},
-  {email: "dalek@dalek.dalek", password_digest: "$2a$10$va8QwMsnlzP9R5o1zzGnGezYcpRmfry929/dp/BuFAMjraQLmwqaa", session_token: "QQAgh8Non4uiNYoavLdAMw", username: "x-terminate", avatar_url: "https://www.filepicker.io/api/file/gknDxKkeQlaIInuDTHkz", slug: "x-terminate"},
-  {email: "rory@tardis.com", password_digest: "$2a$10$eubSEyRVK6V/oAsuO3XGr.2cqvvqWCAgle0.cVWXpl14PyVo5vgO2", session_token: "IllP5QK_dVLCPiwbOSrmZw", username: "rory-the-roman", avatar_url: "https://www.filepicker.io/api/file/1uRNIk1VS46ITKz1rOjJ", slug: "rory-the-roman"},
-  {email: "winston@downing.gov", password_digest: "$2a$10$JsfYOVEqsaV8gaBvYKkUOu9G8h1TqpvS39DGliZTmRXhzFHzARV/a", session_token: "XNewom6lBbuOIZvVk1Eh9Q", username: "churchill-caesar", avatar_url: "https://www.filepicker.io/api/file/7kNoIGtwT3WxMZIpsSw4", slug: "churchill-caesar"},
-  {email: "looper@sonypictures.com", password_digest: "$2a$10$OhI1a7zKyhXcp80yDJGJ1.rjh3IaoUPGvX54SgGiR29LGvjHRHkHe", session_token: "WripVmCRlgbAGM42O7byiQ", username: "looper", avatar_url: "https://www.filepicker.io/api/file/VL3XKVzlSjGGiJ4NPyIq", slug: "looper"},
-  {email: "looper2@sonypictures.com", password_digest: "$2a$10$i60lB.cboT3bLSp7xOon3OOjMdDHEEhTc61d5h1SOTbs9RzWeNLw2", session_token: "I8mdoIg101f12aFDwBGoiQ", username: "the-real-looper", avatar_url: "https://www.filepicker.io/api/file/HC5GG5YkR1OTjJ8PFOdo", slug: "the-real-looper"},
-  {email: "morty@adultswim.com", password_digest: "$2a$10$XP/jP1EQefsIQm05Mxl3BOKA4ZBX214Z5CZ2qqVOxLW/skAN3fRMW", session_token: "c-5m9oCDqjQK2UPrxq9EAA", username: "mortyfied", avatar_url: "https://www.filepicker.io/api/file/00JZiscISfOTLVAjRxEd", slug: "mortyfied"},
-  {email: "rick@adultswim.com", password_digest: "$2a$10$XgRCvATCcDhezXbH0ZH0MuT8luVaUET.fHi3SEVjbKywKzKgXbJxa", session_token: "BMxT0z_j6AIID71Awg1SGA", username: "rickdiculous", avatar_url: "https://www.filepicker.io/api/file/oCxbqJtRJW80KEybnspj", slug: "rickdiculous"},
-  {email: "ted@stallyns.net", password_digest: "$2a$10$wWJp9uzDGmPY9q1Co5IWC.JnQ4Pfz8H37geSgOvGmyMp/hFbc/xuW", session_token: "HNFfXOhtXeFzij1EoejYjw", username: "ted-like-whoa", avatar_url: "https://www.filepicker.io/api/file/qMCI8WliRMC2l643RJCD", slug: "ted-like-whoa"},
-  {email: "one@gallifrey.net", password_digest: "$2a$10$rCVj5y.Dpoa.FLoSU9vt6.pVF0P0MFuCLv5sVXJN0TrBhEf6Es/Dy", session_token: "qujBP4YtpLOkTt7p8cvZDA", username: "the-good-doctor", avatar_url: "https://www.filepicker.io/api/file/O1xTdHAARCWcEIAmfXFA", slug: "the-good-doctor"},
-  {email: "nine@gallifrey.net", password_digest: "$2a$10$EgGXH7pm8ioYAwnVB0LaQ.ChLSao4TQWtfldHutYu3RQQ.tr/Mvq6", session_token: "a2qW-xBi0_4Yhp7uKZ_Zpg", username: "fantastic", avatar_url: "https://www.filepicker.io/api/file/59k0JqU3Qmm3GQIyOKeG", slug: "fantastic"},
-  {email: "ten@gallifrey.net", password_digest: "$2a$10$q902qQz4usmNeJs4alPkAONBC45VkWb.ojaa1BtKGsjY3nTxQlHkC", session_token: "pRh00cyG-n_3HXat-CRl1g", username: "allons-y", avatar_url: "https://www.filepicker.io/api/file/UcQuiLUTS7WFGo75rKUD", slug: "allons-y"},
-  {email: "bill@stallyns.net", password_digest: "$2a$10$4Wf9uZcyCV1BT7eqvdeuIePDKqjzjEt1L9EUxrKGyn0QZp9BVjbWa", session_token: "3dHiRpG75LeWkfgzb5fcww", username: "bill-esque", avatar_url: "https://www.filepicker.io/api/file/6hj7Fz0mS4uoeGT5ruKN", slug: "bill-esque"},
-  {email: "abe@whitehouse.gov", password_digest: "$2a$10$LObcUt8IX1dqiO7X66TjNOsIdJYv3jmQv7XoMTFoyUxQjLUrRJ9lq", session_token: "LKuovZdNZVr61YX2vxIR2g", username: "honest-abe", avatar_url: "https://www.filepicker.io/api/file/u4THIK9uQxOPX9Ke4Qny", slug: "honest-abe"},
-  {email: "guest@flux-capacitr.com", password_digest: "$2a$10$JMDBXDoTwQQ/pFwu4fOjE.e/fDlobdQXZxJvByQ4DPHqF0IRG2QmO", session_token: "22u386PNZZbae7dJcg0xxw", username: "timely-guest", avatar_url: "http://www.seilchat.co.uk/download/file.php?avatar=1081_1390414737.gif", slug: "timely-guest"},
-  {email: "marty@future.com", password_digest: "$2a$10$1zIITsxl2UNbH1Kytgqfou5usGP1bcj/3jywwOOgkh.jiEaG7rD92", session_token: "eKZppfajq9OHkJxjJN9svw", username: "mcfly-guy", avatar_url: "https://www.filepicker.io/api/file/1dv52xgCR4Cdno2FkTsa", slug: "mcfly-guy"},
-  {email: "doc@future.com", password_digest: "$2a$10$iWmWfkz/hWPQeDdG8/OaxuZtckLMplf9w6HFyGxJUQUWCK2vCpl62", session_token: "itLyvaD6cFTdmu5RlM6m9w", username: "great-scott", avatar_url: "https://www.filepicker.io/api/file/U0wo1NzgRGWquG77k7KA", slug: "great-scott"},
-  {email: "eleven@gallifrey.net", password_digest: "$2a$10$cP61WssSB4NzL5DFCrbX.uXa1fODB/WDzPGf4m9U2XOirso3i49Re", session_token: "A6vcvpAgikpqu6pkUzaYXA", username: "geronimo", avatar_url: "https://www.filepicker.io/api/file/vsUCvKDlQM2imFNK5awt", slug: "geronimo"}
 ])

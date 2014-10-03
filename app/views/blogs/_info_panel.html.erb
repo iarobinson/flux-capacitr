@@ -25,7 +25,7 @@
       </li>
       
       <% blog.members.each do |member| %>
-        <li <%= 'class=hz' if current_user.owns?(blog) %>>
+        <li <%= 'class=hz' if current_user && current_user.owns?(blog) %>>
             <%= link_to user_url(member) do %>
               <strong><%= member.username %></strong>
             <% end %>
