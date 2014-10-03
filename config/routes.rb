@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#dash'
   
   get 'about', to: 'static_pages#about', as: 'about'
+  get 'easter-egg', to: 'static_pages#easter_egg', as: 'easter_egg'
   get 'lucky', to: 'blogs#lucky', as: 'lucky'
   
   namespace :api do
