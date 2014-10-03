@@ -27,7 +27,9 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
       this.open = false;
       this.render();          
     } else {
-      this.parentView.closePostForm(this);
+      this.fadeOut(function () {
+        this.parentView.closePostForm(this);        
+      }.bind(this));
     }
   },
   
@@ -48,6 +50,11 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
         }
       }
     });
+  },
+  
+  fadeOut: function (callback) {
+    this.$el.removeClass('new-post').addClass('outgoing-post');
+    setTimeout(callback, 500);    
   },
   
   openEdit: function (event) {

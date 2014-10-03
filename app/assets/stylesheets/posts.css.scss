@@ -1,11 +1,14 @@
-.blog-show .post-show .panel-body {
-  max-height: auto;
-}
-
 .new-post {
-  max-height: 0;
+  max-height: 0px;
   opacity: 0;
   animation: growHeight 0.5s ease forwards;
+}
+
+.outgoing-post {
+  animation: shrinkHeight 0.5s ease forwards;
+  .panel {
+    margin-bottom: 0;
+  }
 }
 
 .panel-heading a:hover {
@@ -66,12 +69,6 @@
 }
 
 .post-show {
-  
-  .panel-body {
-    max-height: 400px;
-    overflow: auto;
-  }
-  
   h1, h2, h3, h4, h5 {
     color: rgb(51, 51, 51);
   }
