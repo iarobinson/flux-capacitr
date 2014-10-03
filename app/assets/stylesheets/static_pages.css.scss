@@ -1,8 +1,9 @@
 body {
-//  background: linear-gradient(to bottom,
-//                            rgba(0, 72, 122, 1) 250px,
-//                            rgba(0, 68, 115, 1) 500px);
+  background-image: linear-gradient(to bottom,
+                                    rgba(0, 72, 122, 1) 250px,
+                                    rgba(0, 68, 115, 1) 500px);
   background-color: rgba(0, 68, 115, 1) !important;
+  background-repeat: no-repeat;
 }
 
 .blog-header {
@@ -11,9 +12,10 @@ body {
 }
 
 .center-wrapper {
-  background: linear-gradient(to bottom,
-                              rgba(0, 61, 103, 1) 250px,
-                              rgba(0, 0, 0, 0) 500px);
+  background-image: linear-gradient(to bottom,
+                                    rgba(0, 61, 103, 1) 250px,
+                                    rgba(0, 0, 0, 0) 500px);
+  background-repeat: no-repeat;
   border-radius: 15px;
   margin: 0 auto;
   padding: 20px;

@@ -1042,7 +1042,8 @@
                 multiple: false,
                 maxFiles: 1,
                 maxSize: "10485760",
-                folders: false
+                folders: false,
+                services: ['COMPUTER', 'IMAGE_SEARCH', 'URL']
               },
               {},
               function (Blobs) {

@@ -1,5 +1,5 @@
 User.create!([
-  {email: "guest@flux-capacitr.com", password: "welcome", username: "timely-guest", avatar_url: "http://www.seilchat.co.uk/download/file.php?avatar=1081_1390414737.gif", slug: "a-timely-guest"},
+  {email: "guest@flux-capacitr.com", password: "welcome", username: "timely-guest", username: "chrono-blogger", avatar_url: "https://www.filepicker.io/api/file/v06PjfwSnGdqWfJjxiPz", slug: "chrono-blogger"},
   {email: "calvin@watterson.com", password: "calvin", username: "spaceman-spiff", avatar_url: "https://www.filepicker.io/api/file/aX0jRYHnQGicFIBKLCkV", slug: "spaceman-spiff"},
   {email: "rick@adultswim.com", password: "rickrick", username: "rickdiculous", avatar_url: "https://www.filepicker.io/api/file/oCxbqJtRJW80KEybnspj", slug: "rickdiculous"},
   {email: "bill@stallyns.net", password: "billbill", username: "bill-esque", avatar_url: "https://www.filepicker.io/api/file/6hj7Fz0mS4uoeGT5ruKN", slug: "bill-esque"},
@@ -22,11 +22,11 @@ User.create!([
 ])
 
 Blog.create!([
-  {owner_id: 1, title: "My First Blog", url: "chrono-blogger", slug: "chrono-blogger"},
+  {owner_id: 1, title: "The End of Time", url: "end-of-time", slug: "end-of-time"},
   {owner_id: 3, title: "Rick and Morty 100 Years", url: "rick-and-morty", slug: "rick-and-morty"},
-  {owner_id: 4, title: "Wild Stallyns!", url: "wild-stallyns", slug: "wild-stallyns"},
+  {owner_id: 4, title: "Wyld Stallyns!", url: "wyld-stallyns", slug: "wyld-stallyns"},
   {owner_id: 14, title: "Hello, I'm the Doctor", url: "doctorwho", slug: "doctorwho"},
-  {owner_id: 10, title: "My Other Car is a Time Machine", url: "eighty-eight-mph", slug: "eighty-eight-mph"}
+  {owner_id: 10, title: "My Other Car is a Time Machine", url: "eighty-eight-mph", slug: "eighty-eight-mph"},
 ])
 
 BlogMembership.create!([

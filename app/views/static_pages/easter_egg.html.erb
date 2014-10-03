@@ -1,7 +1,4 @@
 <style type="text/css">
-  .cover-page-backdrop {
-    background-image: url(<%= random_bg %>);
-  }
   a:hover {
     text-decoration: none;
   }
@@ -15,6 +12,7 @@
 </style>
 
 <div class="cover-page-backdrop">
+  <%= render 'partials/top_nav' %>
   <%= link_to root_url do %>
     <h1>Top Secret Area</h1>
   <% end %>

@@ -50,6 +50,11 @@ a {
   height: 70px;
 }
 
+#filepicker_dialog_container {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
 html {
   height: 100%;
 }
@@ -113,4 +118,10 @@ h1, h3, h5, p {
 
 .search-row input:focus{
   outline: none;
+}
+
+@keyframes fadeIn {
+  to { 
+    opacity: 1;
+  }
 }

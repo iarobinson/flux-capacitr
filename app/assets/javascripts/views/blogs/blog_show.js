@@ -39,6 +39,9 @@ Allonsy.Views.BlogShow = Backbone.FilterableView.extend({
     subview.open = true;
     subview.parentView = this;
     subview.$el.addClass('new-post');
+    setTimeout(function () {
+      subview.$el.removeClass('new-post');
+    }, 500);
     
     this.subviews('.posts').push(subview);
     this.$('.posts').prepend(subview.render().$el);
@@ -63,6 +66,7 @@ Allonsy.Views.BlogShow = Backbone.FilterableView.extend({
         success: function (response) {
           var newPost = new Allonsy.Models.Post(response);
           view.attachPostForm(newPost);
+          // view.model.posts().add(newPost);
         }
       });
     }
