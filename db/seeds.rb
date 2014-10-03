@@ -12,11 +12,29 @@ User.create!([
   {email: "amy@tardis.com", password: "amyamy", username: "amy-pond", avatar_url: "https://www.filepicker.io/api/file/FskFFwTYT9y7nVivsqRI", slug: "amy-pond"},
   {email: "marty@future.com", password: "martymarty", username: "mcfly-guy", avatar_url: "https://www.filepicker.io/api/file/1dv52xgCR4Cdno2FkTsa", slug: "mcfly-guy"},
   {email: "dalek@dalek.dalek", password: "dalekdalek", username: "x-terminate", avatar_url: "https://www.filepicker.io/api/file/gknDxKkeQlaIInuDTHkz", slug: "x-terminate"},
-  {email: "one@gallifrey.net", password: "hartnell", username: "the-good-doctor" avatar_url: "https://www.filepicker.io/api/file/O1xTdHAARCWcEIAmfXFA", slug: "the-good-doctor"},
+  {email: "one@gallifrey.net", password: "hartnell", username: "the-good-doctor", avatar_url: "https://www.filepicker.io/api/file/O1xTdHAARCWcEIAmfXFA", slug: "the-good-doctor"},
   {email: "rory@tardis.com", password: "roryrory", username: "rory-the-roman", avatar_url: "https://www.filepicker.io/api/file/1uRNIk1VS46ITKz1rOjJ", slug: "rory-the-roman"},
   {email: "winston@downing.gov", password: "winston", username: "churchill-caesar", avatar_url: "https://www.filepicker.io/api/file/7kNoIGtwT3WxMZIpsSw4", slug: "churchill-caesar"},
   {email: "nine@gallifrey.net", password: "eccleston", username: "fantastic", avatar_url: "https://www.filepicker.io/api/file/59k0JqU3Qmm3GQIyOKeG", slug: "fantastic"},
   {email: "ten@gallifrey.net", password: "tennant", username: "allons-y", avatar_url: "https://www.filepicker.io/api/file/UcQuiLUTS7WFGo75rKUD", slug: "allons-y"},
   {email: "looper@sonypictures.com", password: "brucebruce", username: "looper", avatar_url: "https://www.filepicker.io/api/file/VL3XKVzlSjGGiJ4NPyIq", slug: "looper"},
   {email: "looper2@sonypictures.com", password: "joseph", username: "the-real-looper", avatar_url: "https://www.filepicker.io/api/file/HC5GG5YkR1OTjJ8PFOdo", slug: "the-real-looper"}
+])
+
+Blog.create!([
+  {owner_id: 1, title: "My First Blog", url: "chrono-blogger", slug: "chrono-blogger"}
+])
+
+Post.create!([
+  {author_id: 1, blog_id: 1, title: "I'm posting through time!", body: "Heck yes!"}
+])
+
+Tag.create!([
+  {label: "time travel"},
+  {label: "awesome"}
+])
+
+Tagging.create!([
+  {post_id: 1, tag_id: 1},
+  {post_id: 1, tag_id: 2}
 ])

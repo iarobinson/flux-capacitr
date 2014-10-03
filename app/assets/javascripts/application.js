@@ -17,6 +17,7 @@
 //= require backbone
 //= require bootstrap
 //= require bootstrap-markdown
+//= require filepicker
 //= require markdown
 //= require allonsy
 //= require jquery.serializejson
