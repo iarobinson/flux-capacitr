@@ -17,7 +17,9 @@ module ApplicationHelper
       "/images/cover5.jpg",
       "/images/cover6.jpg",
       "/images/cover7.jpg",
-      "/images/cover8.jpg"
+      "/images/cover8.jpg",
+      "/images/cover9.jpg",
+      "/images/cover10.jpg"
     ]
     images.sample
   end
