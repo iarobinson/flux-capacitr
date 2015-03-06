@@ -7,7 +7,7 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
-  
+
   def random_bg
     images = [
       "/images/cover.jpg",
@@ -17,9 +17,7 @@ module ApplicationHelper
       "/images/cover5.jpg",
       "/images/cover6.jpg",
       "/images/cover7.jpg",
-      "/images/cover8.jpg",
-      "/images/cover9.jpg",
-      "/images/cover10.jpg"
+      "/images/cover8.jpg"
     ]
     images.sample
   end
