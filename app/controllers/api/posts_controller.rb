@@ -27,16 +27,16 @@ module Api
     end
 
     def index
-      if params[:blog_id]
-        @posts = Blog.find(params[:blog_id]).posts
-                      .includes(:users_liked_by)
-                      .page(params[:page])
-      else
-        @posts = current_user
-                 .feed_posts
-                 .includes(:author, :blog, :tags, :users_liked_by)
-                 .page(params[:page])
-      end
+      @posts = Blog.find(params[:blog_id]).posts
+                    .includes(:users_liked_by)
+                    .page(params[:page])
+      render :index
+    end
+
+    def feed
+      @posts = current_user.feed_posts
+                .includes(:author, :blog, :tags, :users_liked_by)
+                .page(params[:page])
       render :index
     end
 
