@@ -1,15 +1,16 @@
 class Post < ActiveRecord::Base
   validates :author, :blog, :title, presence: true
-  
+
   paginates_per 5
-  
+
   belongs_to(
     :blog,
     class_name: 'Blog',
     foreign_key: :blog_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :posts
   )
-  
+
   belongs_to(
     :author,
     class_name: 'User',
@@ -22,6 +23,7 @@ class Post < ActiveRecord::Base
     class_name: 'Tagging',
     foreign_key: :post_id,
     primary_key: :id,
+    inverse_of: :post,
     dependent: :destroy
   )
   

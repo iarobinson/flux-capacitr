@@ -1,16 +1,17 @@
 module Api
   class BlogsController < ApiController
     def show
-      @blog = Blog.friendly
-                  .find(params[:id])
-                  
+      @blog = Blog.includes(:posts => [:author, :users_liked_by, :tags])
+        .friendly
+        .find(params[:id])
+
       @posts = @blog.posts
                     .includes([:author, :blog, :users_liked_by, :tags])
                     .page(params[:page])
-                
-      render 'show.json.jbuilder'
+
+      render :show
     end
-    
+
     def search
       query = "%#{params[:query]}%"
       @blogs = Blog.where(
@@ -18,7 +19,7 @@ module Api
       ).page(params[:page])
       render 'index.json.jbuilder'
     end
-    
+
     def toggle_follow
       @blog = Blog.find(params[:id])
       if current_user.is_following?(@blog)
