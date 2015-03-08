@@ -23,7 +23,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'bullet'
+  # gem 'bullet'
   gem 'byebug'
   gem 'lol_dba'
   gem 'pry-rails'

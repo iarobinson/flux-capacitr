@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
 
     resources :posts, only: [:create, :destroy, :show, :update]
-    get 'posts', to: 'posts#feed'
+    get 'feed', to: 'posts#feed'
 
     post 'blogs/:id/togglefollow', to: 'blogs#toggle_follow'
     get 'blogs/search/:query', to: 'blogs#search'
