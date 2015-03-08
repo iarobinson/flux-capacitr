@@ -5,10 +5,6 @@ module Api
         .friendly
         .find(params[:id])
 
-      @posts = @blog.posts
-                    .includes([:author, :blog, :users_liked_by, :tags])
-                    .page(params[:page])
-
       render :show
     end
 
