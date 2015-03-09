@@ -1,10 +1,10 @@
 Allonsy.Views.PostShow = Backbone.CompositeView.extend({
   template: JST['posts/show'],
-  
+
   formTemplate: JST['posts/edit'],
-  
+
   className: "post-show",
-  
+
   events: {
     "click #cancel-edit": "cancelEdit",
     "click #commit-edit": "commitEdit",
@@ -12,7 +12,7 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
     "click #edit-post": "openEdit",
     "click #like-toggle": "toggleLike"
   },
-  
+
   deletePost: function (event) {
     if (confirm("Are you sure you want to delete this post?")) {
       this.fadeOut(function () {
@@ -23,18 +23,18 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
       }.bind(this));
     }
   },
-  
+
   cancelEdit: function (event) {
     if (this.model.has('id')) {
       this.open = false;
-      this.render();          
+      this.render();
     } else {
       this.fadeOut(function () {
-        this.parentView.closePostForm(this);        
+        this.parentView.closePostForm(this);
       }.bind(this));
     }
   },
-  
+
   commitEdit: function (event) {
     event.preventDefault();
     var view = this;
@@ -54,32 +54,33 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
       }
     });
   },
-  
+
   fadeOut: function (callback) {
     this.$el.removeClass('new-post').addClass('outgoing-post');
-    setTimeout(callback, 500);    
+    setTimeout(callback, 500);
   },
-  
+
   openEdit: function (event) {
     this.open = true;
     this.render();
   },
-  
+
   initialize: function (options) {
     if (options.displayAvatar) {
       this.displayAvatar = options.displayAvatar;
     }
-    
+
     this.open = false;
-    
+
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model.author(), 'sync', this.render);
     var postFooterView = new Allonsy.Views.PostFooter({ model: this.model });
     this.addSubview(".post-footer", postFooterView.render());
   },
-  
+
   render: function () {
     var renderedContent;
-    
+
     if(this.open) {
       renderedContent = this.formTemplate({
         post: this.model,
@@ -100,7 +101,7 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
     });
     return this;
   },
-  
+
   toggleLike: function (event) {
     $.ajax('/api/posts/' + this.model.id + '/togglelike', {
       type: 'POST',

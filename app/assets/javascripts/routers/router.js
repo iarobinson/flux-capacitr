@@ -22,18 +22,13 @@ Allonsy.Router = Backbone.Router.extend(
 
     postShow: function (id) {
       var post = new Allonsy.Models.Post({ id: id });
-      var router = this;
-
-      post.fetch({
-        success: function (response) {
-          var view = new Allonsy.Views.PostShow({
-            model: post,
-            displayAvatar: true
-          });
-
-          router._swapView(view);
-        }
+      post.fetch();
+      var view = new Allonsy.Views.PostShow({
+        model: post,
+        displayAvatar: true
       });
+
+      this._swapView(view);
     },
 
     searchShow: function (searchString) {

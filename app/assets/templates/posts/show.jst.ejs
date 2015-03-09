@@ -1,19 +1,19 @@
 <div class="panel panel-primary post-container">
   <% if (displayAvatar) { %>
     <div class="post-avatar">
-      <a href="/users/<%= post.get('author').username %>"
+      <a href="/users/<%= post.author().get('username') %>"
          class="post-avatar-link"
-         style="background-image: url(<%= post.get('author').avatar_url %>)">
+         style="background-image: url(<%= post.author().get('avatar_url') %>)">
       </a>
     </div>
   <% } %>
-  
+
   <div class="panel-heading clearfix">
     <a href="/blogs/<%= post.get('blog_url') %>"
        class="panel-title pull-left">
       <%= post.get('blog_url') %>
     </a>
-    
+
     <div class="post-header-info pull-right">
       <a href="javascript:void(0)"
          id="like-toggle">
@@ -22,12 +22,12 @@
       </a>
     </div>
   </div>
-  
+
   <div class="panel-body">
     <h3 style="margin-top: 0"><%= post.get('title') %></h3>
-    <%= markdown.toHTML(post.get('body')) %>
-    
-    <% if (post.get('tags').length > 0) { %>
+    <%= markdown.toHTML(post.get('body') || '') %>
+
+    <% if (post.get('tags') && post.get('tags').length > 0) { %>
       <div class="post-tags">
         <strong>Tags:</strong>
         <ul class="inline-list">
@@ -40,6 +40,6 @@
       </div>
     <% } %>
   </div>
-  
+
   <div class="panel-footer post-footer clearfix">  </div>
 </div>
