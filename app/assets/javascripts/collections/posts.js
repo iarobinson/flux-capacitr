@@ -1,12 +1,9 @@
 Allonsy.Collections.Posts = Backbone.Collection.extend({
   filterBy: function (params) {
     var filteredColl = this.filter(function (item) {
-      var diff = _.difference(params.tags, item.get('tags'))
-      if (diff.length > 0) {
-        return false;
-      } else {
-        return true;
-      }
+      return _(params.tags).all(function(tag) {
+        return _(item.tags().pluck('label')).contains(tag);
+      });
     });
 
     this.filtered.params = params;

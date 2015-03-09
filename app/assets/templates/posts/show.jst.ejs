@@ -32,8 +32,8 @@
         <strong>Tags:</strong>
         <ul class="inline-list">
           <% post.tags().each(function (tag) { %>
-            <li class="post-tag" data-tag="<%= tag %>">
-              <a href="javascript:void(0)"><%= tag %></a>
+            <li class="post-tag" data-tag="<%= tag.escape('label') %>">
+              <a href="javascript:void(0)"><%= tag.escape('label') %></a>
             </li>
           <% }) %>
         </ul>

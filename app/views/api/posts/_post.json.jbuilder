@@ -1,11 +1,13 @@
-json.(post,
-      :id,
-      :author_id,
-      :blog_id,
-      :title,
-      :body,
-      :created_at,
-      :updated_at)
+json.extract!(
+  post,
+  :id,
+  :author_id,
+  :blog_id,
+  :title,
+  :body,
+  :created_at,
+  :updated_at
+)
 
 json.author do
   json.(post.author, :id, :username, :avatar_url)
@@ -21,7 +23,11 @@ json.is_liked post.is_liked_by?(current_user)
 
 json.num_likes post.likes.count
 
-json.tags post.tags.map { |tag| "##{tag.label}" }
+json.tags do
+  json.array! post.tags do |tag|
+    json.partial! 'api/tags/tag', tag: tag
+  end
+end
 
 if post.persisted?
   json.time_ago "#{time_ago_in_words(post.created_at)} ago"
