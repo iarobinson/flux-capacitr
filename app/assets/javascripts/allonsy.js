@@ -1,4 +1,5 @@
 window.Allonsy = {
+  Mixins: {},
   Models: {},
   Collections: {},
   Views: {},
