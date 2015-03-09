@@ -1,6 +1,6 @@
-Backbone.PaginatedView = Backbone.CompositeView.extend({
+Allonsy.Mixins.PaginatedView = {
   // I set an interval-based callback to nextPage in my child views.
-  
+
   nextPage: function (collection) {
     var self = this;
     if (this.$('.spinner').visible()) {
@@ -15,4 +15,4 @@ Backbone.PaginatedView = Backbone.CompositeView.extend({
       }
     }
   }
-});
+};

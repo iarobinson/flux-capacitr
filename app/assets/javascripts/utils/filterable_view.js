@@ -1,24 +1,24 @@
-Backbone.FilterableView = Backbone.PaginatedView.extend({
+Allonsy.Mixins.FilterableView = {
   // Set "click .post-tag": "toggleFilter" in the child view's events.
-  
+
   // Call this in the child view's initialize.
-  initialize: function () {
+  initFilterable: function () {
     this.collection = this.model.posts();
     this.listenTo(this.collection.filtered, "add", this.addPost);
     this.listenTo(this.collection.filtered, "remove", this.removePost);
     this.listenTo(this.collection.filtered, "sort", this.render);
     this.filterTags = [];
-    
+
     this.collection.filtered.each(this.addPost.bind(this));
   },
-  
+
   highlightTags: function () {
     this.filterTags.forEach(function (tagName) {
       var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
       tagItems.addClass("active");
     });
   },
-  
+
   render: function () {
     this.$el.html(this.renderTemplate());
     this.sortPosts();
@@ -26,7 +26,7 @@ Backbone.FilterableView = Backbone.PaginatedView.extend({
     this.highlightTags();
     return this;
   },
-  
+
   sortPosts: function () {
     this.subviews('.posts').sort(function (a, b) {
       return b.model.get('id') - a.model.get('id');
@@ -36,7 +36,7 @@ Backbone.FilterableView = Backbone.PaginatedView.extend({
   toggleFilter: function (event) {
     var tagName = $(event.currentTarget).data("tag");
     var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
-    
+
     if (_.contains(this.filterTags, tagName)) {
       var tagIndex = this.filterTags.indexOf(tagName);
       this.filterTags.splice(tagIndex, 1);
@@ -48,4 +48,4 @@ Backbone.FilterableView = Backbone.PaginatedView.extend({
       tags: this.filterTags
     });
   }
-});
+};
