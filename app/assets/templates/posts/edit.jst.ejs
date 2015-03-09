@@ -1,19 +1,19 @@
 <div class="panel panel-primary post-container">
   <% if (displayAvatar) { %>
     <div class="post-avatar">
-      <a href="<%= post.get('author').url %>"
+      <a href="<%= post.escape('author').url %>"
          class="post-avatar-link"
-         style="background-image: url(<%= post.get('author').avatar_url %>)">
+         style="background-image: url(<%= post.escape('author').avatar_url %>)">
       </a>
     </div>
   <% } %>
-    
+
   <div class="panel-heading">
-    <a href="#blogs/<%= post.get('blog_id') %>" class="panel-title">
-      <%= post.get('blog_url') %>
+    <a href="#blogs/<%= post.escape('blog_id') %>" class="panel-title">
+      <%= post.escape('blog_url') %>
     </a>
   </div>
-  
+
   <div class="panel-body">
     <form class="post-edit">
       <div class="form-group">
@@ -22,16 +22,16 @@
                name="post[title]"
                class="form-control"
                placeholder="Title"
-               value="<%= post.get('title') %>">
+               value="<%= post.escape('title') %>">
       </div>
-      
+
       <div class="form-group">
         <textarea id="post-body"
                   class="form-control"
                   data-provide="markdown"
-                  name="post[body]"><%= post.get('body') %></textarea>
+                  name="post[body]"><%= post.escape('body') %></textarea>
       </div>
-      
+
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-addon glyphicon glyphicon-tag"></span>
@@ -40,12 +40,12 @@
                  class="form-control"
                  placeholder="#wibbly, #wobbly, #timey wimey"
                  <% if (post.has('tags')) { %>
-                   value="<%= post.get('tags').join(', ') %>"
+                   value="<%= post.escape('tags').join(', ') %>"
                  <% } %>
                  name="post[tags]">
         </div>
       </div>
-      
+
       <button type="submit"
               class="btn btn-success pull-left"
               id="commit-edit">Save</button>

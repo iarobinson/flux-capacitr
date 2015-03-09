@@ -1,17 +1,17 @@
 <div class="post-info pull-left">
-  <a href="/<%= post.get('url') %>">
+  <a href="/<%= post.escape('url') %>">
     <span class="glyphicon glyphicon-time"></span>
-    <%= post.get('time_ago') %>
+    <%= post.escape('time_ago') %>
   </a>
 </div>
 
 <div class="post-control pull-right">
-  <% if (post.get('is_author')) { %>
+  <% if (post.escape('is_author')) { %>
     <a href="javascript:void(0)" class="btn btn-default" id="edit-post">
         <span class="glyphicon glyphicon-cog"></span>
     </a>
     <a href="javascript:void(0)" class="btn btn-default" id="delete-post">
-        <span class="glyphicon glyphicon-trash"></span>    
+        <span class="glyphicon glyphicon-trash"></span>
     </a>
   <% } %>
 </div>

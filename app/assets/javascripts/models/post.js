@@ -8,6 +8,13 @@ Allonsy.Models.Post = Backbone.Model.extend({
     return this._author;
   },
 
+  tags: function () {
+    if (!this._tags) {
+      this._tags = new Allonsy.Collections.Tags();
+    }
+    return this._tags;
+  },
+
   parse: function (response) {
     this.author().set(response.author);
     delete response.author;
@@ -33,7 +40,7 @@ Allonsy.Models.Post = Backbone.Model.extend({
     this.set('url', response.url);
     delete response.url;
 
-    this.set('tags', response.tags);
+    this.tags().set(response.tags);
     delete response.tags;
 
     return response;

@@ -1,23 +1,23 @@
-<% if (blog.get('show_controls')) { %>
+<% if (blog.escape('show_controls')) { %>
   <div class="blog-controls clearfix">
     <div class="btn-group pull-right">
-      <% if (blog.get('is_owner')) { %>
-        <a href="/blogs/<%= blog.get('id') %>/edit"
+      <% if (blog.escape('is_owner')) { %>
+        <a href="/blogs/<%= blog.escape('id') %>/edit"
           class="btn btn-primary btn-xs"
           id="edit-blog">
           <span class="glyphicon glyphicon-cog"></span> Edit Blog
         </a>
       <% } %>
-      
-      <% if (blog.get('is_member')) { %>
+
+      <% if (blog.escape('is_member')) { %>
         <a href="javascript:void(0)" class="btn btn-primary btn-xs" id="post-to-blog">
           <span class="glyphicon glyphicon-pencil"></span> New Post
         </a>
       <% } %>
-      
-      <% if (!blog.get('is_owner')) { %>
+
+      <% if (!blog.escape('is_owner')) { %>
         <a href="javascript:void(0)" class="btn btn-primary btn-xs" id="follow-toggle">
-          <% if (blog.get('is_followed')) { %>
+          <% if (blog.escape('is_followed')) { %>
             <span class="glyphicon glyphicon-minus"></span> Unfollow
           <% } else { %>
             <span class="glyphicon glyphicon-plus"></span> Follow
@@ -28,4 +28,4 @@
   </div>
 <% } %>
 
-<h1><%= blog.get('title') %></h1>
+<h1><%= blog.escape('title') %></h1>

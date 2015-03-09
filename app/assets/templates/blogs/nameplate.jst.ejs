@@ -1,8 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-body">
-        <a href="/blogs/<%= blog.get('url') %>">
-          <strong><%= blog.get('url') %></strong>
+        <a href="/blogs/<%= blog.escape('url') %>">
+          <strong><%= blog.escape('url') %></strong>
         </a>
-      <p><%= blog.get('title') %></p>
+      <p><%= blog.escape('title') %></p>
     </div>
 </div>
