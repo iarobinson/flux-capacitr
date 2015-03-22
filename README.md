@@ -2,9 +2,9 @@
 I built Flux-capacitr as my final project during the August 2014 cohort of App
 Academy. It is a clone of Tumblr built in Ruby on Rails and Backbone.js.
 
-[Live demo!][heroku]
+[Live demo!][demo-link]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[demo-link]: http://flux-capacitr.com
 
 ## Design Docs
 * [View Wireframes][views]
