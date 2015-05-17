@@ -13,7 +13,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'pg'
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.0'
 gem 'rails_12factor'
 gem 'sass-rails', '~> 4.0.3'
 gem 'thin'
@@ -29,6 +29,16 @@ group :development do
   gem 'pry-rails'
   gem 'seed_dump'
   gem 'spring'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
 end
 
 group :doc do

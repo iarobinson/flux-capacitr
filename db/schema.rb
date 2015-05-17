@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141001184148) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "blog_memberships", force: true do |t|
+  create_table "blog_memberships", force: :cascade do |t|
     t.integer  "blog_id",    null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141001184148) do
   add_index "blog_memberships", ["blog_id"], name: "index_blog_memberships_on_blog_id", using: :btree
   add_index "blog_memberships", ["user_id"], name: "index_blog_memberships_on_user_id", using: :btree
 
-  create_table "blogs", force: true do |t|
+  create_table "blogs", force: :cascade do |t|
     t.integer  "owner_id",   null: false
     t.string   "title",      null: false
     t.string   "url",        null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20141001184148) do
   add_index "blogs", ["title"], name: "index_blogs_on_title", using: :btree
   add_index "blogs", ["url"], name: "index_blogs_on_url", unique: true, using: :btree
 
-  create_table "followings", force: true do |t|
+  create_table "followings", force: :cascade do |t|
     t.integer  "blog_id",     null: false
     t.integer  "follower_id", null: false
     t.datetime "created_at"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20141001184148) do
   add_index "followings", ["blog_id"], name: "index_followings_on_blog_id", using: :btree
   add_index "followings", ["follower_id"], name: "index_followings_on_follower_id", using: :btree
 
-  create_table "likes", force: true do |t|
+  create_table "likes", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "post_id",    null: false
     t.datetime "created_at"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20141001184148) do
   add_index "likes", ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true, using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
-  create_table "posts", force: true do |t|
+  create_table "posts", force: :cascade do |t|
     t.integer  "author_id",  null: false
     t.integer  "blog_id",    null: false
     t.string   "title",      null: false
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20141001184148) do
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
   add_index "posts", ["blog_id"], name: "index_posts_on_blog_id", using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "post_id",    null: false
     t.integer  "tag_id",     null: false
     t.datetime "created_at"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20141001184148) do
   add_index "taggings", ["post_id"], name: "index_taggings_on_post_id", using: :btree
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string   "label",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -94,14 +94,14 @@ ActiveRecord::Schema.define(version: 20141001184148) do
 
   add_index "tags", ["label"], name: "index_tags_on_label", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email",                                                                                              null: false
-    t.string   "password_digest",                                                                                    null: false
-    t.string   "session_token",                                                                                      null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                                                                               null: false
+    t.string   "password_digest",                                                                     null: false
+    t.string   "session_token",                                                                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username",                                                                                           null: false
-    t.string   "avatar_url",      default: "http://www.seilchat.co.uk/download/file.php?avatar=1081_1390414737.gif", null: false
+    t.string   "username",                                                                            null: false
+    t.string   "avatar_url",      default: "https://www.filepicker.io/api/file/3JsiRaA0QcW2T7vGGRcI", null: false
     t.string   "slug"
   end
 
