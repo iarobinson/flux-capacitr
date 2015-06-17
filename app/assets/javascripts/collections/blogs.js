@@ -1,25 +1,11 @@
 Allonsy.Collections.Blogs = Backbone.Collection.extend({
-  getOrFetch: function (id) {
-    var blogs = this;
-
-    var blog = this.get(id);
-    if (!blog) {
-      blog = new Allonsy.Models.Blog({ id: id });
-      blog.fetch({
-        success: function () { blogs.add(blog); }
-      });
-    }
-
-    return blog;
-  },
+  model: Allonsy.Models.Blog,
 
   initialize: function (array, options) {
     if (options && options.searchString) {
       this.searchString = options.searchString;
     }
   },
-
-  model: Allonsy.Models.Blog,
 
   parse: function (response) {
     this.page = response.page;
