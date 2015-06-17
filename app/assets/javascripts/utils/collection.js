@@ -1,4 +1,4 @@
-_.extend(Backbone.Collection, {
+_.extend(Backbone.Collection.prototype, {
   getOrFetch: function (id) {
     var collection = this;
     var model = this.get(id);
@@ -8,7 +8,7 @@ _.extend(Backbone.Collection, {
     } else {
       model = new this.model({ id: id });
       model.fetch({
-        success: function () { models.add(model); }
+        success: function () { collection.add(model); }
       });
     }
 

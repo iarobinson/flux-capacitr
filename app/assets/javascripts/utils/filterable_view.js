@@ -3,7 +3,6 @@ Allonsy.Mixins.FilterableView = {
 
   // Call this in the child view's initialize.
   initFilterable: function () {
-    this.collection = this.model.posts();
     this.listenTo(this.collection.filtered, "add", this.addPost);
     this.listenTo(this.collection.filtered, "remove", this.removePost);
     this.listenTo(this.collection.filtered, "sort", this.render);
@@ -17,14 +16,6 @@ Allonsy.Mixins.FilterableView = {
       var tagItems = this.$('*[data-tag=\"' + tagName + '"]');
       tagItems.addClass("active");
     });
-  },
-
-  render: function () {
-    this.$el.html(this.renderTemplate());
-    this.sortPosts();
-    this.attachSubviews();
-    this.highlightTags();
-    return this;
   },
 
   sortPosts: function () {

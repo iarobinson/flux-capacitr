@@ -1,4 +1,6 @@
 Allonsy.Collections.Blogs = Backbone.Collection.extend({
+  url: 'api/blogs',
+
   model: Allonsy.Models.Blog,
 
   initialize: function (array, options) {

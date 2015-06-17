@@ -15,13 +15,20 @@ Allonsy.Router = Backbone.Router.extend(
     blogShow: function (id) {
       var blog = this.blogs.getOrFetch(id);
       blog.posts().fetch();
-      var view = new Allonsy.Views.BlogShow({ model: blog });
+      var view = new Allonsy.Views.BlogShow({
+        model: blog,
+        collection: blog.posts()
+      });
       this._swapView(view);
     },
 
     feedShow: function () {
-      var feed = new Allonsy.Models.Feed();
-      var view = new Allonsy.Views.FeedShow({ model: feed });
+      var posts = new Allonsy.Collections.Posts();
+      posts.fetch({
+        remove: false,
+        data: { page: 1 }
+      });
+      var view = new Allonsy.Views.FeedShow({ collection: posts });
       this._swapView(view);
     },
 

@@ -84,8 +84,13 @@ Allonsy.Views.BlogShow = Backbone.CompositeView.extend(
       this.removeSubview(".posts", subview);
     },
 
-    renderTemplate: function () {
-      return this.template({ blog: this.model });
+    render: function () {
+      var content = this.template({ blog: this.model });
+      this.$el.html(content);
+      this.sortPosts();
+      this.attachSubviews();
+      this.highlightTags();
+      return this;
     }
   })
 );

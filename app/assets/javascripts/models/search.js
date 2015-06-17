@@ -7,7 +7,7 @@ Allonsy.Models.Search = Backbone.Model.extend({
     }
     return this._posts;
   },
-  
+
   blogs: function () {
     if (!this._blogs) {
       this._blogs = new Allonsy.Collections.Blogs([], {
@@ -16,17 +16,17 @@ Allonsy.Models.Search = Backbone.Model.extend({
     }
     return this._blogs;
   },
-  
+
   initialize: function (options) {
     if (options && options.searchString) {
         this.set('searchString', options.searchString);
     };
-    
+
     this.posts().fetch({
       remove: false,
       data: { page: 1 }
     });
-    
+
     this.blogs().fetch({
       remove: false,
       data: { page: 1 }
