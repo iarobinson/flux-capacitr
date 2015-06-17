@@ -1,7 +1,7 @@
 Allonsy.Collections.Blogs = Backbone.Collection.extend({
   getOrFetch: function (id) {
     var blogs = this;
-    
+
     var blog = this.get(id);
     if (!blog) {
       blog = new Allonsy.Models.Blog({ id: id });
@@ -12,21 +12,21 @@ Allonsy.Collections.Blogs = Backbone.Collection.extend({
 
     return blog;
   },
-  
+
   initialize: function (array, options) {
     if (options && options.searchString) {
       this.searchString = options.searchString;
     }
   },
-  
+
   model: Allonsy.Models.Blog,
-  
+
   parse: function (response) {
     this.page = response.page;
     this.total_pages = response.total_pages;
     return response.blogs;
   },
-  
+
   url: function () {
     if (this.searchString) {
       return '/api/blogs/search/' + this.searchString;
@@ -35,5 +35,3 @@ Allonsy.Collections.Blogs = Backbone.Collection.extend({
     }
   }
 });
-
-Allonsy.Collections.blogs = new Allonsy.Collections.Blogs();

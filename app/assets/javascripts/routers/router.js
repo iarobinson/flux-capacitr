@@ -1,5 +1,10 @@
 Allonsy.Router = Backbone.Router.extend(
   _.extend({}, Allonsy.Mixins.SwappingRouter, {
+    initialize: function (options) {
+      this.$rootEl = options.$rootEl;
+      this.blogs = options.blogs || new Allonsy.Collections.Blogs();
+    },
+
     routes: {
       '': 'feedShow',
       'blogs/:id': 'blogShow',
@@ -8,7 +13,7 @@ Allonsy.Router = Backbone.Router.extend(
     },
 
     blogShow: function (id) {
-      var blog = Allonsy.Collections.blogs.getOrFetch(id);
+      var blog = this.blogs.getOrFetch(id);
       blog.posts().fetch();
       var view = new Allonsy.Views.BlogShow({ model: blog });
       this._swapView(view);
