@@ -72,7 +72,7 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
 
     this.open = false;
 
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'sync change:num_likes', this.render);
     this.listenTo(this.model.author(), 'sync', this.render);
     var postFooterView = new Allonsy.Views.PostFooter({ model: this.model });
     this.addSubview(".post-footer", postFooterView.render());
@@ -103,16 +103,7 @@ Allonsy.Views.PostShow = Backbone.CompositeView.extend({
   },
 
   toggleLike: function (event) {
-    $.ajax('/api/posts/' + this.model.id + '/togglelike', {
-      type: 'POST',
-      success: function (response) {
-        this.model.set('is_liked', response.is_liked);
-        this.model.set('num_likes', response.num_likes);
-        this.render();
-      }.bind(this),
-      error: function () {
-        console.log('Something went wrong!');
-      }
-    });
+    event.preventDefault();
+    this.model.toggleLike();
   }
 });

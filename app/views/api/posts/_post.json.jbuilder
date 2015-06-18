@@ -15,6 +15,10 @@ end
 
 json.blog_url post.blog.url
 
+if current_user
+  json.like post.likes.find_by(user_id: current_user.id)
+end
+
 json.has_like_button (logged_in? && current_user != post.author)
 
 json.is_author (current_user == post.author)

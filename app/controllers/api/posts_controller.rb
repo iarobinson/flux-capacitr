@@ -53,26 +53,8 @@ module Api
       render :index
     end
 
-    def new
-      @post = current_user.posts.new
-      @post.blog_id = params[:blog_id]
-      render partial: 'post', locals: {post: @post}
-    end
-
     def show
       @post = Post.find(params[:id])
-      render partial: 'post', locals: {post: @post}
-    end
-
-    def toggle_like
-      @post = Post.find(params[:id])
-      if current_user.can_like?(@post)
-        if @post.is_liked_by?(current_user)
-          current_user.liked_posts.delete(@post)
-        else
-          current_user.liked_posts << @post
-        end
-      end
       render partial: 'post', locals: {post: @post}
     end
 

@@ -10,14 +10,14 @@ Rails.application.routes.draw do
     get 'current_user', to: 'users#current'
 
     resources :blogs, only: [:index, :show] do
-      resources :posts, only: [:index, :new]
+      resources :posts, only: [:index]
     end
+
+    resources :likes, only: [:create, :destroy]
 
     resources :posts, only: [:create, :destroy, :index, :show, :update]
 
     post 'blogs/:id/togglefollow', to: 'blogs#toggle_follow'
-
-    post 'posts/:id/togglelike', to: 'posts#toggle_like'
   end
 
   resource :session, only: [:create, :destroy, :new]
