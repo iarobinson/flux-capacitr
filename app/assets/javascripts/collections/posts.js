@@ -36,9 +36,6 @@ Allonsy.Collections.Posts = Backbone.Collection.extend({
       if (options.blog) {
         this.blog = options.blog;
       }
-      if (options.searchString) {
-        this.searchString = options.searchString;
-      }
     }
   },
 

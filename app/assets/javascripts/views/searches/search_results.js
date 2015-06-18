@@ -1,17 +1,20 @@
-Allonsy.Views.SearchShow = Backbone.CompositeView.extend(
+Allonsy.Views.SearchResults = Backbone.CompositeView.extend(
   _.extend({}, Allonsy.Mixins.PaginatedView, {
-    template: JST['searches/show'],
+    template: JST['searches/results'],
 
     className: "search-show",
 
-    initialize: function () {
+    initialize: function (options) {
+      this.query = options.query;
       this.addBlogsIndex();
       this.addPostsIndex();
     },
 
     addBlogsIndex: function () {
       var blogs = new Allonsy.Collections.Blogs();
-      blogs.fetch();
+      blogs.fetch({
+        data: { query: this.query }
+      });
       var subview = new Allonsy.Views.BlogsIndex({
         collection: blogs
       });
@@ -20,7 +23,9 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend(
 
     addPostsIndex: function () {
       var posts = new Allonsy.Collections.Posts();
-      posts.fetch();
+      posts.fetch({
+        data: { query: this.query }
+      });
       var subview = new Allonsy.Views.PostsIndex({
         collection: posts
       });

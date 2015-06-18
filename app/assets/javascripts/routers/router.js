@@ -8,7 +8,7 @@ Allonsy.Router = Backbone.Router.extend({
     '': 'feedShow',
     'blogs/:id': 'blogShow',
     'posts/:id': 'postShow',
-    'search/:searchString': 'searchShow'
+    'search/:searchString': 'search'
   },
 
   blogShow: function (id) {
@@ -42,9 +42,8 @@ Allonsy.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  searchShow: function (searchString) {
-    var search = new Allonsy.Models.Search({ searchString: searchString });
-    var view = new Allonsy.Views.SearchShow({ model: search });
+  search: function (query) {
+    var view = new Allonsy.Views.SearchResults({ query: query });
     this._swapView(view);
   }
 });
