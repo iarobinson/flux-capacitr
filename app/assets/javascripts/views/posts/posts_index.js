@@ -11,7 +11,7 @@ Allonsy.Views.PostsIndex = Backbone.CompositeView.extend(
     },
 
     addPost: function (post) {
-      var subview = new Allonsy.Views.PostsShow({ model: post });
+      var subview = new Allonsy.Views.PostShow({ model: post });
       this.addSubview(".posts", subview);
     },
 

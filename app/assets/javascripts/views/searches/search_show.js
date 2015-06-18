@@ -5,57 +5,26 @@ Allonsy.Views.SearchShow = Backbone.CompositeView.extend(
     className: "search-show",
 
     initialize: function () {
-      this.listenTo(this.model, 'sync', this.render);
-
-      this.listenTo(this.model.posts(), "add", this.addPost);
-      this.listenTo(this.model.posts(), "remove", this.removePost);
-      this.model.posts().each(this.addPost.bind(this));
-
-      this.listenTo(this.model.blogs(), "add", this.addBlog);
-      this.listenTo(this.model.blogs(), "remove", this.removeBlog);
-      this.model.blogs().each(this.addBlog.bind(this));
-
-      setInterval(this.nextResults.bind(this), 1000);
+      this.addBlogsIndex();
+      this.addPostsIndex();
     },
 
-    addBlog: function (blog) {
-      var blogShow = new Allonsy.Views.BlogNameplate({ model: blog });
-      this.addSubview("#blogs", blogShow.render());
-    },
-
-    addPost: function (post) {
-      var postShow = new Allonsy.Views.PostShow({
-        model: post,
-        displayAvatar: false
+    addBlogsIndex: function () {
+      var blogs = new Allonsy.Collections.Blogs();
+      blogs.fetch();
+      var subview = new Allonsy.Views.BlogsIndex({
+        collection: blogs
       });
-      this.addSubview("#posts", postShow.render());
+      this.addSubview(".blogs-pane", subview);
     },
 
-    nextResults: function () {
-      this.nextPage(this.model.blogs());
-      this.nextPage(this.model.posts());
-    },
-
-    removeBlog: function (blog) {
-      var subview = _.find(
-        this.subviews("#blogs"),
-        function (subview) {
-          return subview.model === blog;
-        }
-      );
-
-      this.removeSubview("#blogs", subview);
-    },
-
-    removePost: function (post) {
-      var subview = _.find(
-        this.subviews("#posts"),
-        function (subview) {
-          return subview.model === post;
-        }
-      );
-
-      this.removeSubview("#posts", subview);
+    addPostsIndex: function () {
+      var posts = new Allonsy.Collections.Posts();
+      posts.fetch();
+      var subview = new Allonsy.Views.PostsIndex({
+        collection: posts
+      });
+      this.addSubview(".posts-pane", subview);
     },
 
     render: function () {
