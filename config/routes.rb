@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     get 'current_user', to: 'users#current'
 
-    resources :blogs, only: [:show] do
+    resources :blogs, only: [:index, :show] do
       resources :posts, only: [:index, :new]
     end
 
@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     get 'feed', to: 'posts#feed'
 
     post 'blogs/:id/togglefollow', to: 'blogs#toggle_follow'
-    get 'blogs/search/:query', to: 'blogs#search'
 
     post 'posts/:id/togglelike', to: 'posts#toggle_like'
     get 'posts/search/:query', to: 'posts#search'

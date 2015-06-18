@@ -1,5 +1,5 @@
 Allonsy.Collections.Blogs = Backbone.Collection.extend({
-  url: 'api/blogs',
+  url: '/api/blogs',
 
   model: Allonsy.Models.Blog,
 
@@ -13,13 +13,5 @@ Allonsy.Collections.Blogs = Backbone.Collection.extend({
     this.page = response.page;
     this.total_pages = response.total_pages;
     return response.blogs;
-  },
-
-  url: function () {
-    if (this.searchString) {
-      return '/api/blogs/search/' + this.searchString;
-    } else {
-      return '/api/blogs/search';
-    }
   }
 });

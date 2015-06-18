@@ -19,17 +19,22 @@ Allonsy.Models.Search = Backbone.Model.extend({
 
   initialize: function (options) {
     if (options && options.searchString) {
-        this.set('searchString', options.searchString);
+      this.set('searchString', options.searchString);
     };
 
     this.posts().fetch({
       remove: false,
-      data: { page: 1 }
+      data: {
+        page: 1,
+      }
     });
 
     this.blogs().fetch({
       remove: false,
-      data: { page: 1 }
+      data: {
+        page: 1,
+        query: this.get('searchString')
+      }
     });
   }
 });

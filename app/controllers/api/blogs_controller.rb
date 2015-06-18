@@ -8,12 +8,12 @@ module Api
       render :show
     end
 
-    def search
+    def index
       query = "%#{params[:query]}%"
-      @blogs = Blog.where(
-        "url LIKE ? OR title LIKE ?", query, query
-      ).page(params[:page])
-      render 'index.json.jbuilder'
+      @blogs = Blog.
+        where("url LIKE ? OR title LIKE ?", query, query).
+        page(params[:page])
+      render :index
     end
 
     def toggle_follow
