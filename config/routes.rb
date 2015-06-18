@@ -13,11 +13,11 @@ Rails.application.routes.draw do
       resources :posts, only: [:index]
     end
 
+    resources :followings, only: [:create, :destroy]
+
     resources :likes, only: [:create, :destroy]
 
     resources :posts, only: [:create, :destroy, :index, :show, :update]
-
-    post 'blogs/:id/togglefollow', to: 'blogs#toggle_follow'
   end
 
   resource :session, only: [:create, :destroy, :new]

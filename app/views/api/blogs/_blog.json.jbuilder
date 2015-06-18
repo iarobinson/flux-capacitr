@@ -8,4 +8,6 @@ if logged_in?
   json.is_owner current_user.owns?(blog)
 
   json.is_followed current_user.is_following?(blog)
+
+  json.following blog.followings.find_by(follower_id: current_user.id)
 end

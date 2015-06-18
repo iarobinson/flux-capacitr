@@ -1,26 +1,26 @@
-<% if (blog.escape('show_controls')) { %>
+<% if (blog.get('show_controls')) { %>
   <div class="blog-controls clearfix">
     <div class="btn-group pull-right">
-      <% if (blog.escape('is_owner')) { %>
-        <a href="/blogs/<%= blog.escape('id') %>/edit"
+      <% if (blog.get('is_owner')) { %>
+        <a href="/blogs/<%= blog.id %>/edit"
           class="btn btn-primary btn-xs"
           id="edit-blog">
           <span class="glyphicon glyphicon-cog"></span> Edit Blog
         </a>
       <% } %>
 
-      <% if (blog.escape('is_member')) { %>
+      <% if (blog.get('is_member')) { %>
         <a href="javascript:void(0)" class="btn btn-primary btn-xs" id="post-to-blog">
           <span class="glyphicon glyphicon-pencil"></span> New Post
         </a>
       <% } %>
 
-      <% if (!blog.escape('is_owner')) { %>
+      <% if (!blog.get('is_owner')) { %>
         <a href="javascript:void(0)" class="btn btn-primary btn-xs" id="follow-toggle">
-          <% if (blog.escape('is_followed')) { %>
-            <span class="glyphicon glyphicon-minus"></span> Unfollow
-          <% } else { %>
+          <% if (blog.following().isNew()) { %>
             <span class="glyphicon glyphicon-plus"></span> Follow
+          <% } else { %>
+            <span class="glyphicon glyphicon-minus"></span> Unfollow
           <% } %>
         </a>
       <% } %>

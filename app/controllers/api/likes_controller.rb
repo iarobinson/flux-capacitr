@@ -4,7 +4,7 @@ module Api
     before_action :ensure_not_post_author, only: [:create]
 
     def create
-      @like = current_user.likes.new(post_id: params[:post_id])
+      @like = current_user.likes.new(like_params)
       save_and_render(@like)
     end
 
