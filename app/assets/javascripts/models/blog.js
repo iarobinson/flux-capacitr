@@ -1,43 +1,21 @@
-Allonsy.Models.Blog = Backbone.Model.extend({
-  urlRoot: '/api/blogs',
+Allonsy.Models.Blog = Backbone.Model.extend(
+  _.extend({}, Allonsy.Mixins.Followable, {
+    urlRoot: '/api/blogs',
 
-  following: function () {
-    if (!this._following) { this._following = new Allonsy.Models.Following; }
-    return this._following;
-  },
+    followableOptions: {
+      foreignKey: "blog_id"
+    },
 
-  createFollowing: function () {
-    this.following().set("blog_id", this.id);
-    this.following().save();
-  },
+    parse: function (response) {
+      this.parseFollowing(response);
+      return response;
+    },
 
-  destroyFollowing: function () {
-    this.following().destroy({
-      success: function (model) {
-        model.unset("id");
-      }.bind(this)
-    });
-  },
-
-  toggleFollowing: function () {
-    if (this.following().isNew()) {
-      this.createFollowing();
-    } else {
-      this.destroyFollowing();
+    posts: function () {
+      if (!this._posts) {
+        this._posts = new Allonsy.Collections.Posts([], { blog: this });
+      }
+      return this._posts;
     }
-  },
-
-  parse: function (response) {
-    this.following().set(response.following);
-    delete response.following;
-
-    return response;
-  },
-
-  posts: function () {
-    if (!this._posts) {
-      this._posts = new Allonsy.Collections.Posts([], { blog: this });
-    }
-    return this._posts;
   }
-});
+));
