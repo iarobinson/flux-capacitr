@@ -13,13 +13,11 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :new]
     end
 
-    resources :posts, only: [:create, :destroy, :show, :update]
-    get 'feed', to: 'posts#feed'
+    resources :posts, only: [:create, :destroy, :index, :show, :update]
 
     post 'blogs/:id/togglefollow', to: 'blogs#toggle_follow'
 
     post 'posts/:id/togglelike', to: 'posts#toggle_like'
-    get 'posts/search/:query', to: 'posts#search'
   end
 
   resource :session, only: [:create, :destroy, :new]

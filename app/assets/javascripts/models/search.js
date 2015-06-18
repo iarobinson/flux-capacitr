@@ -26,6 +26,7 @@ Allonsy.Models.Search = Backbone.Model.extend({
       remove: false,
       data: {
         page: 1,
+        query: this.get('searchString')
       }
     });
 

@@ -1,4 +1,12 @@
 Allonsy.Collections.Posts = Backbone.Collection.extend({
+  url: function () {
+    if (this.blog) {
+      return "/api/blogs/" + this.blog.id + "/posts";
+    } else {
+      return "/api/posts";
+    }
+  },
+
   filterBy: function (params) {
     var filteredColl = this.filter(function (item) {
       return _(params.tags).all(function(tag) {
@@ -44,15 +52,5 @@ Allonsy.Collections.Posts = Backbone.Collection.extend({
 
   refilter: function () {
     this.filterBy(this.filtered.params);
-  },
-
-  url: function () {
-    if (this.blog) {
-      return '/api/blogs/' + this.blog.id + '/posts'
-    } else if (this.searchString) {
-      return '/api/posts/search/' + this.searchString;
-    } else {
-      return '/api/feed'
-    }
   }
 });

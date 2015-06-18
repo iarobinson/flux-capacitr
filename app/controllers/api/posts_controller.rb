@@ -27,16 +27,29 @@ module Api
     end
 
     def index
-      @posts = Blog.find(params[:blog_id]).posts
-                    .includes(:users_liked_by)
-                    .page(params[:page])
-      render :index
-    end
+      if params[:blog_id]
+        @posts = Blog.find(params[:blog_id])
+          .posts
+          .includes(:users_liked_by)
+      elsif params[:query]
+        query = "%#{params[:query]}%"
+        where_sql = <<-SQL
+          tags.label LIKE :query
+            OR posts.title LIKE :query
+            OR posts.body LIKE :query
+        SQL
 
-    def feed
-      @posts = current_user.feed_posts
-                .includes(:author, :blog, :tags, :users_liked_by)
-                .page(params[:page])
+        @posts = Post
+          .includes(:tags)
+          .includes(:author)
+          .where(where_sql, query: query)
+          .references(:tags)
+      else
+        @posts = current_user.feed_posts
+          .includes(:author, :blog, :tags, :users_liked_by)
+      end
+
+      @posts = @posts.page(params[:page])
       render :index
     end
 
@@ -44,17 +57,6 @@ module Api
       @post = current_user.posts.new
       @post.blog_id = params[:blog_id]
       render partial: 'post', locals: {post: @post}
-    end
-
-    def search
-      query = "%#{params[:query]}%"
-      @posts = Post
-        .includes(:tags)
-        .includes(:author)
-        .where(<<-SQL, query, query, query).references(:tags).page(params[:page])
-          tags.label LIKE ? OR posts.title LIKE ? OR posts.body LIKE ?
-        SQL
-      render 'index.json.jbuilder'
     end
 
     def show
