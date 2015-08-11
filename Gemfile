@@ -14,7 +14,6 @@ gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'pg'
 gem 'rails', '4.2.0'
-gem 'rails_12factor'
 gem 'sass-rails', '~> 4.0.3'
 gem 'thin'
 gem 'uglifier', '>= 1.3.0'
@@ -39,6 +38,10 @@ end
 group :test do
   gem 'faker'
   gem 'capybara'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 group :doc do
